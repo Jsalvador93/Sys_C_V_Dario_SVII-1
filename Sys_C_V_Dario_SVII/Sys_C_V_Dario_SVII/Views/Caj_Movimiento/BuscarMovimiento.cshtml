@@ -1,0 +1,265 @@
+﻿
+@{
+    ViewBag.Title = "BuscarMovimiento";
+}
+
+<section class="content-header">
+    <h1> Buscar Movimientos</h1>
+</section>
+
+<div class="box box-primary">
+    <h4>Filtro</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_sucursal">Sucursal:</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select name="_Sucursal" class="form-control">
+                                    <option> Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_ptoVenta">Pto Venta:</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select name="_ptoVenta" class="form-control">
+                                    <option> Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_desde">Desde:</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input type="date" name="_desde" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_hasta"> Hasta: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <input type="date" name="_hasta" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_denominacion">Denom:</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select name="_denominacion" class="form-control">
+                                    <option> Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_concepto"> Concepto: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select name="_concepto" class="form-control">
+                                    <option> Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_tipDocumento">Tp Documento:</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select class="form-control" name="_tipDocumento">
+                                    <option>Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label for="_Monto">Monto Entre:</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input type="text" style="border-left-color:black;" placeholder="monto mayor igual" name="_limiteinferior" class="form-control" />
+                            </div>
+                            <div class="col-xs-6">
+                                <input type="text" style="border-right-color:black;" placeholder="monto menor igual" name="_limitesuperior" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_caja">Caja:</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select name="_caja" class="form-control">
+                                    <option> Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_cajero"> Cajero: </label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select name="_cajero" class="form-control">
+                                    <option> Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-sm-3 col-md-2 col-lg-2">
+                        <input type="radio" name="optradio">&nbsp; Ingreso
+                    </label>
+                    <label class="col-sm-3 col-md-2 col-lg-2">
+                        <input type="radio" name="optradio">&nbsp; Egreso
+                    </label>
+                    <label class="col-sm-3 col-md-2 col-lg-2">
+                        <input type="radio" name="optradio">&nbsp; Ambos
+                    </label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-5">
+                                <label for="_turno">Turno:</label>
+                            </div>
+                            <div class="col-xs-7">
+                                <select class="form-control" name="_turno">
+                                    <option>Todos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <button type="button" name="btneditar" class="btn btn-default">Editar</button>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <button type="button" name="btnbuscar" class="btn btn-default">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="box box-default">
+    <div class="box-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr class="tr-deafult">
+                                <th>Rzn Social</th>
+                                <th>Tp Doc</th>
+                                <th>Fecha Reg.</th>
+                                <th>Monto</th>
+                                <th>Movimiento</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tr>
+                                <th>Los Usares de Huacho</th>
+                                <th>Factura</th>
+                                <th>12-12-12</th>
+                                <th>1000</th>
+                                <th>Ingreso</th>
+                                <th>
+                                    <button type="button" name="btndtl" class="btn btn-default btn-xs">Detalles</button>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>La Villa Magica</th>
+                                <th>Boleta</th>
+                                <th>14-14-14</th>
+                                <th>1234</th>
+                                <th>Egreso</th>
+                                <th>
+                                    <button type="button" name="btndtl" class="btn btn-default btn-xs">Detalles</button>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div class="form-group">
+        <div class="row">
+
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+
+        </div>
+    </div>*@
+
