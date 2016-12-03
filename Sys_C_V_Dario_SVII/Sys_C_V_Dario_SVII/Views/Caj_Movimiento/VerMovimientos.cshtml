@@ -1,0 +1,156 @@
+﻿
+@{
+    ViewBag.Title = "VerMoviminetos";
+    List<SelectListItem> oListSelectItemSucursal = new List<SelectListItem>();
+    oListSelectItemSucursal.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+
+    List<SelectListItem> oListSelectItemPtoVenta = new List<SelectListItem>();
+    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+}
+
+<section>
+    <p4>Ver Movimientos</p4>
+</section>
+
+<div class="box box-primary">
+    <h4>Filtro</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> SUCURSAL: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboSucursal", oListSelectItemSucursal, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> PTO VENTA: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-4 col-sm-offset-8 col-md-4 col-md-offset-8 col-lg-5 col-lg-offset-7">
+                        <button type="button" class="btn btn-info" name="btnBuscar" id="btnBuscar" style="width:100%">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>  
+
+<div class="box box-primary">
+    <h4>Ventas</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>btn Detalle</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>           
+
+<div class="box box-primary">
+    <h4>Compras</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>btn Detalle</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>            
+
+<div class="box box-primary">
+    <h4>Ingresos</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>btn Detalle</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>           
+
+<div class="box box-primary">
+    <h4>Egresos</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tr>
+                                <th>Comprobante</th>
+                                <th>F. Emision</th>
+                                <th>Monto</th>
+                                <th>btn Detalle</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>            

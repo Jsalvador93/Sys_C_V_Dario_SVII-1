@@ -1,0 +1,182 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+    List<SelectListItem> oListSelectItemPtoVenta = new List<SelectListItem>();
+    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+
+}
+
+<!-- Content Header (Page header) -->
+
+    <h1><b>DISTRIBUCION CAJA PUNTO DE VENTA</b></h1>
+
+<!-- Main content -->
+
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-2 ">
+                        <label class="control-label"> PTO VENTA: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-2  ">
+                        <label class="control-label">DESDE:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.TextBox("txtDesde", null, new { type = "date",@class = "form-control" })
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-lg-2  ">
+                        <label class="control-label">HASTA:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4 ">
+                        @Html.TextBox("txtHasta", null, new { type = "date", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2 col-sm-2 col-lg-2  ">
+                        <label class="control-label">CAJA INICIAL:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.TextBox("txtCajInicial", null, new {type = "number", @class = "form-control" })
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-lg-2  ">
+                        <label class="control-label">CAJA CHICA:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.TextBox("txtCajChica", null, new { type = "number", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>            
+
+<div class="box box-body">
+    <div>
+        <h4>DISPONIBLE</h4>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-2 col-sm-2 col-lg-2  ">
+                <label class="control-label">CAJA INICIAL:</label>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                @Html.TextBox("txtCajInicial", null, new { type = "number", @class = "form-control" })
+            </div>
+            <div class="col-md-2 col-sm-2 col-lg-2  ">
+                <label class="control-label">CAJA CHICA:</label>
+            </div>
+            <div class="col-sm-4 col-md-4 col-lg-4">
+                @Html.TextBox("txtCajChica", null, new { type = "number", @class = "form-control" })
+            </div>
+        </div>
+    </div>
+</div>            
+          
+<div class="box box-primary">
+    <div class="box-body">
+        <div>
+            <h4>FILTRO</h4>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <label class="control-label">DESDE:</label>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                    @Html.TextBox("txtDesde", null, new {type = "date" , @class = "form-control"})
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                    <label class="control-label">HASTA:</label>
+                </div>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    @Html.TextBox("txtHasta", null, new { type = "date", @class = "form-control" })
+                </div>
+                <div class="col-sm-1  col-md-1  col-lg-1 ">
+                    <button type="button" class="control btn btn-default " style="width:100%" id="idSearch"><span class="fa fa-search"></span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>            
+
+            
+<div class="box">
+    <div class="box-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <input type="checkbox" class="checkbox-inline" /> &nbsp; EDITAR
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="table table-responsive">
+                        <div style="height:840px;overflow-x:scroll;overflow-y:scroll">
+                            <table class="table table-striped">
+
+                                <tr class="table-bordered">
+                                    <th class="text-danger">DIA</th>
+                                    <th>DIA 1</th>
+                                    <th>DIA 2</th>
+                                    <th>DIA 3</th>
+                                    <th>DIA 4</th>
+                                    <th>DIA 5</th>
+                                    <th>DIA 6</th>
+                                    <th>DIA 7</th>
+                                </tr>
+
+                                <tr>
+                                    <td>CAJA</td>
+                                    <td>10-10-2013</td>
+                                    <td>10-10-2013</td>
+                                    <td>10-10-2013</td>
+                                    <td>10-10-2013</td>
+                                    <td>10-10-2013</td>
+                                    <td>10-10-2013</td>
+                                    <td>10-10-2013</td>
+
+                                </tr>
+                                <tr>
+                                    <td>CAJA 01</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>        
+   
+
+
+
+
+
+
+

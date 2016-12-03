@@ -1,0 +1,131 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Caja.Caj_CajaBE>
+
+@{
+    ViewBag.Title = "Index";
+
+
+
+    List<SelectListItem> oListSelectItemCaja = new List<SelectListItem>();
+    oListSelectItemCaja.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemCaja.Add(new SelectListItem { Text = "ID", Value = "1", Selected = false });
+    oListSelectItemCaja.Add(new SelectListItem { Text = "Descripcion", Value = "2", Selected = false });
+    List<SelectListItem> oListSelectItemSucursal = ViewBag.objListSelectListSucursal;
+
+    List<SelectListItem> oListSelectItemPtoVenta = new List<SelectListItem>();
+    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+}
+
+<script type="text/javascript">
+var getProductoUrl = '@Url.Action("GetProducto")';
+        $(function () {
+
+            $('#producto_id').change(
+                function () {
+                    var selectedId_Prod = $('#producto_id').val();
+                    if (selectedId_Prod != null) {
+                        $.getJSON(getProductoUrl, { producto_id: selectedId_Prod },
+                            function (subs) {
+                                var subSelect = $('#precio').val();
+                                $('#precio').empty();
+                                $('#precio').val(subs.toString());
+                            });
+                    }
+                });
+
+        });
+</script>    
+
+<section>
+    <h1>Caja</h1>
+</section>
+
+<div class="box">
+    <p1> Filtro </p1>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> SUCURSAL: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboSucursal", oListSelectItemSucursal , new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> PTO VENTA: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        @Html.Label("cboFiltro", "Filtro:")
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboFiltro", oListSelectItemCaja, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.TextBox("txtFiltro", null, new { @class = "form-control", placeholder = "Ingrese el Filtro" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <button type="button" style="width:100%" class="btn btn-info" name="btnBuscar" id="btnBuscar">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        @Html.Partial("_Nuevo")
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                            <div></div>
+                            <table class="table table-striped">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Descripcion</th>
+                                    <th>Pto Venta</th>
+                                    <th>Sucursal</th>
+                                    <th>F. Ingreso</th>
+                                    <th>Operacion</th>
+                                </tr>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model)
+                                    {
+                                        if (item.bl_ver)
+                                        {
+                                            <tr>
+                                                <th>@item.in_idCaja</th>
+                                                <th>@item.st_dscpCaja</th>
+                                                <th>@item.objPtoVenta.st_dscpPtoVenta</th>
+                                                <th>Sucursal</th>
+                                                <th>@item.dt_fchIngreso</th>
+                                                <th>@Html.Partial("_Detalles") @Html.Partial("_Modificar")</th>
+                                            </tr>
+                                        }
+                                    }
+                                }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+

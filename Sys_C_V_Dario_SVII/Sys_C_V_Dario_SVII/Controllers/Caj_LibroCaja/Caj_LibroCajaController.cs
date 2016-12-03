@@ -9,7 +9,16 @@ namespace Sys_C_V_Dario_SVII.Controllers.Caj_LibroCaja
     public class Caj_LibroCajaController : Controller
     {
         // GET: Caj_LibroCaja
-        public ActionResult LibroCaja()
+        public ActionResult LibroCajaGeneral()
+        {
+            return View();
+        }
+        public ActionResult LibroCajaSucursal()
+        {
+            return View();
+        }
+
+        public ActionResult LibroCajaPtoVenta()
         {
             return View();
         }

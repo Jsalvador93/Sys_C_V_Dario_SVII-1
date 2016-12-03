@@ -1,0 +1,24 @@
+﻿
+
+<button type="button" class="btn btn-danger" name="btnAceptar" data-toggle="modal" data-target="#Msj">APERTURA</button>
+<!-- MODAL QUITAR -->
+<div class="modal fade" id="Msj" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <center>
+                    <h4>
+                        USTED NO TIENE MOVIMIENTOS REGISTRADOS PARA
+                        CERRA LA CAJA CONSULTE CON SU ADMINISTRADOR
+                    </h4>
+                </center>
+
+                <div class="modal-footer">
+                    @Html.Partial("_Admin")
+                    <button type="button" name="btnCancelar" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

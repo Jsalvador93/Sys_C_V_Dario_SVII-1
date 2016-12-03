@@ -13,11 +13,15 @@ namespace Sys_C_V_Dario_SVII.Controllers.Caj_Movimiento
         {
             return View();
         }
-        public ActionResult RegistrarMovimiento()
+        public ActionResult RegistrarIngresoEgreso()
         {
             return View();
         }
         public ActionResult BuscarMovimiento()
+        {
+            return View();
+        }
+        public ActionResult VerMovimientos()
         {
             return View();
         }

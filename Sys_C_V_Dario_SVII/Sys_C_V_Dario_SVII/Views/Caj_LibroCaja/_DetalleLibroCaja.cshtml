@@ -1,0 +1,108 @@
+﻿@{ 
+    List<SelectListItem> oListSelectItemFiltro = new List<SelectListItem>();
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Todos...", Value = "-1", Selected = true });
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Fecha", Value = "1", Selected = false });
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Concepto", Value = "2", Selected = false });
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Ingreso", Value = "3", Selected = false });
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Egreso", Value = "4", Selected = false });
+}
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Detalle</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Detalles</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="">
+                                        <label for="_filtro" class="col-sm-2 col-md-1 col-lg-1"> Filtro: </label>
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-lg-5">
+                                        @Html.DropDownList("cboFiltro" , oListSelectItemFiltro,new { @class = "form-control"} )
+                                    </div>
+                                    <div class="col-sm-4 col-md-4 col-lg-5">
+                                        @Html.TextBox( "txtFiltro" , null , new { type="text" , placeholder="Ingrese el Filtro" , @class="form-control"})
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 col-lg-1">
+                                        <button type="button" name="btnBuscar" id="btnBuscar" class="btn btn-default">Buscar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <tr>
+                                            <th rowspan="2">Fecha</th>
+                                            <th rowspan="2">Concepto</th>
+                                            <th colspan="2">Movimientos</th>
+                                            <th colspan="2">Saldos</th>
+                                        </tr>
+                                        <tr>
+                                            <th>Debe</th>
+                                            <th>Haber</th>
+                                            <th>Deudor</th>
+                                            <th>Acreedor</th>
+                                        </tr>
+                                        <tr>
+                                            <th>12-12-12</th>
+                                            <th>Pagos</th>
+                                            <th>100</th>
+                                            <th></th>
+                                            <th>200</th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <th></th>
+                                            <th>Subotales</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="3"></th>
+                                            <th>Saldo Anterior</th>
+                                            <th></th>
+                                            <th></th>
+                                            <th rowspan="3" colspan="2"></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Saldo Prox.</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                        <tr>
+                                            <th>Totales</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" name="btnOk" id="btnOk"> OK </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" name="btnSalir" id="btnSalir"> SALIR </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
