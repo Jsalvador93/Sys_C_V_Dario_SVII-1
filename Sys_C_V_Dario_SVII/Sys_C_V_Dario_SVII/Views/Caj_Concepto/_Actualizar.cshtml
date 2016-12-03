@@ -1,0 +1,48 @@
+﻿@{
+
+    List<SelectListItem> oListSelectItemDenominacion = new List<SelectListItem>();
+    oListSelectItemDenominacion.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+}
+<button type="button" class="btn btn-xs" style="color:#ffffff;background-color:#2FCB21" data-toggle="modal" data-target="#Actualizar">ACTUALIZAR</button>
+<!--MODAL ACTUALIZAR-->
+<div class="modal fade " id="Actualizar" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header" style="background-color:#2FCB21">
+
+                    <center><h4 class="modal-title" style="color:#ffffff">ACTUALIZAR CONCEPTO</h4></center>
+                </div>
+                <br />
+                <div class="modal-body">
+
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">DESCRIPCION:</label>
+                        <div class="col-lg-6">
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="form-group ">
+                        <div class="col-lg-4 ">
+                            <label class="control-label">DENOMINACION:</label>
+                        </div>
+                        <div class="col-lg-6">
+                            @Html.DropDownList("cboDenominacion", oListSelectItemDenominacion, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" name="btnGuardar" id="btnGuardar">GUARDAR</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" name="btnCancelar" id="btnCancelar">CANCELAR</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+                                                                                                                                                           
+
+

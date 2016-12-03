@@ -1,0 +1,74 @@
+﻿
+<!-- Trigger the modal with a button -->
+<button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#MDetalles">Detalles</button>
+
+<!-- Modal -->
+<div class="modal fade" id="MDetalles" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#E17F29;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Detalles de la Caja</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtSucursal", "Sucural:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("txtSucursal", null, new { type = "text", disabled = "true" , @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtPtoVenta", "Pto Venta:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("txtPtoVenta", null, new { type = "text", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtCaja", "Caja:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox( "txtCaja", null, new { type = "text", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtFchIngreso", "F. Ingreso:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("txtFchIngreso", null ,new { type = "date", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtFchRegistro", "F. Registro:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("txtFchRegistro", null ,new { type = "date", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" name="btnSAlir" id="btnSalir"> SALIR </button>
+            </div>
+        </div>
+    </div>
+</div>
+

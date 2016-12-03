@@ -1,0 +1,41 @@
+﻿<button type="button" class="btn btn-default" name="btnAceptar" style="color:#ffffff;background-color:#2FCB21" data-toggle="modal" data-target="#Aceptar" >ACEPTAR</button>
+<div class="modal fade " id="Aceptar" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form">
+                <div class="modal-header" style="background-color:#000000">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <center><h4 class="modal-title" style="color:#ffffff">ADMINISTRADOR</h4></center>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <label class="control-label">USUARIO:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("txtUsuario" ,null , new { type="text" , @class="form-control"})
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <label class="control-label">CONTRASEÑA:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("txtContraseña", null, new { type = "password", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" name="btnCerrarCaj" class="btn btn-primary">CERRAR CAJA</button>
+                    <button type="button" name="btnCancelar" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

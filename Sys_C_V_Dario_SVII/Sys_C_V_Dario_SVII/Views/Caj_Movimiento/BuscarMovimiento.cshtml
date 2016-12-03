@@ -1,0 +1,214 @@
+﻿
+@{
+    ViewBag.Title = "BuscarMovimiento";
+    List<SelectListItem> oListSelectItemSucursal = new List<SelectListItem>();
+    oListSelectItemSucursal.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+
+    List<SelectListItem> oListSelectItemPtoVenta = new List<SelectListItem>();
+    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+
+    List<SelectListItem> oListSelectItemDenominacion = new List<SelectListItem>();
+    oListSelectItemDenominacion.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+
+    List<SelectListItem> oListSelectItemConcepto = new List<SelectListItem>();
+    oListSelectItemConcepto.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    List<SelectListItem> oListSelectItemTipDocumento = new List<SelectListItem>();
+    oListSelectItemTipDocumento.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    List<SelectListItem> oListSelectItemCaja = new List<SelectListItem>();
+    oListSelectItemCaja.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    List<SelectListItem> oListSelectItemCajero = new List<SelectListItem>();
+    oListSelectItemCajero.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    List<SelectListItem> oListSelectItemTurno = new List<SelectListItem>();
+    oListSelectItemTurno.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+}
+
+<section class="content-header">
+    <h1> Buscar Movimientos</h1>
+</section>
+
+<div class="box box-primary">
+    <h4>Filtro</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> SUCURSAL: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboSucursal", oListSelectItemSucursal, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> PTO VENTA: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_desde">DESDE:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.TextBox("txtDesde", null, new { type = "date", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_hasta" name="_hasta">HASTA:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.TextBox("txtHasta", null, new { type = "date", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_denominacion">DENOM:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboDenominacion", oListSelectItemDenominacion, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_hasta" name="_hasta">CONCEPTO:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboConcepto", oListSelectItemConcepto, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_denominacion">TP DOC:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboTipDocumento", oListSelectItemTipDocumento, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="form-group">
+                        <label for="_Monto">MONTO ENTRE:</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                @Html.TextBox("txtLimInferior" , null , new { type="number" , placeholder= "monto mayor igual" , @class="form-control" , @style= "border-left-color:black;" } )
+                            </div>
+                            <div class="col-xs-6">
+                                @Html.TextBox("txtLimSuperior", null, new { type = "number", placeholder = "monto mayor igual", @class = "form-control", @style = "border-right-color:black;" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_caja">CAJA:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboCaja", oListSelectItemCaja, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_hasta" name="_hasta">CAJERO:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboCajero", oListSelectItemCajero, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <label class="col-sm-3 col-md-2 col-lg-2">
+                        <input type="radio" name="optradio">&nbsp; Ingreso
+                    </label>
+                    <label class="col-sm-3 col-md-2 col-lg-2">
+                        <input type="radio" name="optradio">&nbsp; Egreso
+                    </label>
+                    <label class="col-sm-3 col-md-2 col-lg-2">
+                        <input type="radio" name="optradio">&nbsp; Ambos
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label for="_turno">TURNO:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboTurno", oListSelectItemTurno, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <button type="button" name="btnEditar" id="btnEditar" class="btn btn-default">Editar</button>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 col-md-2">
+                        <button type="button" name="btnBuscar" id="btnBuscar" class="btn btn-default">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="box box-default">
+    <div class="box-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr class="tr-deafult">
+                                <th>Rzn Social</th>
+                                <th>Tp Doc</th>
+                                <th>Fecha Reg.</th>
+                                <th>Monto</th>
+                                <th>Movimiento</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tr>
+                                <th>Los Usares de Huacho</th>
+                                <th>Factura</th>
+                                <th>12-12-12</th>
+                                <th>1000</th>
+                                <th>Ingreso</th>
+                                <th>
+                                    <button type="button" name="btndtl" class="btn btn-default btn-xs">Detalles</button>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>La Villa Magica</th>
+                                <th>Boleta</th>
+                                <th>14-14-14</th>
+                                <th>1234</th>
+                                <th>Egreso</th>
+                                <th>
+                                    <button type="button" name="btndtl" class="btn btn-default btn-xs">Detalles</button>
+                                </th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

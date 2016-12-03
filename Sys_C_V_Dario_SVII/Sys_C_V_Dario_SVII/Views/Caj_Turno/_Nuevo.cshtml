@@ -1,0 +1,67 @@
+﻿
+
+    <button type="button" class="btn btn-primary" name="btnNuevo" id="btnNuevo" data-toggle="modal" data-target="#Nuevo">NUEVO</button>
+
+<!-- Modal NUEVO-->
+<div class="modal fade" id="Nuevo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form">
+                <div class="modal-header" style="background-color:#0D69A6">
+
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <center><h4 class="modal-title" style="color:#ffffff">NUEVO</h4></center>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">DESCRIPCION TURNO:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("txtDesc", null, new { type = "text", @class ="form-control"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">FECHA REGISTRO:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("txtFchRegistro", null, new { type = "date", disabled="true", @class ="form-control"})
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">HORA DE INICIO:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("txtHInicio", null, new { type = "time", @class ="form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">HORA FINAL:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("txtHFinal", null, new { type = "time", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
+                    <button type="button" name="btnCancelar" id="btnCancelar" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

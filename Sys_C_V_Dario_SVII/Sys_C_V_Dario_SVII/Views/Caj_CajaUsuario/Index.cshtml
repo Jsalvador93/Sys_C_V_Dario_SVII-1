@@ -1,0 +1,125 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+
+    List<SelectListItem> oListSelectItemSucursal = new List<SelectListItem>();
+    oListSelectItemSucursal.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+
+    List<SelectListItem> oListSelectItemPtoVenta = new List<SelectListItem>();
+    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    List<SelectListItem> oListSelectItemCajero = new List<SelectListItem>();
+    oListSelectItemCajero.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    List<SelectListItem> oListSelectItemCaja = new List<SelectListItem>();
+    oListSelectItemCaja.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+}
+
+<section>
+    <h1>Asignar Cajero</h1>
+</section>
+
+<div class="box box-primary">
+    <h4>Filtro</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> SUCURSAL: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboSucursal", oListSelectItemSucursal, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> PTO VENTA: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="box box-primary">
+    <h4>Cajero</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        @Html.Label("cboCajero", "CAJERO:")
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboCajero", oListSelectItemCajero, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box box-primary">
+    <h4>Caja</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> SUCURSAL: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboCajSucursal", oListSelectItemSucursal, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> PTO VENTA: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboCajPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        @Html.Label("cboCaja", "CAJA:")
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboCaja", oListSelectItemCaja, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        @Html.Partial("_ConfirmacionAsigCajero")
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="box box-primary">
+    <h4>Asignar</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <tr>
+                                <th> Caja</th>
+                                <th>F. Asigacion</th>
+                                <th>Pto Venta</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tr>
+                                <th> Caja</th>
+                                <th>F. Asigacion</th>
+                                <th>Pto Venta</th>
+                                <th> @Html.Partial("_DetalleAsigCajero") @Html.Partial("_QuitarAsigCajero")</th>
+                                
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+﻿
+<button type="button" class="btn btn-xs" name="btnDetalle" style="color:#ffffff;background-color:#E17F29" data-toggle="modal" data-target="#Detalle" data-dismiss="modal">DETALLE</button>
+
+<script type="text/javascript">
+    function openmodal() {
+
+    }
+</script>
+
+<div class="modal fade" id="Detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color:#E17F29">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h3 class="modal-title" style="color:#ffffff">DETALLE</h3></center>
+            </div>
+
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <h4>CAJERO</h4>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                                <label class="control-label">CAJERO:</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-9 col-lg-9">
+                                                @Html.TextBox("txtCajero" , null , new {type="text", disabled = "true" , @class = "form-control"})
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <h4>APERTURA</h4>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                                <label class="control-label">MONTO:</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-9 col-lg-9">
+                                                @Html.TextBox("txtMonto", null, new { type = "number", disabled = "true", @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                                <label class="control-label">FECHA:</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-9 col-lg-9">
+                                                @Html.TextBox("txtFecha", null, new { type = "date", disabled = "true", @class = "form-control" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                                <label class="control-label">HORA:</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-9 col-lg-9">
+                                                @Html.TextBox("txtHora", null, new { type = "time", disabled = "true", @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-9 col-md-7 col-lg-6">
+                            <h4>ACTUAL</h4>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <form class="form-horizontal">
+                                        <div class="form-group">
+                                            <div>
+                                                <center><p>DATOS HASTA LA FECHA</p></center>
+                                            </div>
+                                            <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                                <label class="control-label">MONTO:</label>
+                                            </div>
+                                            <div class="col-sm-9 col-md-9 col-lg-9">
+                                                @Html.TextBox("txtActMonto", null, new { type = "number", disabled = "true", @class = "form-control" })
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-6">
+                        <h4>CIERRE</h4>
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                            <label class="control-label">CAJA CHICA:</label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-9 col-lg-9">
+                                            @Html.TextBox("txtCajChica", null, new { type = "number", @class = "form-control", disabled = "true" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-sm-3 col-md-3 col-lg-3 ">
+                                            <label class="control-label">CAJA INICIAL:</label>
+                                        </div>
+                                        <div class="col-sm-9 col-md-9 col-lg-9">
+                                            @Html.TextBox("txtCajInicial", null, new { type = "number", @class = "form-control", disabled = "true" })
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" name="btnSalir" data-dismiss="modal">Salir</button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
