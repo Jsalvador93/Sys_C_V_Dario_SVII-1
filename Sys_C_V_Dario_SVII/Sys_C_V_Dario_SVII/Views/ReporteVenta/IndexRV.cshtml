@@ -2,34 +2,81 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<style>
-    table {
-        font-family: arial, sans-serif;
-        border: 1px;
-        border-collapse: collapse;
-        width: 100%;
-    }
+<div class="jumbotron text-center">
+    <h1>Reporte de Ventas</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h4>
+                Vendedor
+                <select name="Vendedor">
+                    <option>Seleccionar...</option>
+                </select>
+            </h4>
+        </div>
+        <div class="col-sm-4">
+            <h4>
+                Cliente
+                <select name="Cliente">
+                    <option>Seleccionar...</option>
+                </select>
+            </h4>
+        </div>
+        <div class="col-sm-4">
+            <h4>
+                N° Comprobante
+                <select name="Nro Comprobante">
+                    <option>Seleccionar...</option>
+                </select>
+            </h4>
+        </div>
+    </div>
 
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
 
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-</style>
-<center><table border="1">
-    <caption >REPORTE DE VENTAS</caption>
-    <tr>
-        <th>Fecha de Registro</th>
-        <th>Numero Comprobante</th>
-        <th>Tipo de Comprobante</th>
-        <th>Vendedor</th>
-        <th>Cliente</th>
-        <th>Moneda</th>
-    </tr>
-</table></center>
-<h1 >HOLA MUNDO</h1>
-<button>Exportar Reportes</button>
+    <div class="box box-default">
+        
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <tr class="tr-active">
+                                    <th>Fecha de Registro</th>
+                                    <th>Numero Comprobante</th>
+                                    <th>Tipo de Comprobante</th>
+                                    <th>Vendedor</th>
+                                    <th>Cliente</th>
+                                    <th>Moneda</th>
+                                    <th>Detalle</th>
+                                </tr>
+                                <tr>
+                                    <td>12-12-12</td>
+                                    <td>0001-12101241211</td>
+                                    <td>Factura</td>
+                                    <td>Luis Antonio Melgarejo Narrea</td>
+                                    <td>Franz Gavino Carrera</td>
+                                    <td>Soles</td>
+                                    <td>
+                                        <button type="button" name="btndtl" class="btn btn-link btn-xs">Detalles</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>La Villa Magica</td>
+                                    <td>Boleta</td>
+                                    <td>14-14-14</td>
+                                    <td>1234</td>
+                                    <td>Egreso</td>
+                                    <td>
+                                        <button type="button" name="btndtl" class="btn btn-default btn-xs">Detalles</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+    </div>
+
+</div>
