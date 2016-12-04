@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+    <title>Reporte Producto</title>
+</head>
+<body>
+    <br>
+    <br/>
+    <center>
+        <h2><b>REPORTE PRODUCTO</b></h2></center>
+     <center><h4>Reporte General de Productos:</h4></center>
+          <center><input type="submit" name="btn_Aplicar" value="Aplicar"/></center>
+                    <br><br/>
+      <center><h4>Reporte segun Articulo/Prenda:</h4></center>
+    <div>
+       <center><table border="0">
+               <tr>
+         <td><b>Producto:</b><td />
+               <td><input type="text" name="txt_tipoProducto" /></td>
+                 </tr>             
+                 <tr>
+                  <td><input type="submit" name="btn_Aplicar" value="Aplicar" /></td>
+                  </tr>
+                  </table></center>
+                  </div>
+             <br><br/>
+        <center><h4>Reporte segun la marca:</h4></center>
+                <div>
+                 <center>
+              <table border="0"> 
+              <tr>
+                  <td><b>Marca:</b><td />
+                <td><input type="text" name="txt_Marca" /></td>
+                 </tr>
+                 <tr>
+                <td><input type="submit" name="btn_Aplicar" value="Aplicar" /></td>
+                 </tr>
+                 </table></center>
+               </div>
+</body>
+</html>
