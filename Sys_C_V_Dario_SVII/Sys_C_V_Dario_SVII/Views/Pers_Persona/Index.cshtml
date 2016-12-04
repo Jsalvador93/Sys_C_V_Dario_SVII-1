@@ -1,0 +1,257 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Pers_Persona.Pers_PersonaBE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+ <!-- Content Wrapper. Contains page content  NUEVA PERSONA-->
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Nueva Persona</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Sistema</a></li>
+            <li class="active">Nueva Persona</li>
+        </ol>
+    </section>
+    <!-- Main content -->
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    <div class="box box-primary">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="box-body">
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="Tipo_Contribuyente">Tipo de Contribuyente : </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="checkbox">     <label><input type="radio"> Natural</label> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="checkbox">     <label><input type="radio">Juridica</label> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="Tipo_Persona">Tipo de Persona : </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-control">
+                                        <option></option>
+                                        <option>Cliente</option>
+                                        <option>Proveedor</option>
+                                        <option>Usuario</option>
+                                    </select>
+                                </div>
+                                <div class="box-body">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    <div class="box box-primary">
+                        <form role="form">
+                            <div class="form-group">
+                                <div class="box-body">
+                                </div>
+
+
+                                <div class="col-md-2">
+                                    <label for="Tipo_Documento">Tipo de Documento : </label>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-control">
+                                        <option></option>
+                                        <option>DNI</option>
+                                        <option>RUC</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="text" id="c_codPersona">
+                                </div>
+
+                                <div class="box-body">
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-2">
+                                        <label for="Nombres">Nombres : </label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" id="vc_nomPersona">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="Ape_Pat">Apellido Paterno : </label>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" id="vc_apPaterno">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="Ape_Mat">Apellido Materno : </label>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <input type="text" class="form-control" id="vc_apMaterno">
+                                    </div>
+                                    <div class="box-body">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-2">
+                                    <label for="Ape_Mat">Sexo : </label>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="checkbox">     <label><input type="radio"> Femenino</label> </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="checkbox">     <label><input type="radio">Masculino</label> </div>
+                                </div>
+                                <div class="box-body">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    <div class="box box-primary">
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+
+                                    <div class="col-md-2">
+                                        <label for="Ape_Pat">Razon Social : </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" id="Text2">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="Ape_Mat">Correo Electrónico : </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control" id="Text2">
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="col-md-3">
+                                        <label for="Ape_Mat">Movil : </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control">
+                                            <option></option>
+                                            <option>Telefono</option>
+                                            <option>Celular</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" id="Text4">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    <div class="box box-primary">
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <div class="col-md-3">
+                                        <label for="Ape_Pat">País: </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control">
+                                            <option></option>
+                                            <option>Peru</option>
+                                            <option>Brasil</option>
+                                            <option>Argentina</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="Ape_Pat">Departamento : </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control">
+                                            <option></option>
+                                            <option>Ancash</option>
+                                            <option>Lima</option>
+                                            <option>Tacna</option>
+                                        </select>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="col-md-3">
+                                        <label for="Ape_Pat">Provincia : </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control">
+                                            <option></option>
+                                            <option>Barranca</option>
+                                            <option>Huaral</option>
+                                            <option>Cañete</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label for="Ape_Pat">Distrito : </label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control">
+                                            <option></option>
+                                            <option>Huacho</option>
+                                            <option>Hualmay</option>
+                                            <option>Santa Maria</option>
+                                        </select>
+                                    </div>
+                                    <br />
+                                    <br />
+                                    <div class="col-md-3">
+                                        <label for="Ape_Mat">Dirección: </label>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" id="I_idDireccion">
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="CantidadBotones">
+                                            <button type="button" class="btn btn-primary">Guardar</button>
+                                            <button type="button" class="btn btn-primary">Cancelar</button>
+                                        </div>
+                                        <style>
+                                            .CantidadBotones {
+                                                text-align: right;
+                                            }
+                                        </style>
+
+                                    </div>
+                                    <script type="text/javascript">
+                                            $('.clockpicker').clockpicker();
+                                    </script>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

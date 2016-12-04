@@ -52,12 +52,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -168,12 +180,28 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\Pers_Persona\Pers_PersonaController.cs" />
+    <Compile Include="Controllers\Rol_Usuario\Rol_UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Pers_Juridica\Pers_JuridicaBE.cs" />
+    <Compile Include="Models\Pers_Juridica\Pers_JuridicaDA.cs" />
+    <Compile Include="Models\Pers_Natural\Pers_NaturalBE.cs" />
+    <Compile Include="Models\Pers_Natural\Pers_NaturalDA.cs" />
+    <Compile Include="Models\Pers_Persona\Pers_PersonaBE.cs" />
+    <Compile Include="Models\Pers_Persona\Pers_PersonaDA.cs" />
+    <Compile Include="Models\Pers_Telefono\Pers_TelefonoBE.cs" />
+    <Compile Include="Models\Pers_Telefono\Pers_TelefonoDA.cs" />
+    <Compile Include="Models\Pers_Tipo_Persona\Pers_Tipo_PersonaBE.cs" />
+    <Compile Include="Models\Pers_Tipo_Persona\Pers_Tipo_PersonaDA.cs" />
+    <Compile Include="Models\Rol_Usuario\Rol_UsuarioBE.cs" />
+    <Compile Include="Models\Rol_Usuario\Rol_UsuarioDA.cs" />
+    <Compile Include="Models\Sys_Direccion\Sys_DireccionBE.cs" />
+    <Compile Include="Models\Sys_Direccion\Sys_DireccionDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -205,10 +233,14 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Pers_Persona\Index.cshtml" />
+    <Content Include="Views\Rol_Usuario\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -216,6 +248,7 @@
     <Folder Include="Content\dist\" />
     <Folder Include="Content\images\" />
     <Folder Include="Content\plugins\" />
+    <Folder Include="Controllers\NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
