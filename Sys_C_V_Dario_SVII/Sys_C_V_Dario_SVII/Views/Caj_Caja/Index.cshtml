@@ -20,16 +20,7 @@
 <script type="text/javascript">
 
     function fn_DetallesCaja(pin_idCaja) {
-        $.ajax({
-            type: "POST",
-            data: { in_idCaja: pin_idCaja },
-            datatype: "html",
-            url: "@Url.Action("DetallesCaja", "Caj_Caja")",
-            success: function (page) {
-                $("#MyContainer").html(page);
-                $("#MDetalles").modal('show');
-            }
-        });
+        fn_Detalles("/Caj_Caja", "/DetallesCaja", { in_idCaja: pin_idCaja }, "MyContainer" , "MDetalles");
     }
 
     $(document).ready(
@@ -109,8 +100,9 @@
             ListarCaja($("#cboFiltro").val(), $("#txtFiltro").val());
         }
     }
+
     function ListarCaja( _case , filtro ) {
-        ListarTabla( _case , filtro , "/ListarCaja" , "/Caj_Caja" , "tblCaja" );
+        fn_ListarTabla( _case , filtro , "/ListarCaja" , "/Caj_Caja" , "tblCaja" );
     }
 
     function CargarCombo(tpcbo , dircbo , idcbo, _action , _data) {
