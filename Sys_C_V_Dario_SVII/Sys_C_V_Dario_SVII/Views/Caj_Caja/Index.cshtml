@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Caja.Caj_CajaBE>
+﻿@*model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Caja.Caj_CajaBE>*@
 
 @{
     ViewBag.Title = "Index";
@@ -6,34 +6,174 @@
 
 
     List<SelectListItem> oListSelectItemCaja = new List<SelectListItem>();
-    oListSelectItemCaja.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemCaja.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
     oListSelectItemCaja.Add(new SelectListItem { Text = "ID", Value = "1", Selected = false });
     oListSelectItemCaja.Add(new SelectListItem { Text = "Descripcion", Value = "2", Selected = false });
-    List<SelectListItem> oListSelectItemSucursal = ViewBag.objListSelectListSucursal;
+    List<SelectListItem> oListSelectItemSucursal =  new List<SelectListItem>();
+    oListSelectItemSucursal.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
 
     List<SelectListItem> oListSelectItemPtoVenta = new List<SelectListItem>();
-    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
 }
 
+
 <script type="text/javascript">
-var getProductoUrl = '@Url.Action("GetProducto")';
-        $(function () {
 
-            $('#producto_id').change(
-                function () {
-                    var selectedId_Prod = $('#producto_id').val();
-                    if (selectedId_Prod != null) {
-                        $.getJSON(getProductoUrl, { producto_id: selectedId_Prod },
-                            function (subs) {
-                                var subSelect = $('#precio').val();
-                                $('#precio').empty();
-                                $('#precio').val(subs.toString());
-                            });
-                    }
-                });
-
+    function fn_DetallesCaja(pin_idCaja) {
+        $.ajax({
+            type: "POST",
+            data: { in_idCaja: pin_idCaja },
+            datatype: "html",
+            url: "@Url.Action("DetallesCaja", "Caj_Caja")",
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MDetalles").modal('show');
+            }
         });
-</script>    
+    }
+
+    $(document).ready(
+        function () {
+            CargarCombo("1", "0", "FcboSucursal", "/Caj_Caja/cargarCboSucursal" , {"_case": "0"});
+            ListarCaja(0, '');
+            $("#FcboSucursal").change(function () {
+                var eval = $("#FcboSucursal").val();
+                if (eval == "0") {
+                    $("#FcboPtoVenta option ").remove();
+                    ListarCaja(0, "''");
+                    fillcbo("FcboPtoVenta", 0, "Todos...");
+                } else {
+                    ListarCaja(3, eval);
+                    CargarCombo("2", "0" ,  "FcboPtoVenta", "/Caj_Caja/cargarCboPtoVenta", { "in_idSucursal": eval });
+                }
+            });
+            $("#FcboPtoVenta").change(function () {
+                var eval = $("#FcboPtoVenta").val();
+                if (eval == "0") {
+                    var _eval = $("#FcboSucursal").val();
+                    if (_eval == "0") {
+                        ListarCaja(0, '');
+                    } else {
+                        ListarCaja( 3 , eval )
+                    }
+                } else {
+                    ListarCaja(4, eval );
+                }
+            });
+            $("#btnNuevaCaja").click(function () {
+                $.ajax({
+                    type: "POST",
+                    datatype: "html",
+                    url: "@Url.Action("CPVNuevaCaja", "Caj_Caja")",
+                    success: function (page) {
+                        $("#MyContainer").html(page);
+                        $("#MNuevaCaja").modal('show');
+                        CargarCombo("1", "1", "NcboSucursal", '/Caj_Caja/cargarCboSucursal', { "_case": "0" });
+                        CargarCombo("2", "1", "NcboPtoVenta", "/Caj_Caja/cargarCboPtoVenta", { "in_idSucursal": $("#NcboSucursal").val() });
+                        $("#NcboSucursal").change(function () {
+                            CargarCombo("2", "1" , "NcboPtoVenta", "/Caj_Caja/cargarCboPtoVenta", { "in_idSucursal": $("#NcboSucursal").val() });
+                        });
+                        $("#btnGuardarCaja").click(function () {
+                            var Caja = { "dt_fchRegistro": "", "d_fchIngreso": "", "st_dscpCaja": "", "objPtoVenta": { "in_idPtoVenta": "" } };
+                            Caja.dt_fchRegistro = "@System.DateTime.Now";
+
+                            Caja.d_fchIngreso = $("#NtxtFchIngreso").val();
+                            Caja.st_dscpCaja = $("#NtxtdscpCaja").val();
+                            Caja.objPtoVenta.in_idPtoVenta = $("#NcboPtoVenta").val();
+                            $.ajax({
+                                url: '@Url.Action("NuevaCaja")',
+                                data: JSON.stringify(Caja),
+                                type: 'POST',
+                                contentType: 'application/json;',
+                                success: function (result) {
+                                    if (result.Success == 1) {
+                                        $("#MNuevaCaja").modal("toggle");
+                                        alert('Se Guardo Exitosamente');
+                                        ListarCaja(0, '');
+                                    } else {
+                                        alert(result.ex);
+                                    }
+                                }
+                            });
+                        });
+                        $("#btnCancelar").click(function () {
+                            $("#MNuevaCaja").modal("toggle");
+                        });
+                    }
+                })
+            });
+        });
+    
+    function fn_Filtrar() {
+        if ($("#cboFiltro").val() != "0" && $("#txtFiltro").val() != ""  ) {
+            ListarCaja($("#cboFiltro").val(), $("#txtFiltro").val());
+        }
+    }
+    function ListarCaja( _case , filtro ) {
+        ListarTabla( _case , filtro , "/ListarCaja" , "/Caj_Caja" , "tblCaja" );
+    }
+
+    function CargarCombo(tpcbo , dircbo , idcbo, _action , _data) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify(_data),
+            url: _action,
+            success: function ( result ) {
+                if (result.Success == "1") {
+                    var v = result.resultado;
+                    var len = v.length;
+                    $("#" + idcbo + " option").remove();
+                    if( dircbo == "0" ) fillcbo(idcbo, 0, "Todos...");
+                    for (var i = 0 ; i < len ; i++) {
+                        if (tpcbo == "1") {
+                            fillcbo(idcbo, v[i].in_idSucursal, v[i].st_dscpSucursal);
+                        }
+                        else if (tpcbo == "2") {
+
+                            fillcbo(idcbo, v[i].in_idPtoVenta, v[i].st_dscpPtoVenta);
+                        }
+                    }
+                } else {
+                    if (result.Success == "1") {
+                        alert("01");
+                    } else {
+                        alert("02");
+                    }
+                }
+            }
+        });
+    }
+    /*function _cargarCombo( _type , ListCbo , i , len , _action , _data , ancestor ) {
+        if (i < len) {
+            $.ajax({
+                type: 'POST' ,
+                contentType: 'applicationIjson;' ,
+                data: JSON.stringify( data[ i ] ) ,
+                url: _action[i] ,
+                success: function (result) {
+                    if (result.Success == "1") {
+                        var v = result.resultado;
+                        var len = v.length;
+                        if (_type) {
+                            _cargarCombo(_type, ListCbo, i + 1, len, _action, _data, ancestor);
+                        } else {
+
+                        }
+                        for (var i = 0 ; i < len ; i++) {
+                            fillcbo(ListCbo[ i ] , v[ i ]. , )
+                        }
+                    } else {
+                        alert(result.ex);
+                    }
+                }
+            });
+        }
+    }*/
+    function fillcbo( idcbo , val , dscp ) {
+        $("#" + idcbo ).append( "<option value = '" + val + "'> " + dscp + "</option>"  ) ;
+    }
+</script>
 
 <section>
     <h1>Caja</h1>
@@ -49,13 +189,13 @@ var getProductoUrl = '@Url.Action("GetProducto")';
                         <label class="control-label"> SUCURSAL: </label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-5">
-                        @Html.DropDownList("cboSucursal", oListSelectItemSucursal , new { @class = "form-control" })
+                        @Html.DropDownList("FcboSucursal", oListSelectItemSucursal , new { @class = "form-control" })
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-1 ">
                         <label class="control-label"> PTO VENTA: </label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-5">
-                        @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                        @Html.DropDownList("FcboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -67,11 +207,11 @@ var getProductoUrl = '@Url.Action("GetProducto")';
                     <div class="col-sm-4 col-md-4 col-lg-5">
                         @Html.DropDownList("cboFiltro", oListSelectItemCaja, new { @class = "form-control" })
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-5">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.TextBox("txtFiltro", null, new { @class = "form-control", placeholder = "Ingrese el Filtro" })
                     </div>
-                    <div class="col-sm-2 col-md-2 col-lg-1">
-                        <button type="button" style="width:100%" class="btn btn-info" name="btnBuscar" id="btnBuscar">Buscar</button>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <button type="button" style="width:100%" class="btn btn-info" name="btnBuscar" id="btnBuscar" onclick="fn_Filtrar()">Buscar</button>
                     </div>
                 </div>
             </div>
@@ -84,7 +224,7 @@ var getProductoUrl = '@Url.Action("GetProducto")';
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-2 col-md-2 col-lg-1">
-                        @Html.Partial("_Nuevo")
+                        <button type="button" class="btn btn-info" name="btnNuevaCaja" id="btnNuevaCaja" >Nuevo</button>
                     </div>
                 </div>
             </div>
@@ -92,34 +232,8 @@ var getProductoUrl = '@Url.Action("GetProducto")';
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <div class="table-responsive">
-                            <div></div>
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Descripcion</th>
-                                    <th>Pto Venta</th>
-                                    <th>Sucursal</th>
-                                    <th>F. Ingreso</th>
-                                    <th>Operacion</th>
-                                </tr>
-                                @if (Model != null)
-                                {
-                                    foreach (var item in Model)
-                                    {
-                                        if (item.bl_ver)
-                                        {
-                                            <tr>
-                                                <th>@item.in_idCaja</th>
-                                                <th>@item.st_dscpCaja</th>
-                                                <th>@item.objPtoVenta.st_dscpPtoVenta</th>
-                                                <th>Sucursal</th>
-                                                <th>@item.dt_fchIngreso</th>
-                                                <th>@Html.Partial("_Detalles") @Html.Partial("_Modificar")</th>
-                                            </tr>
-                                        }
-                                    }
-                                }
-
+                            <table class="table table-striped" id="tblCaja">
+                                
                             </table>
                         </div>
                     </div>
@@ -129,3 +243,40 @@ var getProductoUrl = '@Url.Action("GetProducto")';
     </div>
 </div>
 
+<div id="MyContainer"></div>
+
+@*<!--<script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#btnGuardar").click(function (evt) {
+                evt.preventDefault();
+                
+            });
+            $("#btnDetalles").click(function (evt) {
+                evt.preventDefault();
+                var Caja = { "in_idCaja": "" };
+                var padre = this.parentNode.parentNode.childNodes;
+                Caja.in_idCaja = parseInt(padre[1].textContent);
+                alert(Caja.in_idCaja);
+                $.ajax({
+                    url: '@Url.Action("ConsultarCaja")',
+                    data: JSON.stringify(Caja),
+                    type: 'POST',
+                    contentType: 'application/json;',
+                    success: function (result) {
+                        if (result.success = "1") {
+                            $("#DtxtSucursal").val(result.resultado.objPtoVenta.objSucursal.st_dscpSucursal);
+                            $("#DtxtPtoVenta").val(result.resultado.objPtoVenta.st_dscpPtoVenta);
+                            $("#DtxtidCaja").val(result.resultado.in_idCaja);
+                            $("#DtxtCaja").val(result.resultado.st_dscpCaja);
+                            $("#DtxtFchIngreso").val(result.resultado.dt_fchIngreso);
+                            $("#DtxtFchRegistro").val(result.resultado.dt_fchRegistro);
+                            if ($("#close").click() || $("#btnSalir").click()) {
+                                window.location.href = "/Caj_Caja/Index";
+                            }
+                        }
+                    }
+                });
+            });
+        });
+        -->*@
