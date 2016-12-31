@@ -13,15 +13,13 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Caja
         public int in_idCaja { get; set; }
         public bool bl_ver { get; set; }
         public DateTime dt_fchRegistro { get; set; }
-        public DateTime dt_fchIngreso { get; set; }
+        public DateTime d_fchIngreso { get; set; }
         public string st_dscpCaja { get; set; }
         public Emp_PtoVentaBE objPtoVenta { get; set; }
-        public Emp_SucursalBE objSucursal { get; set; }
 
         public Caj_CajaBE()
         {
             objPtoVenta = new Emp_PtoVentaBE();
-            objSucursal = new Emp_SucursalBE();
         }
 }
 }
