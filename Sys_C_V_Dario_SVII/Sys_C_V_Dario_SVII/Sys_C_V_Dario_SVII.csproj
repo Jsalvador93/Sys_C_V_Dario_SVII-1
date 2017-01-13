@@ -180,12 +180,17 @@
     <Compile Include="Controllers\Caj_Movimiento\Caj_MovimientoController.cs" />
     <Compile Include="Controllers\Caj_Turno\Caj_TurnoController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\Sys_Message\Sys_MessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaBE.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaDA.cs" />
+    <Compile Include="Models\Caj_Concepto\Caj_ConceptoBE.cs" />
+    <Compile Include="Models\Caj_Concepto\Caj_ConceptoDA.cs" />
+    <Compile Include="Models\Caj_Turno\Caj_TurnoBE.cs" />
+    <Compile Include="Models\Caj_Turno\Caj_TurnoDA.cs" />
     <Compile Include="Models\Emp_PtoVenta\Emp_PtoVentaDA.cs" />
     <Compile Include="Models\Emp_Sucursal\Emp_SucursalBE.cs" />
     <Compile Include="Models\Caj_Denominacion\Caj_DenominacionBE.cs" />
@@ -198,12 +203,14 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Producto\ProductoBE.cs" />
     <Compile Include="Models\Sys_Conexion\Conexion.cs" />
+    <Compile Include="Models\Sys_Message\Sys_MessageBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CssInteraccion\CssPages.css" />
     <Content Include="Content\JsInteraccion\jsDatos.js" />
     <Content Include="Content\JsInteraccion\jsTables.js" />
     <Content Include="favicon.ico" />
@@ -253,16 +260,13 @@
     <Content Include="Views\Caj_CajaUsuario\_ConfirmacionAsigCajero.cshtml" />
     <Content Include="Views\Caj_Movimiento\VerMovimientos.cshtml" />
     <Content Include="Views\Caj_Concepto\Index.cshtml" />
-    <Content Include="Views\Caj_Concepto\_Actualizar.cshtml" />
     <Content Include="Views\Caj_Concepto\_Detalle.cshtml" />
     <Content Include="Views\Caj_Concepto\_Modificar.cshtml" />
     <Content Include="Views\Caj_Concepto\_Nuevo.cshtml" />
     <Content Include="Views\Caj_Concepto\_Quitar.cshtml" />
     <Content Include="Views\Caj_Denominacion\Index.cshtml" />
-    <Content Include="Views\Caj_Denominacion\_Aceptar.cshtml" />
-    <Content Include="Views\Caj_Denominacion\_Actualizar.cshtml" />
-    <Content Include="Views\Caj_Denominacion\_Detalle.cshtml" />
     <Content Include="Views\Caj_Denominacion\_Modificar.cshtml" />
+    <Content Include="Views\Caj_Denominacion\_Detalle.cshtml" />
     <Content Include="Views\Caj_Denominacion\_Nuevo.cshtml" />
     <Content Include="Views\Caj_Denominacion\_Quitar.cshtml" />
     <Content Include="Views\Caj_CajGeneral\Index.cshtml" />
@@ -291,6 +295,13 @@
     <Content Include="Views\Caj_Turno\_Nuevo.cshtml" />
     <Content Include="Views\Caj_Turno\_Quitar.cshtml" />
     <Content Include="Views\Caj_Caja\_ListarCaja.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageError.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageExito.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageInformacion.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageAdvertencia.cshtml" />
+    <Content Include="Views\Caj_Denominacion\_ListarDenominacion.cshtml" />
+    <Content Include="Views\Caj_Concepto\_ListarConcepto.cshtml" />
+    <Content Include="Views\Caj_Turno\_ListarTurno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

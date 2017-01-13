@@ -3,10 +3,155 @@
 @{
     ViewBag.Title = "Index";
     List<SelectListItem> oListSelectItemFiltro = new List<SelectListItem>();
-    oListSelectItemFiltro.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
     oListSelectItemFiltro.Add(new SelectListItem { Text = "ID", Value = "1", Selected = false });
     oListSelectItemFiltro.Add(new SelectListItem { Text = "Descripcion", Value = "2", Selected = false });
 }
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#cboFiltro").change(function () {
+            var eval = $("#cboFiltro").val();
+            if (eval = "0") ListarDenominacion(0, '');
+        });
+        ListarDenominacion(0, '');
+        $("#btnNuevaDenominacion").click(function () {
+            $.ajax({
+                type : 'POST',
+                datatype: 'html',
+                url: '@Url.Action("CPVNuevaDenominacion")',
+                success : function(page) {
+                    $("#MyContainer").html(page);
+                    $("#MNuevaDenominacion").modal('show');
+                    $("#btnGuardar").click(function () {
+                        if ($("#NtxtDscpDenominacion").val() != "") {
+                            $.ajax({
+                                url: '@Url.Action("NuevaDenominacion")',
+                                data: JSON.stringify(fn_CargarDatos(1)),
+                                type: 'POST',
+                                contentType: 'application/json;',
+                                success: function (result) {
+                                    $("#MNuevaCaja").modal("hide");
+                                    if (result.Success == 1) {
+                                        if (result.result) {
+                                            fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                            ListarDenominacion(0, '');
+                                        } else {
+                                            fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                        }
+                                    } else {
+                                        $("#MNuevaCaja").modal("show");
+                                        fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                                        setTimeout(function () { $("#MNuevaCaja").modal("show"); }, 1501);
+                                    }
+                                }
+                            })
+                        }
+                    });
+                    $("#btnCancelar").click(function () { $("#MNuevaDenominacion").modal('hide'); });
+                }
+
+            });
+        });
+    });
+    function ListarDenominacion(_case, filtro) {
+        fn_ListarTabla(_case, filtro, "/ListarDenominacion", "/Caj_Denominacion", "tblDenominacion");
+
+    }
+    function fn_CargarDatos(_case ) {
+        if (_case == 1) {
+            var objDenominacion = { st_dscpDenominacion: $("#NtxtDscpDenominacion").val(), dt_fchRegistro: "@System.DateTime.Now" };
+            return objDenominacion;
+        }
+        return {in_idDenominacion: 0,st_dscpDenominacion: $("#MtxtDscpDenominacion").val() };
+    }
+
+    function fn_QuitarDenominacion(pin_idDenominacion) {
+        $.ajax({
+            type: 'POST',
+            datatype: 'html',
+            url: '@Url.Action("CPVQuitarDenominacion")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MQuitarDenominacion").modal('show');
+                $("#btnSi").click(function () {
+                    $.ajax({
+                        url: '@Url.Action("QuitarDenominacion")',
+                        data: JSON.stringify({ in_idDenominacion: pin_idDenominacion  , bl_ver : 'false'}),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            if (result.Success == 1) {
+                                if (result.result) {
+                                    $("#MQuitarDenominacion").modal("hide");
+                                    ListarDenominacion(0, '');
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                $("#MQuitarDenominacion").modal("hide");
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                            }
+                        }
+                    });
+                });
+
+                $("#btnNo").click(function () {
+                    $("#MQuitarDenominacion").modal("hide");
+                });
+            }
+        });
+    }
+    function fn_DetallesDenominacion(pin_idDenominacion) {
+        fn_Detalles('/Caj_Denominacion', '/DetallesDenominacion', {in_idDenominacion:pin_idDenominacion} , "MyContainer" , "MDetalleDenominacion");
+    }
+    function fn_ModificarDenominacion(pin_idDenominacion) {
+        $.ajax({
+            type: 'POST',
+            datatype: 'html',
+            data: {in_idDenominacion:pin_idDenominacion}  ,
+            url: '@Url.Action("CPVModificarDenominacion")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MModificarDenominacion").modal('show');
+                $("#btnSalir").click(function () {
+                    $("#MModificarDenominacion").modal('hide');
+                });
+                $("#btnGuardar").click(function () {
+                    var objDenominacion = fn_CargarDatos(0);
+                    objDenominacion.in_idDenominacion = pin_idDenominacion;
+                    $.ajax({
+                        url: '@Url.Action("ModificarDenominacion")',
+                        data: JSON.stringify(objDenominacion),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            if (result.Success == 1) {
+                                if (result.result) {
+                                    $("#MModificarDenominacion").modal("hide");
+                                    ListarDenominacion(0, '');
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                $("#MQuitarDenominacion").modal("hide");
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    }
+    function fn_Filtrar() {
+        if ($("#cboFiltro").val() != "0" && $("#txtFiltro").val() != "") {
+            ListarDenominacion($("#cboFiltro").val(), $("#txtFiltro").val());
+        }
+    }
+
+</script>
 
 <!-- Content Header (Page header) -->
         
@@ -29,7 +174,7 @@
                 </div>
                 &nbsp;
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                    <button type="button" name="btnBuscar" class="btn btn-default" style="width:100%"><span class="glyphicon glyphicon-search"></span></button>
+                    <button type="button" name="btnBuscar" class="btn btn-default" style="width:100%" onclick="fn_Filtrar();"><span class="glyphicon glyphicon-search" ></span></button>
                 </div>
             </div>
         </div>
@@ -41,8 +186,8 @@
         <form class="form">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-1">
-                        @Html.Partial("_Nuevo")
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <button type="button" class="btn btn-info" name="btnNuevaDenominacion" id="btnNuevaDenominacion">Nuevo</button>
                     </div>
                 </div>
             </div>
@@ -51,33 +196,10 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="table-responsive">
-                            <div style="height:840px;overflow-x:scroll;overflow-y:scroll">
-                                <table class="table table-striped" name="tblDenominacion">
-                                    <tr class="table-bordered">
-                                        <th class="text-center"> ID</th>
-                                        <th class="text-center">DESCRIPCION</th>
-                                        <th>OPERACIONES</th>
-                                    </tr>
-                                    @if (Model != null)
-                                    {
-                                        foreach (var item in Model)
-                                        {
-                                            if (item.bl_ver)
-                                            {
-                                                <tr>
-                                                    <td>@item.in_idDenominacion</td>
-                                                    <td>@item.st_descpDenominacion</td>
-                                                    <td>
-                                                        @Html.Partial("_Quitar")
-                                                        @Html.Partial("_Detalle")
-                                                        @Html.Partial("_Modificar")
-                                                    </td>
-                                                </tr>
-                                            }
-                                        }
-                                    }
+                                <table class="table table-striped" id="tblDenominacion">
+                                    
+                                    
                                 </table>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,6 +207,7 @@
         </form>
     </div>
 </div>
-
+<div id="MyContainer"></div>
+<div id="MyMessage"></div>
            
            

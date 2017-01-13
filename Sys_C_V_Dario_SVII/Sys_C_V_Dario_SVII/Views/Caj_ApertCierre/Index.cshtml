@@ -47,10 +47,10 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div class="table table-responsive">
-                        <div style="height:840px;overflow-x:scroll;overflow-y:scroll">
-                            <table class="table table-striped">
+                        <table class="table table-striped">
 
-                                <tr class="table-bordered">
+                            <thead>
+                                <tr>
                                     <th>CAJA</th>
                                     <th>FECHA</th>
                                     <th>MONTO DE APERTURA</th>
@@ -58,34 +58,21 @@
                                     <th>ESTADO</th>
                                     <th>OPERACION</th>
                                 </tr>
+                            </thead>
 
-                                <tr>
-                                    <td>CAJA 01</td>
-                                    <td>10-10-2013</td>
-                                    <td>300</td>
-                                    <td>600</td>
-                                    <td>CERRADO</td>
-                                    <td>
-                                        @Html.Partial("_Detalle")
-                                        <button type="button" class="btn btn-default btn-xs">REGISTRAR</button>
-                                    </td>
+                            <tr>
+                                <td>CAJA 01</td>
+                                <td>10-10-2013</td>
+                                <td>300</td>
+                                <td>600</td>
+                                <td>CERRADO</td>
+                                <td>
+                                    <button type="button" class="btn btn-xs detalle" name="btnDetalle" >DETALLE</button>
+                                    <button type="button" class="btn btn-default btn-xs">REGISTRAR</button>
+                                </td>
                                     
-                                </tr>
-                                <tr>
-                                    <td>CAJA 02</td>
-                                    <td>10-10-2013</td>
-                                    <td>500</td>
-                                    <td>900</td>
-                                    <td>CERRADO</td>
-                                    <td>
-                                        @Html.Partial("_Detalle")
-                                        <button type="button" class="btn btn-default btn-xs">REGISTRAR</button>
-                                    </td>
-                                   
-
-                                </tr>
-                            </table>
-                        </div>
+                            </tr>
+                        </table>
                     </div>
                 </div>
             </div>

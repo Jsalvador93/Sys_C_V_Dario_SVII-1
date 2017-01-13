@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Concepto.Caj_ConceptoBE>
+<thead>
+    <tr>
+        <th> ID </th>
+        <th>DESCRIPCION</th>
+        <th>DENOMINACION</th>
+        <th>OPERACIONES</th>
+    </tr>
+</thead>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        if (item.bl_ver)
+        {
+            <tr>
+                <td>@item.in_idConcepto</td>
+                <td>@item.st_dscpConcepto</td>
+                <td>@item.objDenominacionBE.st_dscpDenominacion</td>
+                <td>
+                    <button type="button" class="btn btn-xs quitar" name="btnDetalles" id="btnDetalles" onclick="fn_QuitarConcepto('@item.in_idConcepto')">Quitar</button>
+                    <button type="button" class="btn btn-xs detalle" name="btnQuitar" id="btnQuitar" onclick="fn_DetallesConcepto('@item.in_idConcepto')">Detalle</button>
+                    <button type="button" class="btn btn-xs modificar" name="btnModificar" id="btnModificar" onclick="fn_ModificarConcepto('@item.in_idConcepto')">Modificar</button>
+                </td>
+
+            </tr>
+        }
+    }
+}

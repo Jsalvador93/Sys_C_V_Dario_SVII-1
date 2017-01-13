@@ -4,10 +4,213 @@
     ViewBag.Title = "Index";
 
     List<SelectListItem> oListSelectItemFiltro = new List<SelectListItem>();
-    oListSelectItemFiltro.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
     oListSelectItemFiltro.Add(new SelectListItem { Text = "ID", Value = "1", Selected = false });
     oListSelectItemFiltro.Add(new SelectListItem { Text = "Descripcion", Value = "2", Selected = false });
+    List<SelectListItem> oListSelectItemDenominacion = new List<SelectListItem>();
+    oListSelectItemDenominacion.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
 }
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        fn_ListarConcepto(0, '');
+        CargarCombo('/Caj_Concepto/cargarCboDenominacion', "1", "Todos...", "FcboDenominacion", { _case: 0, filtro: '' });
+        $("#cboFiltro").change(function () {
+            $("#txtFiltro").val("");
+        });
+        $("#FcboDenominacion").change(function () {
+            var val = $("#FcboDenominacion").val();
+            if (val != "0") {
+                fn_ListarConcepto(3, val );
+            } else {
+                fn_ListarConcepto(0, '');
+            }
+        });
+        $("#btnNuevaConcepto").click(function () {
+            $.ajax({
+                type: 'POST',
+                datatype: 'html',
+                url: '@Url.Action("CPVNuevaConcepto")',
+                success: function (page) {
+                    $("#MyContainer").html(page);
+                    $("#MNuevaConcepto").modal('show');
+                    CargarCombo('/Caj_Concepto/cargarCboDenominacion', "0", "", "NcboDenominacion", { _case: 0, filtro: "" });
+                    $("#btnGuardar").click(function () {
+                        $.ajax({
+                            url: '@Url.Action("NuevaConcepto")',
+                            data: JSON.stringify(fn_CargarDatos(1)),
+                            type: 'POST',
+                            contentType: 'application/json;',
+                            success: function (result) {
+                                $("#MNuevaConcepto").modal('hide');
+                                if (result.Success == "1") {
+                                    if (result.result) {
+                                        fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                        fn_ListarConcepto(0, '');
+                                    } else {
+                                        fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                    }
+                                } else {
+                                    $("#MNuevaConcepto").modal('show');
+                                    fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                                    setTimeout(function () { $("#MNuevaConcepto").modal("show"); }, 1501);
+                                }
+                            }
+                        });
+                    });
+                    $("#btnCancelar").click(function () {
+                        $("#MNuevaConcepto").modal('hide');
+                    });
+                }
+            });
+        });
+    });
+
+    function fn_Filtrar() {
+        if ($("#cboFiltro").val() != "0" && $("#txtFiltro").val() != "") {
+            fn_ListarConcepto($("#cboFiltro").val(), $("#txtFiltro").val());
+        }
+    }
+
+    function fn_CargarDatos(_case) {
+        var objConcepto;
+        if (_case == 1) {//new {
+            objConcepto = { dt_fchRegistro: '@System.DateTime.Now', st_dscpConcepto: $("#NtxtDscpConcepto").val(), objDenominacionBE: { in_idDenominacion: $("#NcboDenominacion").val() } };
+        } else { //modify
+            objConcepto = { in_idConcepto: "", st_dscpConcepto: $("#MtxtDscpConcepto").val(), objDenominacionBE: { in_idDenominacion: $("#McboDenominacion").val() } };
+        }
+        return objConcepto;
+    }
+
+    function fn_ListarConcepto(_case, filtro) {
+        fn_ListarTabla(_case, filtro, "/ListarConcepto", "/Caj_Concepto", "tblConcepto");
+    }
+
+    function fn_DetallesConcepto(pin_idConcepto) {
+        fn_Detalles('/Caj_Concepto', '/DetallesConcepto', { in_idConcepto: pin_idConcepto }, "MyContainer", "MDetalleConcepto");
+    }
+
+    function fn_ModificarConcepto(pin_idConcepto) {
+        $.ajax({
+            type: "POST",
+            data: { in_idConcepto: pin_idConcepto },
+            datatype: "html",
+            url: '@Url.Action("CPVModificarConcepto")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                var id_den = $("#McboDenominacion").val() + '';
+                $("#MModificarConcepto").modal("show");
+                $.ajax({
+                    type: 'POST',
+                    contentType: 'application/json;',
+                    data: JSON.stringify({ _case: 0, filtro: '' }),
+                    url: '@Url.Action("cargarCboDenominacion")',
+                    success: function (result) {
+                        if (result.Success == "1") {
+                            var v = result.resultado;
+                            var len = v.length;
+                            $("#McboDenominacion option").remove();
+                            for (var i = 0 ; i < len ; i++) {
+                                $("#McboDenominacion").append("<option value = '" + v[i].in_idDenominacion + "' > " + v[i].st_dscpDenominacion + "</option>");
+                            }
+                            $("#McboDenominacion").val(id_den);
+                        } else {
+
+                        }
+                    }
+                });
+                $("#btnCancelar").click(function () {
+                    $("#MModificarConcepto").modal("hide");
+                });
+                $("#btnGuardar").click(function () {
+                    var objConcepto = fn_CargarDatos(0);
+                    objConcepto.in_idConcepto = pin_idConcepto;
+                    $.ajax({
+                        url: '@Url.Action("ModificarConcepto")',
+                        data: JSON.stringify(objConcepto),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            $("#MModificarConcepto").modal("hide");
+                            if (result.Success == 1) {
+                                if (result.result ) {
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                                setTimeout(function () { $("#MModificarConcepto").modal("show"); }, 1501);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    }
+
+    function fn_QuitarConcepto(pin_idConcepto) {
+        $.ajax({
+            type: 'POST',
+            datatype: 'html',
+            url: '@Url.Action("CPVQuitarConcepto")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MQuitarConcepto").modal('show');
+                $("#btnSi").click(function () {
+                    $.ajax({
+                        url: '@Url.Action("QuitarConcepto")',
+                        data: JSON.stringify({ in_idConcepto: pin_idConcepto, bl_ver: 'false' }),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            if (result.Success == 1) {
+                                if (result.result) {
+                                    $("#MQuitarConcepto").modal("hide");
+                                    fn_ListarConcepto(0, '');
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                $("#MQuitarConcepto").modal("hide");
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                            }
+                        }
+                    });
+                });
+
+                $("#btnNo").click(function () {
+                    $("#MQuitarConcepto").modal("hide");
+                });
+            }
+        });
+    }
+
+    function CargarCombo(_url, tpcbo, _val, idcbo, _data) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify(_data),
+            url: _url,
+            success: function (result) {
+                if (result.Success == "1") {
+                    var v = result.resultado;
+                    var len = v.length;
+                    $("#" + idcbo + " option").remove();
+                    if (tpcbo == "1") fillcbo(idcbo, 0, _val);
+                    for (var i = 0 ; i < len ; i++) {
+                        fillcbo(idcbo, v[i].in_idDenominacion, v[i].st_dscpDenominacion);
+                    }
+                } else {
+                    fn_Alerta('/Sys_Message', '/_MessageError', { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+
+                }
+            }
+        });
+    }
+</script>
 
 <!-- Content Header (Page header) -->
         <h1><b>CONCEPTO</b></h1>
@@ -17,17 +220,27 @@
     <div class="box-body">
         <div class="form-group ">
             <div class="row">
+                <div class="col-sm-3 col-md-3 col-lg-2">
+                    <label> DENOMINACION: </label>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7">
+                    @Html.DropDownList("FcboDenominacion", oListSelectItemDenominacion, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group ">
+            <div class="row">
                 <div class="col-sm-2 col-md-2 col-lg-1">
                     <label > FILTRO: </label>
                 </div>
                 <div class="col-sm-4 col-md-4 col-lg-4">
                    @Html.DropDownList("cboFiltro", oListSelectItemFiltro, new { @class = "form-control" })
-                </div>&nbsp;
+                </div>
                 <div class="col-sm-4 col-md-4 col-lg-4">
-                    @Html.TextBox("txtFiltro", null, new { type="text" , @class = "form-control" })
-                </div>&nbsp;
+                    @Html.TextBox("txtFiltro", null, new { type="text" , @class = "form-control",placeholder="Escriba el Filtro" })
+                </div>
                 <div class="col-sm-2 col-md-2 col-lg-2">
-                    <button type="button" class="btn btn-default" name="btnBuscar" style="width:100%"><span class="glyphicon glyphicon-search"></span></button>
+                    <button type="button" class="btn btn-default" name="btnBuscar" style="width:100%;" onclick="fn_Filtrar()"><span class="glyphicon glyphicon-search"></span></button>
                 </div>
             </div>
         </div>
@@ -40,7 +253,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-1">
-                        @Html.Partial("_Nuevo")
+                        <button type="button" class="btn btn-info" name="btnNuevaConcepto" id="btnNuevaConcepto">Nuevo</button>
                     </div>
                 </div>
             </div>
@@ -48,28 +261,9 @@
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="table-responsive">
-                            <div style="height:840px;overflow-x:scroll;overflow-y:scroll">
-                                <table class="table table-striped" name="tblConcepto">
-                                    <tr class="table-bordered">
-                                        <th class="text-center"> ID </th>
-                                        <th class="text-center">DESCRIPCION</th>
-                                        <th class="text-center">DENOMINACION</th>
-                                        <th>OPERACIONES</th>
-                                    </tr>
-
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            @Html.Partial("_Quitar")
-                                            @Html.Partial("_Detalle")
-                                            @Html.Partial("_Modificar")
-                                        </td>
-
-                                    </tr>
-                                </table>
-                            </div>
+                            <table class="table table-striped" id="tblConcepto">
+                                
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -77,6 +271,8 @@
         </form>
     </div>
 </div>
+<div id="MyContainer"></div>
 
+<div id="MyMessage"></div>
         
 
