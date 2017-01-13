@@ -21,5 +21,5 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Caja
         {
             objPtoVenta = new Emp_PtoVentaBE();
         }
-}
+    }
 }
