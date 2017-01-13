@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Denominacion.Caj_DenominacionBE>
+
+<thead>
+    <tr >
+        <th > ID</th>
+        <th >DESCRIPCION</th>
+        <th>OPERACIONES</th>
+    </tr>
+</thead>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        if (item.bl_ver)
+        {
+            <tr>
+                <td>@item.in_idDenominacion</td>
+                <td>@item.st_dscpDenominacion</td>
+                <th>
+                    <button type="button" class="btn btn-xs quitar" name="btnDetalles" id="btnDetalles" onclick="fn_QuitarDenominacion('@item.in_idDenominacion')">Quitar</button>
+                    <button type="button" class="btn btn-xs detalle" name="btnQuitar" id="btnQuitar" onclick="fn_DetallesDenominacion('@item.in_idDenominacion')">Detalle</button>
+                    <button type="button" class="btn btn-xs modificar" name="btnModificar" id="btnModificar" onclick="fn_ModificarDenominacion('@item.in_idDenominacion')">Modificar</button>
+                </th>
+            </tr>
+        }
+    }
+}

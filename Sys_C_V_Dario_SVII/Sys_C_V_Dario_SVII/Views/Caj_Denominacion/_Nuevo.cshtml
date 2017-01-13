@@ -2,37 +2,35 @@
 
 
 <!--MODAL NUEVO-->
-    <button type="button" class="btn btn-primary " name="btnNuevo" data-toggle="modal" data-target="#myModal"> NUEVO</button>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
+<div class="modal fade" id="MNuevaDenominacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form class="form-horizontal">
-                <div class="modal-header " style="background-color:#0D69A6">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <center><h4 style="color:#ffffff">NUEVA DENOMINACION</h4></center>
-                </div>
-                <div class="modal-body">
-
+            <div class="modal-header " style="background-color:#0D69A6">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h4 style="color:#ffffff">NUEVA DENOMINACION</h4></center>
+            </div>
+            <div class="modal-body">
+                <form class="form">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
                                 <label class="control-label">DESCRIPCION:</label>
                             </div>
                             <div class="col-sm-8 col-md-8 col-lg-7">
-                                @Html.TextBox("txtDesc", null, new { @class = "form-control", type = "text", placeholder = "Ingreso descripcion de denominacion" })
+                                @Html.TextBox("NtxtDscpDenominacion", null, new { @class = "form-control", type = "text", placeholder = "Ingreso descripcion de denominacion" })
 
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
+            </div>
 
-                <div class="modal-footer">
-                    <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
-                    <button type="button" name="btnCancelar" id="btnCancelar" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+            <div class="modal-footer">
+                <button type="button" name="btnGuardar" id="btnGuardar" class="btn btn-primary">GUARDAR</button>
+                <button type="button" name="btnCancelar" id="btnCancelar" class="btn btn-default">CANCELAR</button>
 
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

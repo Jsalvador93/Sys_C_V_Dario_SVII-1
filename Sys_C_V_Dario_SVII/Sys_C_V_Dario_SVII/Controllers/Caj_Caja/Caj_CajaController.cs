@@ -13,6 +13,7 @@ namespace Sys_C_V_Dario_SVII.Controllers.Caj_Caja
     {
         // GET: Caj_caja
         [HttpPost]
+        //CPV cargar partialview
         public ActionResult CPVNuevaCaja()
         {
             return PartialView("_Nuevo");
@@ -26,14 +27,14 @@ namespace Sys_C_V_Dario_SVII.Controllers.Caj_Caja
                 {
                     Caj_CajaDA objCajaDA = new Caj_CajaDA();
                     bool result = objCajaDA.RegistrarCaja(objCaja);
-                    return Json(new { Success = 1, resultado = result, Exception = "" });
+                    return Json(new { Success = 1, resultado = result, ex = "" });
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return Json(new { Success = 0, ex = e.Message.ToString() });
             }
-            return Json(new { Success = 0, ex = new Exception("No se pudo Crear Este Registro" ).Message.ToString() });
+            return Json(new { Success = 0, ex = new Exception("No se pudo Crear Este Registro").Message.ToString() }); 
         }
 
         [HttpPost]
@@ -62,6 +63,47 @@ namespace Sys_C_V_Dario_SVII.Controllers.Caj_Caja
             Caj_CajaBE objCaja = objCajaDA.ConsultarCaja(in_idCaja);
             return PartialView("_Detalles", objCaja);
         }
+        [HttpPost]
+        public ActionResult CargarModificarCaja(int in_idCaja)
+        {
+            Caj_CajaDA objCajaDA = new Caj_CajaDA();
+            Caj_CajaBE objCaja = objCajaDA.ConsultarCaja(in_idCaja);
+            return PartialView("_Modificar", objCaja);
+        }
+        [HttpPost]
+        public JsonResult ConsultarCaja(Caj_CajaBE objCaja , int in_idCaja )
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Caj_CajaDA objCajaDA = new Caj_CajaDA();
+                    return Json(new { Success = 1, resultado = objCajaDA.ModificarCaja(objCaja), ex = "" });
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(new { Success = 0, ex = e.Message.ToString() });
+            }
+            return Json(new { Success = 0, ex = new Exception("No se puede Visualizar este Registro").Message.ToString() });
+        }
+        public JsonResult ModificarCaja(Caj_CajaBE objCaja)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    Caj_CajaDA objCajaDA = new Caj_CajaDA();
+                    return Json(new { Success = 1, resultado = objCajaDA.ModificarCaja(objCaja), ex = "Se Modifico Correctamente este Registro!!" });
+                }
+            }
+            catch (Exception e)
+            {
+                return Json(new { Success = 0, ex = e.Message.ToString() });
+            }
+            return Json(new { Success = 0, ex = new Exception("No se puede Modificar este Registro").Message.ToString() });
+        }
+
         public ActionResult Index()
         {
             Caj_CajaDA objCajaDA = new Caj_CajaDA();
