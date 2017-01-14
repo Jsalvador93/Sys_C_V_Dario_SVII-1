@@ -90,7 +90,7 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Caja
             }
         }
 
-        public Boolean ModificarCaja( Caj_CajaBE objCaja , int in_idCaja )
+        public Boolean ModificarCaja( Caj_CajaBE objCaja )
         {
             try
             {
@@ -99,7 +99,7 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Caja
                 objSqlCommand.CommandType = CommandType.StoredProcedure;
                 objSqlCommand.Parameters.Add(new SqlParameter("@i_idCaja", objCaja.in_idCaja));
                 objSqlCommand.Parameters.Add(new SqlParameter("@vc_dscpCaja", objCaja.st_dscpCaja));
-                objSqlCommand.Parameters.Add(new SqlParameter("@d_fchIngreso", objCaja.dt_fchRegistro));
+                objSqlCommand.Parameters.Add(new SqlParameter("@d_fchIngreso", objCaja.d_fchIngreso));
                 objSqlCommand.ExecuteNonQuery();
                 objSqlConnection.Close();
                 return true;

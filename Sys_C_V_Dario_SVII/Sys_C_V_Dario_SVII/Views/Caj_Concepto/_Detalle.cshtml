@@ -1,23 +1,21 @@
-﻿
-
-<button type="button" class="btn btn-xs" name="btnDetalle" style="color:#ffffff;background-color:#E17F29" data-toggle="modal" data-target="#Detalle"> DETALLE</button>
-<!-- MODAL DETALLES-->
-<div class="modal fade" id="Detalle" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+﻿@model Sys_C_V_Dario_SVII.Models.Caj_Concepto.Caj_ConceptoBE
+<div class="modal fade" id="MDetalleConcepto" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <form class="form">
-                <div class="modal-header" style="background-color:#E17F29">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <center><h4 style="color:#ffffff">DETALLE DE CONCEPTO</h4></center>
-                </div>
-                <div class="modal-body">
+            <div class="modal-header" style="background-color:#E17F29">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h4 style="color:#ffffff">DETALLE DE CONCEPTO</h4></center>
+            </div>
+            <div class="modal-body">
+
+                <form class="form">
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
                                 <label class="control-label">ID:</label>
                             </div>
                             <div class="col-sm-8 col-md-8 col-lg-6">
-                                @Html.TextBox( "txtId" , null , new { type="text" , disabled = "true" , @class="form-control"} )
+                                @Html.TextBox("DtxtidConcepto", Model.in_idConcepto, new { type = "text", disabled = "true", @class = "form-control" })
                             </div>
                         </div>
                     </div>
@@ -28,7 +26,7 @@
                                 <label class="control-label">FECHA DE RESGISTRO:</label>
                             </div>
                             <div class="col-sm-8 col-md-8 col-lg-6">
-                                @Html.TextBox("txtFchRegistro", null, new { type = "datetime", disabled = "true", @class = "form-control" })
+                                @Html.TextBox("DtxtFchRegistro", Model.dt_fchRegistro.ToString("yyyy-MM-dd"), new { type = "datetime", disabled = "true", @class = "form-control" })
                             </div>
                         </div>
                     </div>
@@ -36,10 +34,10 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-sm-4 col-md-4 col-lg-4">
-                                <label class="control-label">DESCRIPCION:</label>
+                                <label class="control-label">CONCEPTO:</label>
                             </div>
                             <div class="col-sm-8 col-md-8 col-lg-6">
-                                @Html.TextBox("txtDescConcepto", null, new { type = "text", disabled = "true", @class = "form-control" })
+                                @Html.TextBox("DtxtDscpConcepto", Model.st_dscpConcepto, new { type = "text", disabled = "true", @class = "form-control" })
                             </div>
                         </div>
                     </div>
@@ -50,17 +48,17 @@
                                 <label class="control-label">DENOMINACION:</label>
                             </div>
                             <div class="col-sm-8 col-md-8 col-lg-6">
-                                @Html.TextBox("txtDenominacion", null, new { type = "text", disabled = "true", @class = "form-control" })
+                                @Html.TextBox("DtxtDscpDenominacion", Model.objDenominacionBE.st_dscpDenominacion, new { type = "text", disabled = "true", @class = "form-control" })
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
+            </div>
 
-                <div class="modal-footer">
-                    <button type="button" name="btnSalir" id="btnSalir" class="btn btn-default" data-dismiss="modal">SALIR</button>
+            <div class="modal-footer">
+                <button type="button" name="btnSalir" id="btnSalir" class="btn btn-default" data-dismiss="modal">SALIR</button>
 
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 </div>

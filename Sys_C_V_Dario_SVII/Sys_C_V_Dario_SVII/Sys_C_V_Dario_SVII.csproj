@@ -181,6 +181,7 @@
     <Compile Include="Controllers\Caj_Turno\Caj_TurnoController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\rp_ReportePedido\rp_ReportePedidoController.cs" />
+    <Compile Include="Controllers\Sys_Message\Sys_MessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +190,10 @@
     <Compile Include="Models\Caj_Caja\Caj_CajaDA.cs" />
     <Compile Include="Models\Com_Pedido\Com_PedidoBE.cs" />
     <Compile Include="Models\Com_Pedido\Com_PedidoDA.cs" />
+    <Compile Include="Models\Caj_Concepto\Caj_ConceptoBE.cs" />
+    <Compile Include="Models\Caj_Concepto\Caj_ConceptoDA.cs" />
+    <Compile Include="Models\Caj_Turno\Caj_TurnoBE.cs" />
+    <Compile Include="Models\Caj_Turno\Caj_TurnoDA.cs" />
     <Compile Include="Models\Emp_PtoVenta\Emp_PtoVentaDA.cs" />
     <Compile Include="Models\Emp_Sucursal\Emp_SucursalBE.cs" />
     <Compile Include="Models\Caj_Denominacion\Caj_DenominacionBE.cs" />
@@ -206,13 +211,87 @@
     <Compile Include="Models\Producto\ProductoBE.cs" />
     <Compile Include="Models\Rol_RolUsuario\Rol_RolUsuarioBE.cs" />
     <Compile Include="Models\Rol_RolUsuario\Rol_RolUsuarioDA.cs" />
+    <Compile Include="Models\Mod_Compra\Alm_Kardex\Alm_KardexBE.cs" />
+    <Compile Include="Models\Mod_Compra\Alm_Kardex\Alm_KardexDA.cs" />
+    <Compile Include="Models\Mod_Compra\Alm_Kardex\Alm_Kardex_DetalleBE.cs" />
+    <Compile Include="Models\Mod_Compra\Alm_Kardex_Motivo_Operacion\Alm_Kardex_Motivo_OperacionBE.cs" />
+    <Compile Include="Models\Mod_Compra\Alm_Kardex_Motivo_Operacion\Alm_Kardex_Motivo_OperacionDA.cs" />
+    <Compile Include="Models\Mod_Compra\Alm_Kardex_Operacion\Alm_Kardex_OperacionBE.cs" />
+    <Compile Include="Models\Mod_Compra\Alm_Kardex_Operacion\Alm_Kardex_OpracionDA.cs" />
+    <Compile Include="Models\Mod_Compra\Com_Compra\Com_CompraBE.cs" />
+    <Compile Include="Models\Mod_Compra\Com_Compra\Com_CompraDA.cs" />
+    <Compile Include="Models\Mod_Compra\Com_Compra\Com_Compra_DetalleBE.cs" />
+    <Compile Include="Models\Mod_Compra\Com_Pedido\Com_PedidoBE.cs" />
+    <Compile Include="Models\Mod_Compra\Com_Pedido\Com_PedidoDA.cs" />
+    <Compile Include="Models\Mod_Compra\Com_Pedido\Com_Pedido_DetalleBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Angulo\Pro_AnguloBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Angulo\Pro_AnguloDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Angulo_Producto\Pro_Angulo_ProductoBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Angulo_Producto\Pro_Angulo_ProductoDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Categoria\Pro_CategoriaBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Categoria\Pro_CategoriaDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Lote\Pro_LoteBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Lote\Pro_LoteDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Lote\Pro_Lote_DetalleBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Marca\Pro_MarcaBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Marca\Pro_MarcaDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Producto\Pro_PrecioBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Producto\Pro_ProductoBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Producto\Pro_ProductoDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Producto\Pro_Registro_ProductoBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Seccion\Pro_SeccionBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Seccion\Pro_SeccionDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_SubCategoria\Pro_SubCategoriaBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_SubCategoria\Pro_SubCategoriaDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_SubCategoria_Producto\Pro_SubCategoria_ProductoBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_SubCategoria_Producto\Pro_SubCategoria_ProductoDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Tipo_Producto\Pro_Tipo_ProductoBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Tipo_Producto\Pro_Tipo_ProductoDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Unidad\Pro_UnidadBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Unidad\Pro_UnidadDA.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Unidad_Producto\Pro_Unidad_ProductoBE.cs" />
+    <Compile Include="Models\Mod_Compra\Pro_Unidad_Producto\Pro_Unidad_ProductoDA.cs" />
+    <Compile Include="Models\Mod_Sistema\Emp_Empresa\Emp_EmpresaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_JuridicaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_NaturalBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_PersonaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_TelefonoBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Pers_Tipo_Persona\Pers_Tipo_PersonaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Rol_Tipo_Usuario\Rol_Tipo_UsuarioBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Rol_Usuario\Rol_UsuarioBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Boleta\Cprb_BoletaBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Boleta\Cprb_BoletaDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Comprobante\Cprb_ComprobanteBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Comprobante\Cprb_ComprobanteDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Comprobante_Venta\Cprb_Comprobante_VentaBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Comprobante_Venta\Cprb_Comprobante_VentaDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Factura\Cprb_FacturaBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Factura\Cprb_FacturaDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Guia_Remision\Cprb_Guia_RemisionBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Guia_Remision\Cprb_Guia_RemisionDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Motivo_Traslado\Cprb_Motivo_TrasladoBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Motivo_Traslado\Cprb_Motivo_TrasladoDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Naturaleza\Cprb_NaturalezaBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Naturaleza\Cprb_NaturalezaDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_PC\Cprb_PCBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_PC\Cprb_PCDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Ticket\Cprb_TicketBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Ticket\Cprb_TicketDA.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Tipo_Comprobante\Cprb_Tipo_ComprobanteBE.cs" />
+    <Compile Include="Models\Mod_Venta\Cprb_Tipo_Comprobante\Cprb_Tipo_ComprobanteDA.cs" />
+    <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaBE.cs" />
+    <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaDA.cs" />
+    <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_Venta_DetalleBE.cs" />
+
     <Compile Include="Models\Sys_Conexion\Conexion.cs" />
+    <Compile Include="Models\Sys_Message\Sys_MessageBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CssInteraccion\CssPages.css" />
     <Content Include="Content\JsInteraccion\jsDatos.js" />
     <Content Include="Content\JsInteraccion\jsTables.js" />
     <Content Include="favicon.ico" />
@@ -262,16 +341,13 @@
     <Content Include="Views\Caj_CajaUsuario\_ConfirmacionAsigCajero.cshtml" />
     <Content Include="Views\Caj_Movimiento\VerMovimientos.cshtml" />
     <Content Include="Views\Caj_Concepto\Index.cshtml" />
-    <Content Include="Views\Caj_Concepto\_Actualizar.cshtml" />
     <Content Include="Views\Caj_Concepto\_Detalle.cshtml" />
     <Content Include="Views\Caj_Concepto\_Modificar.cshtml" />
     <Content Include="Views\Caj_Concepto\_Nuevo.cshtml" />
     <Content Include="Views\Caj_Concepto\_Quitar.cshtml" />
     <Content Include="Views\Caj_Denominacion\Index.cshtml" />
-    <Content Include="Views\Caj_Denominacion\_Aceptar.cshtml" />
-    <Content Include="Views\Caj_Denominacion\_Actualizar.cshtml" />
-    <Content Include="Views\Caj_Denominacion\_Detalle.cshtml" />
     <Content Include="Views\Caj_Denominacion\_Modificar.cshtml" />
+    <Content Include="Views\Caj_Denominacion\_Detalle.cshtml" />
     <Content Include="Views\Caj_Denominacion\_Nuevo.cshtml" />
     <Content Include="Views\Caj_Denominacion\_Quitar.cshtml" />
     <Content Include="Views\Caj_CajGeneral\Index.cshtml" />
@@ -301,6 +377,13 @@
     <Content Include="Views\Caj_Turno\_Quitar.cshtml" />
     <Content Include="Views\Caj_Caja\_ListarCaja.cshtml" />
     <Content Include="Views\rp_ReportePedido\Index.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageError.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageExito.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageInformacion.cshtml" />
+    <Content Include="Views\Sys_Message\_MessageAdvertencia.cshtml" />
+    <Content Include="Views\Caj_Denominacion\_ListarDenominacion.cshtml" />
+    <Content Include="Views\Caj_Concepto\_ListarConcepto.cshtml" />
+    <Content Include="Views\Caj_Turno\_ListarTurno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -308,6 +391,8 @@
     <Folder Include="Content\dist\" />
     <Folder Include="Content\images\" />
     <Folder Include="Content\plugins\" />
+    <Folder Include="Models\Mod_Sistema\Est_Estado\" />
+    <Folder Include="Models\Mod_Sistema\Sys_Direccion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
