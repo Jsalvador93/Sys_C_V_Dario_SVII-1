@@ -180,6 +180,7 @@
     <Compile Include="Controllers\Caj_Movimiento\Caj_MovimientoController.cs" />
     <Compile Include="Controllers\Caj_Turno\Caj_TurnoController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
+    <Compile Include="Controllers\rp_ReportePedido\rp_ReportePedidoController.cs" />
     <Compile Include="Controllers\Sys_Message\Sys_MessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,6 +188,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaBE.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaDA.cs" />
+    <Compile Include="Models\Com_Pedido\Com_PedidoBE.cs" />
+    <Compile Include="Models\Com_Pedido\Com_PedidoDA.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoBE.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoDA.cs" />
     <Compile Include="Models\Caj_Turno\Caj_TurnoBE.cs" />
@@ -199,8 +202,15 @@
     <Compile Include="Models\Caj_Movimiento\Caj_MovimientoDA.cs" />
     <Compile Include="Models\Emp_PtoVenta\Emp_PtoVentaBE.cs" />
     <Compile Include="Models\Emp_Sucursal\Emp_SucursalDA.cs" />
+    <Compile Include="Models\Est_Estado\Est_EstadoBE.cs" />
+    <Compile Include="Models\Est_TipEstDetalle\Est_TipEstDetalleBE.cs" />
+    <Compile Include="Models\Est_TipEstDetalle\Est_TipEstDetalleDA.cs" />
+    <Compile Include="Models\Est_Tipo_Estado\Est_Tipo_EstadoBE.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Producto\ProductoBE.cs" />
+    <Compile Include="Models\Rol_RolUsuario\Rol_RolUsuarioBE.cs" />
+    <Compile Include="Models\Rol_RolUsuario\Rol_RolUsuarioDA.cs" />
     <Compile Include="Models\Mod_Compra\Alm_Kardex\Alm_KardexBE.cs" />
     <Compile Include="Models\Mod_Compra\Alm_Kardex\Alm_KardexDA.cs" />
     <Compile Include="Models\Mod_Compra\Alm_Kardex\Alm_Kardex_DetalleBE.cs" />
@@ -272,6 +282,7 @@
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaBE.cs" />
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaDA.cs" />
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_Venta_DetalleBE.cs" />
+
     <Compile Include="Models\Sys_Conexion\Conexion.cs" />
     <Compile Include="Models\Sys_Message\Sys_MessageBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -365,6 +376,7 @@
     <Content Include="Views\Caj_Turno\_Nuevo.cshtml" />
     <Content Include="Views\Caj_Turno\_Quitar.cshtml" />
     <Content Include="Views\Caj_Caja\_ListarCaja.cshtml" />
+    <Content Include="Views\rp_ReportePedido\Index.cshtml" />
     <Content Include="Views\Sys_Message\_MessageError.cshtml" />
     <Content Include="Views\Sys_Message\_MessageExito.cshtml" />
     <Content Include="Views\Sys_Message\_MessageInformacion.cshtml" />
