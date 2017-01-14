@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Turno.Caj_TurnoBE>
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Descripcion</th>
+        <th>F. Registro</th>
+        <th>Hr Inicio</th>
+        <th>Hr Final</th>
+        <th>Operacion</th>
+    </tr>
+<thead>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        if (item.bl_ver)
+        {
+            <tr>
+                <td>@item.in_idTurno</td>
+                <td>@item.st_dscpTurno</td>
+                <td>@item.st_hrInicio</td>
+                <td>@item.st_hrFin</td>
+                <td>@item.st_hrInicio</td>
+                <td>
+                    <button type="button" class="btn btn-xs quitar" name="btnDetalles" id="btnDetalles" onclick="fn_QuitarTurno('@item.in_idTurno')">Quitar</button>
+                    <button type="button" class="btn btn-xs detalle" name="btnQuitar" id="btnQuitar" onclick="fn_DetallesTurno('@item.in_idTurno')">Detalle</button>
+                    <button type="button" class="btn btn-xs modificar" name="btnModificar" id="btnModificar" onclick="fn_ModificarTurno('@item.in_idTurno')">Modificar</button>
+                </td>
+            </tr>
+        }
+
+    }
+}

@@ -1,0 +1,77 @@
+﻿@model Sys_C_V_Dario_SVII.Models.Caj_Caja.Caj_CajaBE
+<!-- Trigger the modal with a button -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="MModificar" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#2FCB21;">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4>Modificar Caja</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtSucursal", "Sucural:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("MtxtSucursal", Model.objPtoVenta.objSucursal.st_dscpSucursal, new { type = "text", disabled = "false", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtPtoVenta", "Pto Venta:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("MtxtPtoVenta", Model.objPtoVenta.st_dscpPtoVenta, new { type = "text", disabled = "false", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtidCaja", "ID :")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("MtxtidCaja", Model.in_idCaja, new { type = "text", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtCaja", "Caja:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("MtxtdscpCaja", Model.st_dscpCaja, new { type = "text", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-3 col-lg-2">
+                                @Html.Label("txtFchIngreso", "F. Ingreso:")
+                            </div>
+                            <div class="col-sm-8 col-md-9 col-lg-10">
+                                @Html.TextBox("MtxtFchIngreso", Model.d_fchIngreso.ToString("yyyy-MM-dd"), new { type = "date", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal" name="btnGuardar" id="btnGuardar"> GUARDAR </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" name="btnCancelar" id="btnCancelar"> CANCELAR </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

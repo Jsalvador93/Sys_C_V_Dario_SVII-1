@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Caja.Caj_CajaBE>
+
+<thead>
+    <tr>
+        <th>ID</th>
+        <th>Descripcion</th>
+        <th>Pto Venta</th>
+        <th>Sucursal</th>
+        <th>F. Ingreso</th>
+        <th>Operacion</th>
+    </tr>
+</thead>
+@if (Model != null)
+{
+
+    foreach (var item in Model)
+    {
+        if (item.bl_ver)
+        {
+            <tr>
+                <th>@item.in_idCaja</th>
+                <th>@item.st_dscpCaja</th>
+                <th>@item.objPtoVenta.st_dscpPtoVenta</th>
+                <th>@item.objPtoVenta.objSucursal.st_dscpSucursal</th>
+                <th>@item.d_fchIngreso</th>
+                <th>
+                    <button type="button" class="btn btn-xs detalle" name="btnDetalles" id="btnDetalles" onclick="fn_DetallesCaja('@item.in_idCaja')">Detalles</button>
+                    <button type="button" class="btn btn-xs modificar" name="btnModificar" id="btnModificar" onclick="fn_ModificarCaja('@item.in_idCaja')">Modificar</button>                
+                </th>
+            </tr>
+        }
+    }
+}

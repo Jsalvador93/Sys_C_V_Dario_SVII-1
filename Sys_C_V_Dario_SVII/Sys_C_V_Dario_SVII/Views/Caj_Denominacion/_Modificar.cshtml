@@ -1,0 +1,38 @@
+﻿@model Sys_C_V_Dario_SVII.Models.Caj_Denominacion.Caj_DenominacionBE
+<!-- Modal ACTUALIZAR-->
+<div class="modal fade" id="MModificarDenominacion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#2FCB21">
+
+                <center><h4 class="modal-title" style="color:#ffffff">ACTUALIZAR DENOMINACION</h4></center>
+            </div>
+            <br />
+            <div class="modal-body">
+
+                <form class="form">
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">ID:</label>
+                        <div class="col-lg-6">
+                            @Html.TextBox("MtxtidDenominacion", Model.in_idDenominacion, new { type = "text", disabled = "false", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-4 control-label">DESCRIPCION:</label>
+                        <div class="col-lg-6">
+                            @Html.TextBox("MtxtDscpDenominacion", Model.st_dscpDenominacion, new { type = "text", @class = "form-control" })
+                        </div>
+                    </div>
+
+                </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" name="btnGuardar" id="btnGuardar">GUARDAR</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal" name="btnSalir" id="btnSalir">SALIR</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,210 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    List<SelectListItem> oListSelectItemFiltro = new List<SelectListItem>();
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected =true });
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "ID", Value = "1"});
+    oListSelectItemFiltro.Add(new SelectListItem { Text = "Descripcion", Value = "2" });
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#cboFiltro").change(function () {
+            $("#txtFiltro").val("");
+            var eval = $("#cboFiltro").val();
+            if (eval = "0") {
+                ListarTurno(0, '');
+            }
+        });
+        ListarTurno(0, '');
+        $("#btnNuevaTurno").click(function () {
+            $.ajax({
+                type : 'POST',
+                datatype: 'html',
+                url: '@Url.Action("CPVNuevaTurno")',
+                success : function(page) {
+                    $("#MyContainer").html(page);
+                    $("#MNuevaTurno").modal('show');
+                    $("#btnGuardar").click(function () {
+                        if ($("#NtxtDscpTurno").val() != "") {
+                            $.ajax({
+                                url: '@Url.Action("NuevaTurno")',
+                                data: JSON.stringify(fn_CargarDatos(1)),
+                                type: 'POST',
+                                contentType: 'application/json;',
+                                success: function (result) {
+                                    $("#MNuevaCaja").modal("hide");
+                                    if (result.Success == 1) {
+                                        if (result.result) {
+                                            fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                            ListarTurno(0, '');
+                                        } else {
+                                            fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                        }
+                                    } else {
+                                        $("#MNuevaCaja").modal("show");
+                                        fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                                        setTimeout(function () { $("#MNuevaCaja").modal("show"); }, 1501);
+                                    }
+                                }
+                            })
+                        }
+                    });
+                    $("#btnCancelar").click(function () { $("#MNuevaTurno").modal('hide'); });
+                }
+
+            });
+        });
+    });
+    function ListarTurno(_case, filtro) {
+        fn_ListarTabla(_case, filtro, "/ListarTurno", "/Caj_Turno", "tblTurno");
+
+    }
+    function fn_CargarDatos(_case ) {
+        if (_case == 1) {
+            var objTurno = { st_dscpTurno: $("#NtxtDscpTurno").val(), dt_fchRegistro: "@System.DateTime.Now", st_hrInicio: $("#NtxtHrInicio").val(), st_hrFin: $("#NtxtHrFin").val() };
+            return objTurno;
+        } 
+        return { in_idTurno: 0, st_dscpTurno: $("#MtxtDscpTurno").val(), st_hrInicio: $("#MtxtHrInicio").val() , st_hrFin: $("#MtxtHrFin").val()  };
+    }
+
+    function fn_QuitarTurno(pin_idTurno) {
+        $.ajax({
+            type: 'POST',
+            datatype: 'html',
+            url: '@Url.Action("CPVQuitarTurno")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MQuitarTurno").modal('show');
+                $("#btnSi").click(function () {
+                    $.ajax({
+                        url: '@Url.Action("QuitarTurno")',
+                        data: JSON.stringify({ in_idTurno: pin_idTurno  , bl_ver : 'false'}),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            if (result.Success == 1) {
+                                if (result.result) {
+                                    $("#MQuitarTurno").modal("hide");
+                                    ListarTurno(0, '');
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                $("#MQuitarTurno").modal("hide");
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                            }
+                        }
+                    });
+                });
+
+                $("#btnNo").click(function () {
+                    $("#MQuitarTurno").modal("hide");
+                });
+            }
+        });
+    }
+    function fn_DetallesTurno(pin_idTurno) {
+        fn_Detalles('/Caj_Turno', '/DetallesTurno', {in_idTurno:pin_idTurno} , "MyContainer" , "MDetalleTurno");
+    }
+    function fn_ModificarTurno(pin_idTurno) {
+        $.ajax({
+            type: 'POST',
+            datatype: 'html',
+            data: {in_idTurno:pin_idTurno}  ,
+            url: '@Url.Action("CPVModificarTurno")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MModificarTurno").modal('show');
+                $("#btnSalir").click(function () {
+                    $("#MModificarTurno").modal('hide');
+                });
+                $("#btnGuardar").click(function () {
+                    var objTurno = fn_CargarDatos(0);
+                    objTurno.in_idTurno = pin_idTurno;
+                    $.ajax({
+                        url: '@Url.Action("ModificarTurno")',
+                        data: JSON.stringify(objTurno),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            if (result.Success == 1) {
+                                $("#MModificarTurno").modal("hide");
+                                if (result.result) {
+                                    ListarTurno(0, '');
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                $("#MModificarTurno").modal("hide");
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    }
+    function fn_Filtrar() {
+        if ($("#cboFiltro").val() != "0" && $("#txtFiltro").val() != "") {
+            ListarTurno($("#cboFiltro").val(), $("#txtFiltro").val());
+        }
+    }
+
+</script>
+
+<h1><b>TURNO</b></h1>
+
+
+<!-- Main content -->
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <label>Filtro:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.DropDownList("cboFiltro", oListSelectItemFiltro, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.TextBox("txtFiltro", null, new { type = "text", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <button type="button" class="btn btn-default" style="width:100%" onclick="fn_Filtrar()"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="box box-default">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <button type="button" class="btn btn-info" name="btnNuevaTurno" id="btnNuevaTurno">Nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="tblTurno"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="MyContainer"> </div>
+<div id="MyMessage"> </div>
+

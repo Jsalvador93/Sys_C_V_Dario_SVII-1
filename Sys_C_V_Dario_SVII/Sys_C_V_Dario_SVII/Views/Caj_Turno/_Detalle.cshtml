@@ -1,0 +1,72 @@
+﻿@model Sys_C_V_Dario_SVII.Models.Caj_Turno.Caj_TurnoBE
+<div class="modal fade" id="MDetalleTurno" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color:#E17F29">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <center><h4 class="modal-title" style="color:#ffffff">DETALLE DE TURNO</h4></center>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">ID:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("DtxtidTurno", Model.in_idTurno , new { type = "text", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">DESCRIPCION:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("DtxtDscpTurno", Model.st_dscpTurno , new { type = "text", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">F. REGISTRO:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("DtxtFchRegistro", Model.dt_fchRegistro.ToString("yyyy-MM-dd"), new { type = "date", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">H. INICIO:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("DtxtHrInicio", DateTime.Parse(Model.st_hrInicio).ToString("hh:mm:ss"), new { type = "time", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4 ">
+                                <label class="control-label">H. FINAL:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("DtxtHrFin", DateTime.Parse(Model.st_hrFin).ToString("hh:mm:ss"), new { type = "time", disabled = "true", @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" name="btnSalir" id="btnSalir" class="btn btn-default" data-dismiss="modal">SALIR</button>
+            </div>
+        </div>
+    </div>
+</div>
+

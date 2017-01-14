@@ -1,0 +1,270 @@
+﻿@*model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_Caja.Caj_CajaBE>*@
+
+@{
+    ViewBag.Title = "Index";
+
+
+
+    List<SelectListItem> oListSelectItemCaja = new List<SelectListItem>();
+    oListSelectItemCaja.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
+    oListSelectItemCaja.Add(new SelectListItem { Text = "ID", Value = "1", Selected = false });
+    oListSelectItemCaja.Add(new SelectListItem { Text = "Descripcion", Value = "2", Selected = false });
+    List<SelectListItem> oListSelectItemSucursal =  new List<SelectListItem>();
+    oListSelectItemSucursal.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
+
+    List<SelectListItem> oListSelectItemPtoVenta = new List<SelectListItem>();
+    oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
+}
+
+
+<script type="text/javascript">
+
+    function fn_CargarDatos(_case) {
+        if (_case == 1 ) { //New
+            return  { "dt_fchRegistro": "@System.DateTime.Now", "d_fchIngreso": $("#NtxtFchIngreso").val(),
+                "st_dscpCaja": $("#NtxtdscpCaja").val(), "objPtoVenta": { "in_idPtoVenta": $("#NcboPtoVenta").val() } };
+        } else { // Modify
+            var objCaja = { in_idCaja: $("#MtxtidCaja").val(), st_dscpCaja: $("#MtxtdscpCaja").val(), d_fchIngreso: $("#MtxtFchIngreso").val() };
+            return objCaja;
+        }
+    }
+
+    function fn_DetallesCaja(pin_idCaja) {
+                    //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Caj_Caja", "/DetallesCaja", { in_idCaja: pin_idCaja }, "MyContainer" , "MDetalles");
+    }
+
+
+    $(document).ready(
+        function () {
+            CargarCombo("/Caj_Caja/cargarCboSucursal", "1", "Todos...", "1", "FcboSucursal", { "_case": "0" });
+            ListarCaja(0, '');
+            $("#FcboSucursal").change(function () {
+                var eval = $("#FcboSucursal").val();
+                if (eval == "0") {
+                    $("#FcboPtoVenta option ").remove();
+                    ListarCaja(0, "''");
+                    fillcbo("FcboPtoVenta", 0, "Todos...");
+                } else {
+                    ListarCaja(3, eval);
+                    CargarCombo( "/Caj_Caja/cargarCboPtoVenta", "1" , "Todos...", "2" , "FcboPtoVenta", { "in_idSucursal": eval });
+                }
+            });
+            $("#FcboPtoVenta").change(function () {
+                var eval = $("#FcboPtoVenta").val();
+                if (eval == "0") {
+                    var _eval = $("#FcboSucursal").val();
+                    if (_eval == "0") {
+                        ListarCaja(0, '');
+                    } else {
+                        ListarCaja( 3 , eval )
+                    }
+                } else {
+                    ListarCaja(4, eval );
+                }
+            });
+            $("#btnNuevaCaja").click(function () {
+                $.ajax({
+                    type: "POST",
+                    datatype: "html",
+                    url: "@Url.Action("CPVNuevaCaja", "Caj_Caja")",
+                    success: function (page) {
+                        $("#MyContainer").html(page);
+                        $("#MNuevaCaja").modal('show');
+                        CargarCombo('/Caj_Caja/cargarCboSucursal', "0", "", "1", "NcboSucursal", { "_case": "0" });
+                        $("#NcboSucursal").change(function () {
+                            CargarCombo("/Caj_Caja/cargarCboPtoVenta", "0", "", "2", "NcboPtoVenta", { "in_idSucursal": $("#NcboSucursal").val() });
+                        });
+                        $("#btnGuardarCaja").click(function () {
+
+                            $.ajax({
+                                url: '@Url.Action("NuevaCaja")',
+                                data: JSON.stringify(fn_CargarDatos( 1 ) ),
+                                type: 'POST',
+                                contentType: 'application/json;',
+                                success: function (result) {
+                                    $("#MNuevaCaja").modal("hide");
+                                    if (result.Success == 1) {
+                                        if (result.result) {
+                                            fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                            ListarCaja(0, '');
+                                        } else {
+                                            fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                        }
+                                    } else {
+                                        $("#MNuevaCaja").modal("show") ;
+                                        fn_Alerta( "/Sys_Message", "/_MessageError", { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal" , 1500 );
+                                        setTimeout(function () { $("#MNuevaCaja").modal("show"); }, 1501);
+                                    }
+                                }
+                            })
+
+                        });
+                        $("#btnCancelar").click(function () {
+                            $("#MNuevaCaja").modal("toggle");
+                        });
+                    }
+                })
+            });
+            $("#btnGuardar").click(function () {
+                var result = fn_Guardar("/Caj_Caja", "/ModificarCaja", fn_CargarDatos(0));
+                if (result.Success == 1) {
+                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                } else {
+                    fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                    setTimeout(function () { $("#MModificar").modal("show"); }, 1501);
+                }
+            });
+        });
+
+    function fn_Filtrar() {
+        if ($("#cboFiltro").val() != "0" && $("#txtFiltro").val() != ""  ) {
+            ListarCaja($("#cboFiltro").val(), $("#txtFiltro").val());
+        }
+    }
+
+    function ListarCaja( _case , filtro ) {
+        fn_ListarTabla( _case , filtro , "/ListarCaja" , "/Caj_Caja" , "tblCaja" );
+    }
+
+    function fn_ModificarCaja(pin_idCaja) {
+        $.ajax({
+            type: "POST",
+            data: { in_idCaja: pin_idCaja },
+            datatype: "html",
+            url: '@Url.Action("CargarModificarCaja")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MModificar").modal("show") ;
+                $("#btnGuardar").click(function () {
+                    $.ajax({
+                        url: '@Url.Action("ModificarCaja")',
+                        data: JSON.stringify(fn_CargarDatos(0)),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            if (result.Success == 1) {
+                                $("#MModificar").modal("hide");
+                                fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                if ($("#FcboSucursal").val() != "0") {
+                                    $("#FcboPtoVenta").val() != "0" ? ListarCaja(4, $("#FcboPtoVenta").val()) : ListarCaja(3, $("#FcboSucursal").val() ) ;
+                                } else {
+                                    ListarCaja(0, '');
+                                }
+                            } else {
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                                setTimeout(function () { $("#MModificar").modal("show"); }, 1501);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+
+    }
+
+    function CargarCombo( _url , tpcbo , _val , _case , idcbo, _data) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify(_data),
+            url: _url,
+            success: function ( result ) {
+                if (result.Success == "1") {
+                    var v = result.resultado;
+                    var len = v.length;
+                    $("#" + idcbo + " option").remove();
+                    if (tpcbo == "1") fillcbo(idcbo, 0, _val);
+                    else {
+                        if (_case == "1") {
+                            CargarCombo("/Caj_Caja/cargarCboPtoVenta", "0", "", "2", "NcboPtoVenta", { "in_idSucursal": v[0].in_idSucursal });
+                        }
+                    }
+                    for (var i = 0 ; i < len ; i++) {
+                        if (_case == "1") {
+                            fillcbo(idcbo, v[i].in_idSucursal, v[i].st_dscpSucursal);
+                        }
+                        else if (_case == "2") {
+                            fillcbo(idcbo, v[i].in_idPtoVenta, v[i].st_dscpPtoVenta);
+                        }
+                    }
+                } else {
+                    fn_Alerta('/Sys_Message', '/_MessageError', { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                }
+            }
+        });
+    }
+
+
+</script>
+
+<section>
+    <h1>Caja</h1>
+</section>
+
+<div class="box">
+    <p1> Filtro </p1>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> SUCURSAL: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("FcboSucursal", oListSelectItemSucursal , new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1 ">
+                        <label class="control-label"> PTO VENTA: </label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("FcboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        @Html.Label("cboFiltro", "Filtro:")
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.DropDownList("cboFiltro", oListSelectItemCaja, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.TextBox("txtFiltro", null, new { @class = "form-control", placeholder = "Ingrese el Filtro" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <button type="button" style="width:100%" class="btn btn-info" name="btnBuscar" id="btnBuscar" onclick="fn_Filtrar()">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <button type="button" class="btn btn-info" name="btnNuevaCaja" id="btnNuevaCaja" >Nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped" id="tblCaja">
+                                
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div id="MyContainer"></div>
+<div id="MyMessage"></div>
