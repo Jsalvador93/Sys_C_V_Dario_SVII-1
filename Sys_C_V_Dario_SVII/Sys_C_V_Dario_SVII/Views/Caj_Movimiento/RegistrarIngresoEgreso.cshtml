@@ -2,12 +2,153 @@
 @{
     ViewBag.Title = "RegistrarMovimiento";
     List<SelectListItem> oListSelectItemDenominacion = new List<SelectListItem>();
-    oListSelectItemDenominacion.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemDenominacion.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
     List<SelectListItem> oListSelectItemConcepto = new List<SelectListItem>();
-    oListSelectItemConcepto.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemConcepto.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
     List<SelectListItem> oListSelectItemTipDocumento = new List<SelectListItem>();
-    oListSelectItemTipDocumento.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
+    oListSelectItemTipDocumento.Add(new SelectListItem { Text = "Todos...", Value = "0", Selected = true });
 }
+
+<script type="text/javascript">
+    function fn_operacion() {
+        return $("#btnIngreso").hasClass("btn-success");
+    }
+    $(document).ready(function () {
+        var btnQuitar = '<button type="button" class="btn quitar btn-xs" id="btnQuitar" >Quitar</button>'
+        var btnModificar = '<button type="button" class="btn modificar btn-xs"id="btnModificar">Modificar</button>'
+        $("#btnIngreso").addClass("btn-success");
+        $("#btnEgreso").addClass("btn-default");
+        $("#btnIngreso").click(function () {
+            if ($("#btnIngreso").hasClass("btn-default")) {
+                $("#btnIngreso").removeClass("btn-default").addClass("btn-success");
+                $("#btnEgreso").removeClass("btn-success").addClass("btn-default");
+            }
+        });
+        $("#btnEgreso").click(function () {
+            if ($("#btnEgreso").hasClass("btn-default")) {
+                $("#btnEgreso").removeClass("btn-default").addClass("btn-success");
+                $("#btnIngreso").removeClass("btn-success").addClass("btn-default");
+            }
+        });
+        CargarCombo('/Caj_Concepto/cargarcboDenominacion', "0", "", "1", "cboDenominacion", { _case: 0, filtro: "''" });
+        CargarCombo('/Caj_Movimiento/cargarcboTipComprobante', "0", "", "3", "cboTipComprobante", { _case: 0, filtro: "''" });
+        $("#cboDenominacion").change(function () {
+            var eval = $("#cboDenominacion").val();
+            CargarCombo("/Caj_Movimiento/cargarCboConcepto", "0", "", "2", "cboConcepto", { _case: 3, filtro: eval });
+        });
+        $("#cboTipComprobante").change(function () {
+            if (eval == "0" || eval == "99") {
+                $("#txtRuc").val("11111111111");
+                $("#txtRznSocial").val("Razon Social...");
+            } else if ($("#txtRuc").val() != "11111111111" || $("#txtRznSocial").val() != "Razon Social..." ) {
+                if ($("#txtRuc").val() != "11111111111") $("#txtRuc").val("11111111111");
+                if ($("#txtRznSocial").val() != "Razon Social...") $("#txtRznSocial").val("Razon Social...");
+            } else {
+                $("#txtRuc").val("");
+                $("#txtRznSocial").val("");
+            }
+        });
+        $("#btnAgregar").click(function () {
+            if (fn_EvalDtlMovimiento()) {
+                var item = $("#txtItem").val();
+                var cantidad = $("#txtCantidad").val();
+                var monto = $("#txtMntItem").val();
+                var row = '<tr><th>' + item + '</th><th>' + cantidad + '</th><th>' + monto + '</th><th>' + btnQuitar + ' ' + btnModificar + '</th></tr>';
+                $("#tblDtlMovimiento tbody").append(row);
+                fn_cleanElements();
+            }
+        });
+        var row = null;
+        $(document).on('click', '#btnModificar', function () {
+            row = $(this).closest('tr');
+            $("#txtItem").val( row.find('th:eq(0)').text() );
+            $("#txtCantidad").val(row.find('th:eq(1)').text());
+            $("#txtMntItem").val(row.find('th:eq(2)').text());
+            $("#btnAgregar").attr('disabled', 'disabled');
+            $("#btnActualizar").removeAttr('disabled');
+        });
+        $("#btnActualizar").click(function () {
+            if (fn_EvalDtlMovimiento() && row) {
+                var item = $("#txtItem").val();
+                var cantidad = $("#txtCantidad").val();
+                var monto = $("#txtMntItem").val();
+                $(row).find('th:eq(0)').text(item);
+                $(row).find('th:eq(1)').text(cantidad);
+                $(row).find('th:eq(2)').text(monto);
+            }
+            fn_cleanElements();
+            $("#btnAgregar").removeAttr('disabled');
+            $("#btnActualizar").attr('disabled', 'disabled');
+        });
+        $("#btnCancelar").click(function () {
+            row = null;
+            $("#btnAgregar").removeAttr('disabled');
+            $("#btnActualizar").attr('disabled', 'disabled');
+            fn_cleanElements();
+        });
+        $(document).on('click', '#btnQuitar', function () {
+            row = $(this).closest('tr');
+            $.ajax({
+                type: 'POST',
+                datatype: 'html',
+                url: '@Url.Action("CPVQuitarRegistro")',
+                success: function (page) {
+                    $("#MyContainer").html(page);
+                    $("#MQuitarIngresoEgreso").modal('show');
+                    $("#btnSi").click(function () {
+                        row.remove();
+                        $("#MQuitarIngresoEgreso").modal('hide');
+                    });
+                    $("#btnNo").click(function () {
+                        $("#MQuitarIngresoEgreso").modal('hide');
+                    });
+                }
+            });
+        });
+    });
+
+    function fn_cleanElements() {
+        $("#txtItem").val("");
+        $("#txtCantidad").val("");
+        $("#txtMntItem").val("");
+    }
+
+    function fn_EvalDtlMovimiento() {
+        return $("#txtItem").val() != "" && $("#txtCantidad").val() != "0" && $("#txtCantidad").val() != "" && $("#txtMntItem").val() != "0" && $("#txtMntItem").val() != "";
+    }
+    function CargarCombo(_url, tpcbo, _val, _case, idcbo, _data) {
+        $.ajax({
+            type: 'POST',
+            contentType: 'application/json;',
+            data: JSON.stringify(_data),
+            url: _url,
+            success: function (result) {
+                if (result.Success == "1") {
+                    var v = result.resultado;
+                    var len = v.length;
+                    $("#" + idcbo + " option").remove();
+                    if (tpcbo == "1") fillcbo(idcbo, 0, _val);
+                    else if (_case == "1") {
+                        CargarCombo("/Caj_Movimiento/cargarCboConcepto", "0", "", "2", "cboConcepto", { _case: 3 , filtro: v[0].in_idDenominacion });
+                    }
+                    for (var i = 0 ; i < len ; i++) {
+                        if (_case == "1") {
+                            fillcbo(idcbo, v[i].in_idDenominacion, v[i].st_dscpDenominacion);
+                        }
+                        else if (_case == "2") {
+                            fillcbo(idcbo, v[i].in_idConcepto, v[i].st_dscpConcepto);
+                        } else if (_case == "3") {
+                            fillcbo(idcbo, v[i].in_idTipComprobante, v[i].st_dscpTipComprobante );
+                        }
+                    }
+                } else {
+                    fn_Alerta('/Sys_Message', '/_MessageError', { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                }
+            }
+        });
+    }
+</script>
+
 <section class="content-header">
     <h1>Registrar Ingreso o Egreso</h1>
 </section>
@@ -24,60 +165,14 @@
                         <label class="control-label" for="txtcaja">CAJA:</label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-5">
-                        @Html.TextBox("txtCaja", null , new { @class="form-control"} ) 
+                        @Html.TextBox("txtCaja", null , new {disabled = "true" , @class="form-control"} ) 
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-1">
                         <label class="control-label" for="lblCajero">CAJERO:</label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-5">
-                        @Html.TextBox("txtCajero", null, new { @class = "form-control" })
+                        @Html.TextBox("txtCajero", null, new { disabled = "true",  @class = "form-control" })
                     </div>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<div class="box  box-primary">
-    <h4>Detalle Movimiento</h4>
-    <div class="box-body">
-        <form class="form">
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-lg-2">
-                        <label for="_Cajero" class="">DENOM:</label>
-                    </div>
-                    
-                    <div class="col-sm-6 col-md-8 col-lg-9">
-                        @Html.DropDownList("cboDenominacion",oListSelectItemDenominacion,new { @class = "form-control" })
-                    </div>
-                    <div class="col-sm-2 col-md-1 col-lg-1">
-                        <button type="button" class="btn btn-default" name="btnNuevoDenominacion"> Nuevo</button>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 col-lg-2">
-                        <label for="_Concepto" class="">CONCEPTO:</label>
-                    </div>
-                    
-                    <div class="col-sm-6 col-md-8 col-lg-9">
-                        @Html.DropDownList("cboConcepto", oListSelectItemConcepto, new { @class = "form-control" })
-                    </div>
-                    <div class="col-sm-2 col-md-1 col-lg-1">
-                        <button type="button" class="btn btn-default" name="btnNuevoConcepto">Nuevo</button>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-sm-3 col-md-2 col-lg-2">
-                        <input type="radio" name="optradio">&nbsp; Ingreso
-                    </label>
-                    <label class="col-sm-3 col-md-2 col-lg-2">
-                        <input type="radio" name="optradio">&nbsp; Egreso
-                    </label>
                 </div>
             </div>
         </form>
@@ -88,16 +183,33 @@
     <h4>
         Detalle Documento
     </h4>
-    <form class="form">
-        <div class="box-body">
+    <div class="box-body">
+        <form class="form">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-4 col-md-3 col-lg-2">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
                         <label for="_tipDocumento" class="">TP DOC:</label>
                     </div>
-                    
-                    <div class="col-sm-8 col-md-9 col-lg-10">
-                        @Html.DropDownList("cboTipDocumento", oListSelectItemTipDocumento, new { @class = "form-control" })
+
+                    <div class="col-sm-10 col-md-10 col-lg-11">
+                        @Html.DropDownList("cboTipComprobante", oListSelectItemTipDocumento, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label class="" for="_Ruc">SERIE:</label>
+                    </div>
+
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.TextBox("txtSerie", null, new { type = "text", @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <label class="" for="_Ruc">NUMERO:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-5">
+                        @Html.TextBox("txtNumero", null, new { type = "text", @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -106,15 +218,32 @@
                     <div class="col-sm-2 col-md-2 col-lg-1">
                         <label class="" for="_Ruc">RUC:</label>
                     </div>
-                    
+
                     <div class="col-sm-4 col-md-4 col-lg-5">
-                       @Html.TextBox("txtRuc" , null , new { type="text" , @class="form-control"})
+                        @Html.TextBox("txtRuc", null, new { type = "text", @class = "form-control" })
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-1">
                         <label class="" for="_Ruc">RZN SOCIAL::</label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-5">
-                        @Html.TextArea("txtRznSocial" , null , new { type = "text", @class = "form-control" })
+                        @Html.TextArea("txtRznSocial", null, new { type = "text", @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <label for="_Cajero" class="">DENOM:</label>
+                    </div>
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.DropDownList("cboDenominacion", oListSelectItemDenominacion, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <label for="_Concepto" class="">CONCEPTO:</label>
+                    </div>
+
+                    <div class="col-sm-4 col-md-4 col-lg-4">
+                        @Html.DropDownList("cboConcepto", oListSelectItemConcepto, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
@@ -123,14 +252,25 @@
                     <div class="col-sm-2 col-md-2 col-lg-1">
                         <label for="_Monto" class="">Monto:</label>
                     </div>
-                    
+
                     <div class="col-sm-10 col-md-10 col-lg-11">
-                        @Html.TextBox("txtMonto" , null , new { type = "number", @class = "form-control" })
+                        @Html.TextBox("txtMonto", null, new { type = "number", @class = "form-control" })
                     </div>
                 </div>
             </div>
-        </div>
-    </form>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="btn-group" style="width:100%">
+                            <button type="button" class="btn" id="btnIngreso" style="width:50%">Ingreso</button>
+                            <button type="button" class="btn" id="btnEgreso" style="width:50%">Egreso</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
 </div>
 <div class="box box-primary">
     <h4>Agregar/Eliminar/Editar</h4>
@@ -161,25 +301,24 @@
                     </div>
                     
                     <div class="col-sm-4 col-md-4 col-lg-5 ">
-                        @Html.TextBox("txtMntDetalle", null, new { type = "number", @class = "form-control" })
+                        @Html.TextBox("txtMntItem", null, new { type = "number", @class = "form-control" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
-                        <button type="button" class="btn btn-default btn-xs" width="100%">Agregar</button>
-                    </div>
-                    <div class="col-xs-3 col-sm-2 col-md-1 col-lg-1">
-                        <button type="button" class="btn btn-default btn-xs" width="100%">Guardar</button>
-                    </div>
-                    <div class="col-xs-6 col-sm-2 col-md-1 col-lg-1">
-                        <button type="button" class="btn btn-default btn-xs" width="100%">Cancelar</button>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="btn-group" style="width:100%">
+                            <button type="button" class="btn btn-info" id="btnAgregar" style="width:33.3%" >Agregar</button>
+                            <button type="button" class="btn btn-info" id="btnActualizar" style="width:33.3%" disabled="disabled">Actualizar</button>
+                            <button type="button" class="btn btn-info" id="btnCancelar" style="width:33.3%" >Cancelar</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+    
 </div>
 
 <div class="box  box-primary">
@@ -189,22 +328,17 @@
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="table-responsive">
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Item</th>
-                                <th>Cantidad</th>
-                                <th>Monto</th>
-                                <th>Operacion</th>
-                            </tr>
-                            <tr>
-                                <th>Gaseosa</th>
-                                <th>2</th>
-                                <th>40</th>
-                                <th>
-                                    <button type="button" name="button" class="btn btn-sucess btn-xs">Editar</button>
-                                    @Html.Partial("_QuitarIngresoEgreso")
-                                </th>
-                            </tr>
+                        <table class="table table-striped" id="tblDtlMovimiento">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Cantidad</th>
+                                    <th>Monto</th>
+                                    <th>Operacion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -212,3 +346,7 @@
         </form>
     </div>
 </div>
+
+<div id="MyContainer"></div>
+
+<div id="MyMessage"></div>

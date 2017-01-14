@@ -191,6 +191,8 @@
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoDA.cs" />
     <Compile Include="Models\Caj_Turno\Caj_TurnoBE.cs" />
     <Compile Include="Models\Caj_Turno\Caj_TurnoDA.cs" />
+    <Compile Include="Models\Cprb_TipComprobante\Cprb_TipComprobanteBE.cs" />
+    <Compile Include="Models\Cprb_TipComprobante\Cprb_TipComprobanteDA.cs" />
     <Compile Include="Models\Emp_PtoVenta\Emp_PtoVentaDA.cs" />
     <Compile Include="Models\Emp_Sucursal\Emp_SucursalBE.cs" />
     <Compile Include="Models\Caj_Denominacion\Caj_DenominacionBE.cs" />

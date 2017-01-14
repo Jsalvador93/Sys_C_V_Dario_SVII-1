@@ -1,27 +1,17 @@
-﻿<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Quitar</button>
-
+﻿
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="MQuitarIngresoEgreso" role="dialog">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form class="form">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <p>¿Esta Seguro que desea quitar este item?</p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                <strong>¿Esta Seguro que desea quitar este item?</strong>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info" data-dismiss="modal" name="btnSi" id="btnSi"> SI </button>
-                <button type="button" class="btn btn-default" data-dismiss="modal" name="btnNo" id="btnNo"> NO </button>
+                <button type="button" name="btnSi" id="btnSi" class="btn btn-primary">SI</button>
+                <button type="button" name="btnNo" id="btnNo" class="btn btn-default" data-dismiss="modal">NO</button>
             </div>
         </div>
     </div>
