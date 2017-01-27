@@ -1,0 +1,255 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Mod_Compra.Pro_Producto.Pro_ProductoBE>
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/Plantilla.cshtml";
+
+}
+
+<script type="text/javascript">
+
+    function fn_DetallesProducto(pin_idLote) {
+                    //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Pro_Producto", "/_modalDetalle", { c_codProducto: pc_codProducto }, "MyContainer", "MDetalles");
+    }
+
+    function fn_Precios(pc_codProducto) {
+        //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Pro_Producto", "/_modalPrecio", { c_codProducto: pc_codProducto }, "MyContainer", "MPrecios");
+    }
+
+    function ListarMarca(_case, filtro) {
+        fn_ListarTabla(_case, filtro, "/_modalMarca", "/Pro_Producto", "tblMarca");
+    }
+
+    //function fn_Precios(pc_codProducto, pvc_dscpProducto) {
+    //    //controller   action           parametros        contenedor del modal   id del modal
+    //    fn_Detalles("/Pro_Producto", "/_modalPrecio", { c_codProducto: pc_codProducto , vc_dscpProducto: pvc_dscpProducto }, "MyContainer", "MPrecios");
+    //}
+
+    //function mostrar(id,nombre){
+    //    alert({ id }+","+{nombre});
+    //}
+
+</script>
+
+<div class="content">
+    <!-- Encabezado Body -->
+    <section class="content-header">
+        <h1>
+            Productos
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-laptop"></i>Administrar Almacén</a></li>
+            <li class="active">Lista Producto</li>
+        </ol>
+    </section>
+    <!-- Encabezado Body -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Primera Tabla -->
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <div class="col-md-2">
+                                        <a href="@Url.Action("RegistrarProducto" , "RegistrarProducto", new { area = "Mod_Almacen" } )"><button type="button" class="btn btn-block btn-primary">Registrar Producto</button></a>
+                                    </div>
+                                    <div class="FechaForm1">
+                                        <h4 class="col-md-8">Fecha:</h4>
+                                        <h4 class="col-md-2">12/11/2016</h4>
+                                    </div>
+                                    <style>
+                                        .FechaForm1 {
+                                            text-align: right;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Primera Tabla -->
+                <!-- Segunda Tabla -->
+                <div class="box box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <h4 class="col-md-3 text-left">Fecha Inicio - Fin :</h4>
+                                    <!-- Boton de DateRange -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="reservation">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Boton de DateRange -->
+
+                                    <h4 class="col-md-3 text-left">Codigo de Producto:</h4>
+                                    <!-- Boton de Busqueda -->
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                                            <span class="input-group-btn">
+                                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- Boton de Busqueda -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Segunda Tabla -->
+
+
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h4 class="col-md-3 text-left">Seleccion</h4>
+                                    <h4 class="col-md-2 text-left">Tipo Producto</h4>
+                                    <h4 class="col-md-2 text-left">Marca</h4>
+                                    <h4 class="col-md-2 text-left">Categoria</h4>
+                                    <h4 class="col-md-3 text-left">Sub Categoria</h4>
+                                </div>
+
+                                <div class="col-md-12">
+
+
+                                    <div class="col-md-3">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example2"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example3"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example4"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example5"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+
+                <!-- Tercera Tabla - Compras -->
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <div class="col-lg-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-striped" id="tblProducto">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Producto</th>
+                                                        <th>Seccion</th>
+                                                        <th>Tipo Producto</th>
+                                                        <th>Marca</th>
+                                                        <th>Descripción</th>
+                                                        <th>Reistro</th>
+                                                        <th>Operaciones</th>
+                                                        <th>Estado</th>
+                                                    </tr>
+                                                </thead>
+                                                @foreach (var item in Model)
+                                                {
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@Html.DisplayFor(modelItem => item.c_codProducto)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oSeccionBE.vc_dscpSeccion)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oTipoProductoBE.vc_dscpTipProducto)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oMarcaBE.vc_dscpMarca)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.vc_dscpProducto)</td>
+                                                        @*<td>@Html.DisplayFor(modelItem => item.oRegistroProducto.dt_fchRegistro)</td>*@
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="mostrar('@item.c_codProducto')">Mostrar</button>
+                                                            <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="fn_Precios('@item.c_codProducto')">Precio</button>
+                                                        <td>
+                                                            <div class="box-tools" data-toggle="tooltip">
+                                                                <select class="form-control">
+                                                                    <option>Seleccionar</option>
+                                                                    <option>Opción 1</option>
+                                                                    <option>Opción 2</option>
+                                                                </select>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <nav class="pull-right">
+                                        <ul class="pagination">
+                                            <li><a href="#" aria-label="Anterior"><span aria-hidden="true">«</span></a></li>
+                                            <li class="active"><a href="#">1 <span class="sr-only">(página actual)</span></a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#" aria-label="Siguiente"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Tercera Tabla - Compras -->
+            </div>
+        </div>
+    </section>
+    <!-- Main content -->
+</div>
+<!-- Modal -->
+<div id="MyContainer"></div>
+<!-- Modal -->

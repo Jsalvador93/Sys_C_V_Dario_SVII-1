@@ -1,0 +1,80 @@
+﻿@model Sys_C_V_Dario_SVII.Models.Mod_Compra.Com_Pedido.Com_PedidoBE
+
+    <div class="modal fade" id="MDetalles" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title" id="exampleModalLabel">Detalle</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-3">Detalle del Pedido :</h4>
+                                <h4 class="col-md-3">@Html.DisplayFor(model => model.i_idPedido)</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Detalle</th>
+                                            <th>Descripcion</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio</th>
+                                            <th>Total Producto</th>
+                                        </tr>
+                                    </thead>
+                                @if (Model != null)
+                                {
+                                    foreach (var item in Model.oListPedidoDetalle)
+                                    {
+                                    <tbody>
+                                        <tr>
+                                            <td>@Html.DisplayTextFor(i => item.oPedidoBE.i_idPedido)</td>
+                                            <td>@Html.DisplayTextFor(i => item.oProductoBE.vc_dscpProducto)</td>
+                                            <td>@Html.DisplayTextFor(i => item.f_cntPrdPdo)</td>
+                                            <td>@Html.DisplayTextFor(i => item.f_prcUntReferencial)</td>
+                                            <td>@Html.DisplayTextFor(i => item.suma)</td>
+                                        </tr>
+                                    </tbody>
+                                    }
+                                }
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-3 pull-right">@Html.DisplayFor(model => model.subTotal)</h4>
+                                <h4 class="col-md-3 pull-right">Sub Total :</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-3 pull-right">S/ 0.00</h4>
+                                <h4 class="col-md-3 pull-right">IGV :</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-3 pull-right">@Html.DisplayFor(model => model.subTotal)</h4>
+                                <h4 class="col-md-3 pull-right">Total Neto :</h4>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default">Editar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+

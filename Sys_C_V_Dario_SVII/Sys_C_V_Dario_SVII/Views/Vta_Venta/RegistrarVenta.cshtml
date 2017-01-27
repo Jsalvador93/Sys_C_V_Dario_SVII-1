@@ -1,0 +1,185 @@
+﻿@model Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta.Vta_VentaBE
+
+@{
+    ViewBag.Title = "RegistrarVenta";
+ }
+
+<script type="text/javascript">
+    
+    function fn_Productos() {
+        //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Vta_Venta", "/_modalSeleccionarProducto", null, "MyContainer", "MDetalles");
+    }
+
+    function fn_Cliente() {
+        //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Vta_Venta", "/_modalAgregarCliente", null, "MyContainer", "MDetalles");
+    }
+
+</script>
+
+
+<div class="content">
+    <!-- Encabezado Body -->
+    <section class="content-header">
+        <h1>
+            Registrar Venta
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-laptop"></i>Gestionar Ventas</a></li>
+            <li><a href="@Url.Action("ListaVentas" , "ListaVentas", new { area = "Mod_Venta" } )">Lista Ventas</a></li>
+            <li class="active">Registrar Ventas</li>
+        </ol>
+    </section>
+    <!-- Encabezado Body -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Primera Tabla -->
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h4 class="col-md-3">Codigo de Venta : </h4>
+                                    <h4 class="col-md-3">00001</h4>
+                                    <h4 class="col-md-2">Fecha:</h4>
+                                    <h4 class="col-md-4">@DateTime.Now.ToShortDateString()</h4>
+                                </div>
+                                <div class="col-md-12">
+                                    <h4 class="col-md-3">Registrador : </h4>
+                                    <h4 class="col-md-3">Nombre de Usuario </h4>
+                                    <h4 class="col-md-2 text-left">Cliente :</h4>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example1" onclick="fn_Cliente()" role="button"><i class="fa fa-plus"></i></a>             
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Primera Tabla -->
+
+                <script type="text/javascript">
+                    $('.clockpicker').clockpicker();
+                </script>
+
+                <div class="box box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <div class="col-md-12">
+                                        <h4 class="col-md-1">Detalle:</h4>
+                                        <div class="col-md-1">
+                                            <input type="number" id="i_idVntDetalle" class="form-control" value="1">
+                                        </div>
+                                        <h4 class="col-md-1">Producto: </h4>
+                                        <div class="col-md-2">
+                                            <div class="input-group clockpicker">
+                                                <input type="text" id="c_codProducto" class="form-control">
+                                                <div class="input-group-btn">
+                                                    <a class="btn btn-primary" data-toggle="modal" data-target=".example2" onclick="fn_Productos()" role="button"><i class="fa fa-plus"></i></a> 
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <h4 class="col-md-1">Precio:</h4>
+                                        <div class="col-md-2">
+                                            <input type="number" id="txtPrecio" class="form-control">
+                                        </div>
+                                        <h4 class="col-md-1">Cantidad:</h4>
+                                        <div class="col-md-2">
+                                            <input type="number" id="f_cntPrdVntDetalle" class="form-control">
+                                        </div>
+                                        <div class="col-md-1 CantidadBotones">
+                                            <button class="btn btn-primary" onclick="Add()">Agregar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <div class="col-lg-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-striped tblDetalle" id="tblDetalle">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Detalle</th>
+                                                        <th>Descripcion</th>
+                                                        <th>Cantidad</th>
+                                                        <th>Total Producto</th>
+                                                        <th>Operaciones</th>
+                                                    </tr>
+                                                </thead>
+                                        @if (Model != null)
+                                        {
+                                            foreach (var item in Model.oListVentaDetalle)
+                                            {
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@Html.DisplayTextFor(i => item.i_idVntDetalle)</td>
+                                                        <td>@Html.DisplayTextFor(i => item.oProductoBE.c_codProducto)</td>
+                                                        <td>@Html.DisplayTextFor(i => item.f_cntPrdVntDetalle)</td>
+                                                        <td>@Html.DisplayTextFor(i => item.f_totalVntDetalle)</td>
+                                                        <td><button type="button" class="btn btn-info" value="Delete Selected Row" onclick="DeleteRow()">Quitar</button></td>
+                                                    </tr>
+                                                </tbody>}
+                                        }
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="ExampleSubTotal">
+                                        <h4 class="col-md-10">Sub Totral : </h4>
+                                        <h4 class="col-md-2">S/. 290.00</h4>
+
+                                        <h4 class="col-md-10">IGV : </h4>
+                                        <h4 class="col-md-2">S/. 0.00</h4>
+
+                                        <h4 class="col-md-10">Total Neto : </h4>
+                                        <h4 class="col-md-2">S/. 290.00</h4>
+                                    </div>
+
+                                    <div class="col-md-12 CantidadBotones">
+                                        <button type="button" class="btn btn-default">Cancelar</button>
+                                        <button type="button" class="btn btn-primary" value="Sales Save" onclick="Vta_Venta_save()">Grabar</button>
+                                    </div>
+
+                                    <style>
+                                        .CantidadBotones {
+                                                text-align: right;
+                                            }
+                                        .ExampleSubTotal {
+                                            text-align: right;
+                                        }
+                                    </style>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Modal -->
+<div id="MyContainer"></div>
+<!-- Modal -->
