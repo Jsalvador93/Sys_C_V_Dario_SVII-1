@@ -1,0 +1,326 @@
+﻿
+@{
+    ViewBag.Title = "RegistrarProducto";
+    //Layout = "~/Views/Shared/Plantilla.cshtml";
+}
+
+<script type="text/javascript">
+
+    function fn_DetallesMarca(a) {
+                    //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Pro_Producto", "/_modalMarca", { a }, "MyContainer", "MDetalles");
+    }
+
+    function fn_DetallesSeccion(a) {
+        //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Pro_Producto", "/_modalSeccion", { a }, "MyContainer", "MDetalles");
+    }
+
+    function ListarMarca(_case, filtro) {
+        fn_ListarTabla(_case, filtro, "/_modalMarca", "/Pro_Producto", "tblMarca");
+    }
+
+    function fn_DetallesTipoProducto(a) {
+        //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Pro_Producto", "/_modalTipoProducto", { a }, "MyContainer", "MDetalles");
+    }
+
+</script>
+
+<div class="content">
+    <!-- Encabezado Body -->
+    <section class="content-header">
+        <h1>
+            Registrar Producto
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-laptop"></i>Administrar Almacén</a></li>
+            <li><a href="@Url.Action("ListaProducto" , "ListaProducto", new { area = "Mod_Almacen" } )">Lista Producto</a></li>
+            <li class="active">Registrar Producto</li>
+        </ol>
+    </section>
+    <!-- Encabezado Body -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Primera Tabla -->
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <h4 class="col-md-3">Codigo de Producto : </h4>
+                                    <h4 class="col-md-4">PR0001</h4>
+                                    <h4 class="col-md-3">Fecha:</h4>
+                                    <h4 class="col-md-2">12/11/2016</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Primera Tabla -->
+
+
+                <div class="box box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h4 class="col-md-2">Sección :</h4>
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example1"  onclick="fn_DetallesSeccion('0')" role="button"><i class="fa fa-plus"></i></a>  
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="col-md-2 text-left">Tipo Producto:</h4>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example2" onclick="fn_DetallesTipoProducto('0')" role="button"><i class="fa fa-plus"></i></a>     
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h4 class="col-md-2">Marca: </h4>
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example3" name="btnDetalles" id="btnDetalles" onclick="fn_DetallesMarca('0')" role="button"><i class="fa fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="col-md-2 text-left">Descripcion:</h4>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-sm" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <script type="text/javascript">
+                    $('.clockpicker').clockpicker();
+                </script>
+
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h4 class="col-md-2">Lote :</h4>
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example4"  role="button"><i class="fa fa-plus"></i></a> 
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="col-md-3 text-left">Cantidad :</h4>
+                                    <div class="box-tools col-md-3" data-toggle="tooltip">
+                                        <select class="form-control">
+                                            <option>Seleccionar</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-md-12">
+                                    <h4 class="col-md-2">Ubicación :</h4>
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example5"><i class="fa fa-plus"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h4 class="col-md-3">Stock Máximo :</h4>
+                                    <div class="box-tools col-md-3" data-toggle="tooltip">
+                                        <select class="form-control">
+                                            <option>Seleccionar</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+
+                                    <h4 class="col-md-3">Stock Máximo :</h4>
+                                    <div class="box-tools col-md-3" data-toggle="tooltip">
+                                        <select class="form-control">
+                                            <option>Seleccionar</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+
+                <div class="box box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h4 class="col-md-2">Categoria :</h4>
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example6" href="@Url.Action("_modalCategoria" , "RegistrarProducto", new { area = "Mod_Almacen" } )" role="button"><i class="fa fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <h4 class="col-md-2 text-left">Sub Categoria:</h4>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example7" href="@Url.Action("_modalSubCategoria" , "RegistrarProducto", new { area = "Mod_Almacen" } )" role="button"><i class="fa fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 CantidadBotones">
+                                        <button type="button" class="btn btn-primary">Agregar</button>
+                                    </div>
+                                    <style>
+                                        .CantidadBotones {
+                                            text-align: right;
+                                        }
+                                    </style>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Detalle</th>
+                                                    <th>Categoria</th>
+                                                    <th>Sub Categoria</th>
+                                                    <th>Operacion</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Color</td>
+                                                    <td>Azul</td>
+                                                    <td><button type="button" class="btn btn-info">Quitar</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Talla</td>
+                                                    <td>Mediano</td>
+                                                    <td><button type="button" class="btn btn-info">Quitar</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div class="col-md-12">
+                                    <h4 class="col-md-2">Imagen :</h4>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <input type="file" id="exampleInputFile">
+                                        </div>
+                                    </div>
+
+                                    <h4 class="col-md-2 text-left">Angulo:</h4>
+
+                                    <div class="col-md-4">
+                                        <div class="input-group clockpicker">
+                                            <input type="text" class="form-control">
+                                            <div class="input-group-btn">
+                                                <a class="btn btn-primary" data-toggle="modal" data-target=".example8" href="@Url.Action("_modalSubCategoria" , "RegistrarProducto", new { area = "Mod_Almacen" } )" role="button"><i class="fa fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 CantidadBotones">
+                                        <button type="button" class="btn btn-primary">Agregar</button>
+                                    </div>
+                                    <style>
+                                        .CantidadBotones {
+                                            text-align: right;
+                                        }
+                                    </style>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Detalle</th>
+                                                    <th>Imagen</th>
+                                                    <th>Angulo</th>
+                                                    <th>Operacion</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Lorem Ipsum</td>
+                                                    <td>Lorem Ipsum</td>
+                                                    <td><button type="button" class="btn btn-info">Quitar</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Lorem Ipsum</td>
+                                                    <td>Lorem Ipsum</td>
+                                                    <td><button type="button" class="btn btn-info">Quitar</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 CantidadBotones">
+                                    <button type="button" class="btn btn-default">Cancelar</button>
+                                    <button type="button" class="btn btn-primary">Grabar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Modal -->
+<div id="MyContainer"></div>
+<!-- Modal -->

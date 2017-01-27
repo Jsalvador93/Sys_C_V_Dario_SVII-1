@@ -7,6 +7,7 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Sistema.Rol_Usuario
 {
     public class Rol_UsuarioBE
     {
+        public string vc_codUsuario { get; set; }
         public Pers_Persona.Pers_PersonaBE oPersona { get; set; }
 
         public Rol_UsuarioBE()
