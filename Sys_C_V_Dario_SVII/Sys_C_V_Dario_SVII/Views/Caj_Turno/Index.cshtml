@@ -9,6 +9,10 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#NtxtDscpTurno").keypress(function (evt) {
+            alert('');
+            return fn_Validate_Num(evt, $("#NtxtDscpTurno").val());
+        });
         $("#cboFiltro").change(function () {
             $("#txtFiltro").val("");
             var eval = $("#cboFiltro").val();

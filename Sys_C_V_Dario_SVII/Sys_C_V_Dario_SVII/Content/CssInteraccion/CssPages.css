@@ -11,3 +11,14 @@
     background-color: #d9534f;
 }
 
+.selectRow{
+    background-color: #E17F29;
+}
+
+.ErrorElement{
+    background-color: #f2dede;
+}
+
+.ExitoElement{
+    background-color: #dff0d8;
+}

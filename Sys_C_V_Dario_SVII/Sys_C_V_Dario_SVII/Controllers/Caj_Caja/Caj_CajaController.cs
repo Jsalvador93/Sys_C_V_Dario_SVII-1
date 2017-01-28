@@ -106,14 +106,6 @@ namespace Sys_C_V_Dario_SVII.Controllers.Caj_Caja
 
         public ActionResult Index()
         {
-            Caj_CajaDA objCajaDA = new Caj_CajaDA();
-            Emp_SucursalDA objSucursalDA = new Emp_SucursalDA();
-            Emp_SucursalBE objSucursal = new Emp_SucursalBE();
-            List<SelectListItem> objListSelectListSucursal = new List<SelectListItem>();
-            objListSelectListSucursal.Add(new SelectListItem() { Value = "0", Text = "Todos...", Selected = true });
-            foreach (var item in objSucursalDA.ListarSucursal(0, "''"))
-                objListSelectListSucursal.Add(new SelectListItem() { Value = item.in_idSucursal + "", Text = item.st_dscpSucursal + "", Selected = false });
-            ViewBag.objListSelectListSucursal = objListSelectListSucursal;
             return View();
         }
 

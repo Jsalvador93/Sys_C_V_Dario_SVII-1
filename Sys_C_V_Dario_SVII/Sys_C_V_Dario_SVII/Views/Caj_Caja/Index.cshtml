@@ -85,7 +85,7 @@
                                 success: function (result) {
                                     $("#MNuevaCaja").modal("hide");
                                     if (result.Success == 1) {
-                                        if (result.result) {
+                                        if (result.resultado) {
                                             fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
                                             ListarCaja(0, '');
                                         } else {
