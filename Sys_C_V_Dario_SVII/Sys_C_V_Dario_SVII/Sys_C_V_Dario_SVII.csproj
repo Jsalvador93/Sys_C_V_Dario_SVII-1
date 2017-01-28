@@ -192,6 +192,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaBE.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaDA.cs" />
+    <Compile Include="Models\Caj_CajGeneral\Caj_CajGeneralBE.cs" />
+    <Compile Include="Models\Caj_CajGeneral\Caj_CajGeneralDA.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoBE.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoDA.cs" />
     <Compile Include="Models\Caj_LibroCaja\Caj_LibroCajaBE.cs" />
