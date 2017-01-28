@@ -149,13 +149,13 @@
     }
 </script>
 
-<section class="content-header">
-    <h1>Registrar Ingreso o Egreso</h1>
-</section>
+
+    <h1><b>REGISTRAR INGRESO O EGRESO</b></h1>
+
 <!-- Main content -->
 <div class="box  box-primary">
     <h4>
-        Caja
+        CAJA
     </h4>
     <div class="box-body">
         <form class="form">
@@ -181,17 +181,17 @@
 
 <div class="box  box-primary">
     <h4>
-        Detalle Documento
+        DETALLE DOCUMENTO
     </h4>
     <div class="box-body">
         <form class="form">
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-2 col-md-2 col-lg-1">
-                        <label for="_tipDocumento" class="">TP DOC:</label>
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        <label for="_tipDocumento" class="">TIPO DE DOCUMENTO:</label>
                     </div>
 
-                    <div class="col-sm-10 col-md-10 col-lg-11">
+                    <div class="col-sm-9 col-md-9 col-lg-9">
                         @Html.DropDownList("cboTipComprobante", oListSelectItemTipDocumento, new { @class = "form-control" })
                     </div>
                 </div>
@@ -223,7 +223,7 @@
                         @Html.TextBox("txtRuc", null, new { type = "text", @class = "form-control" })
                     </div>
                     <div class="col-sm-2 col-md-2 col-lg-1">
-                        <label class="" for="_Ruc">RZN SOCIAL::</label>
+                        <label class="" for="_Ruc">RAZON SOCIAL:</label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-5">
                         @Html.TextArea("txtRznSocial", null, new { type = "text", @class = "form-control" })
@@ -233,7 +233,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-2 col-md-2 col-lg-2">
-                        <label for="_Cajero" class="">DENOM:</label>
+                        <label for="_Cajero" class="">DENOMINACION:</label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("cboDenominacion", oListSelectItemDenominacion, new { @class = "form-control" })
@@ -250,7 +250,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-2 col-md-2 col-lg-1">
-                        <label for="_Monto" class="">Monto:</label>
+                        <label for="_Monto" class="">MONTO:</label>
                     </div>
 
                     <div class="col-sm-10 col-md-10 col-lg-11">
@@ -351,44 +351,4 @@
 <div id="MyMessage"></div>
 
 
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Ejemplo aprenderaprogramar.com</title>
-    <meta charset="utf-8">
-    <script type="text/javascript">
-        var eventoControlado = false;
-        window.onload = function () {
-            document.onkeypress = mostrarInformacionCaracter;
-            document.onkeyup = mostrarInformacionTecla;
-        }
-        function mostrarInformacionCaracter(evObject) {
-            var msg = '';
-            var elCaracter = String.fromCharCode(evObject.which);
-            if (evObject.which != 0 && evObject.which != 13) {
-                msg = 'Tecla pulsada: ' + elCaracter;
-                control.innerHTML += msg + '-----------------------------<br/>';
-            }
-            else {
-                msg = 'Pulsada tecla especial';
-                control.innerHTML += msg + '-----------------------------<br/>';
-            }
-            eventoControlado = true;
-        }
-        function mostrarInformacionTecla(evObject) {
-            var msg = ''; var teclaPulsada = evObject.keyCode;
-            if (teclaPulsada == 20) { msg = 'Pulsado caps lock (act/des mayúsculas)'; }
-            else if (teclaPulsada == 16) { msg = 'Pulsado shift'; }
-            else if (eventoControlado == false) { msg = 'Pulsada tecla especial'; }
-            if (msg) { control.innerHTML += msg + '-----------------------------<br/>'; }
-            eventoControlado = false;
-        }
-    </script>
-</head>
-<body>
-    <div id="cabecera"><h2>Cursos aprenderaprogramar.com</h2><h3>Ejemplo JavaScript: pulse una tecla</h3></div>
-    <div id="control"> </div>
-</body>
-</html>
 
