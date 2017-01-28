@@ -192,6 +192,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaBE.cs" />
     <Compile Include="Models\Caj_Caja\Caj_CajaDA.cs" />
+    <Compile Include="Models\Caj_CajGeneral\Caj_CajGeneralDA.cs" />
+    <Compile Include="Models\Caj_CajGeneral\Caj_CajGeneralBE.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoBE.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoDA.cs" />
     <Compile Include="Models\Caj_Turno\Caj_TurnoBE.cs" />
@@ -323,7 +325,7 @@
     <Content Include="Views\Caj_Caja\_Detalles.cshtml" />
     <Content Include="Views\Caj_Caja\_ListarCaja.cshtml" />
     <Content Include="Views\Caj_Caja\_Modificar.cshtml" />
-    <Content Include="Views\Caj_Caja\_Nuevo.cshtml" />
+    <Content Include="Views\Caj_CajaUsuario\_Nuevo.cshtml" />
     <Content Include="Views\Caj_CajGeneral\Index.cshtml" />
     <Content Include="Views\Caj_CajGeneral\_Detalle.cshtml" />
     <Content Include="Views\Caj_CajGeneral\_Modificar.cshtml" />
@@ -410,6 +412,7 @@
     <Content Include="Views\Pro_Producto\_modalPrecio.cshtml" />
     <Content Include="Views\Pro_Producto\_modalSeccion.cshtml" />
     <Content Include="Views\Pro_Producto\_modalTipoProducto.cshtml" />
+    <Content Include="Views\Caj_CajGeneral\_ListarCajGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
