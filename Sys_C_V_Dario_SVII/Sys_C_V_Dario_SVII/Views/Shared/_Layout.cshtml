@@ -239,12 +239,12 @@
                             </li>
                         </ul>
                     </li>
-                    
+                    <!-- Modulo Compras -->
                     <li class="active treeview">
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-pie-chart"></i>
-                            <span>Modulo Compras</span>
+                            <span>Módulo Compras</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -260,45 +260,83 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Solicitar Pedido de Compra</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Aprobar Pedido de compra</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Generar Orden de Compra</a></li>
+                                    <li><a href="@Url.Action("Index","Com_Pedido")"><i class="fa fa-circle-o"></i>Lista Pedidos</a></li>
+                                    <li><a href="@Url.Action("RegistrarPedidos","Com_Pedido")"><i class="fa fa-circle-o"></i> Registrar Pedidos</a></li>
                                 </ul>
                             </li>
 
                             <li class="treeview">
                                 <a href="#">
                                     <i class="fa fa-laptop"></i>
-                                    <span>Gestionar compras</span>
+                                    <span>Gestionar Compra</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Proveedor</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Compra</a></li>
+                                    <li><a href="@Url.Action("Index","Com_Compra")"><i class="fa fa-circle-o"></i> Lista Compra</a></li>
+                                    <li><a href="@Url.Action("RegistrarCompra","Com_Compra")"><i class="fa fa-circle-o"></i> Registrar Compra</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-edit"></i> <span>Administrar almacen</span>
+                                    <i class="fa fa-edit"></i> <span>Administrar Almacén</span>
                                     <span class="pull-right-container">
                                         <i class="fa fa-angle-left pull-right"></i>
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Notificar Productos Defectuosos</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Generar Devolucion</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Producto</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Stock</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registrar entrada y salida de productos </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Actualizar Stock</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Redistribuir Productos</a></li>
+                                    <li><a href="@Url.Action("Index","Pro_Lote")"><i class="fa fa-circle-o"></i> Lista Lote  </a></li>
+                                    <li><a href="@Url.Action("RegistrarLote","Pro_Lote")"><i class="fa fa-circle-o"></i> Registrar Lote </a></li>
+                                    <li><a href="@Url.Action("Index","Pro_Producto")"><i class="fa fa-circle-o"></i> Lista Producto</a></li>
+                                    <li><a href="@Url.Action("RegistrarProducto","Pro_Producto")"><i class="fa fa-circle-o"></i> Registrar Producto</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    
+                    <!-- Modulo Compras -->
+                    <!-- Modulo Ventas -->
+                    <li class="active treeview">
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-line-chart"></i>
+                            <span>Módulo Ventas</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li class="active treeview">
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-pie-chart"></i>
+                                    <span>Gestionar Ventas</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="@Url.Action("RegistrarVenta","Vta_Venta")"><i class="fa fa-circle-o"></i>Registrar Venta</a></li>
+                                    <li><a href="@Url.Action("Index","Vta_Venta")"><i class="fa fa-circle-o"></i>Listar Ventas</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-pie-chart"></i>
+                                    <span>Gestionar Devoluciones</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li><a href="#"><i class="fa fa-circle-o"></i>Registrar Devolucion</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Modulo Ventas -->
+
                     <li class="active treeview">
                     <li class="treeview">
                         <a href="#">

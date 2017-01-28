@@ -1,0 +1,152 @@
+﻿@{
+    ViewBag.Title = "_modalAgregarCliente";
+}
+
+<div class="modal fade" id="MDetalles" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title" id="exampleModalLabel">Sección</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-3">Codigo de Persona :</h4>
+                                <h4 class="col-md-3">P0001</h4>
+                                <h4 class="col-md-3">Fecha :</h4>
+                                <h4 class="col-md-3">10/11/2016</h4>
+                            </div>
+                        </div>
+
+                        <!-- Registrar Venta - Caso Cliente Natural -->
+                        <div class="col-md-12">
+                            <form>
+                                <h4 class="col-md-3">Naturaleza :</h4>
+                                <div class="col-md-3">
+                                    <select class="form-control" id="status" name="status" onChange="mostrar(this.value);">
+                                        <option>Seleccionar</option>
+                                        <option value="Natural">Natural</option>
+                                        <option value="Juridica">Juridica</option>
+                                    </select>
+                                </div>
+                                <h4 class="col-md-3">Tipo Persona:</h4>
+                                <div class="col-md-3">
+                                    <select class="form-control">
+                                        <option>Seleccionar</option>
+                                        <option>Opcion 1</option>
+                                        <option>Opcion 2</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Caso Cliente Natural -->
+                        <div id="Natural" style="display: none;">
+                            <div class="col-md-12">
+                                <h3 class="col-md-12">Persona Natural</h3>
+                                <form>
+                                    <h4 class="col-md-2">Nombres :</h4>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-sm" type="text" placeholder="Nombre Completo">
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-md-12">
+                                <form>
+                                    <h4 class="col-md-2">Ap. Paterno :</h4>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-sm" type="text" placeholder="Apellido Paterno">
+                                    </div>
+                                    <h4 class="col-md-2">Ap. Materno :</h4>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-sm" type="text" placeholder="Apellido Materno">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-12">
+                                <form>
+                                    <h4 class="col-md-3">N° Documento:</h4>
+                                    <div class="col-md-3">
+                                        <input class="form-control input-sm" type="text" placeholder="Numero de Documento">
+                                    </div>
+                                    <h4 class="col-md-2">Sexo :</h4>
+                                    <div class="col-md-4">
+                                        <select class="form-control">
+                                            <option>Seleccionar</option>
+                                            <option>Hombre</option>
+                                            <option>Mujer</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="col-md-12">
+                                <form>
+                                    <h4 class="col-md-6">Dirección Web o Correo Electrónico :</h4>
+                                    <h4 class="col-md-6">Dirección de Domicilio :</h4>
+                                </form>
+                            </div>
+
+                            <div class="col-md-12">
+                                <form>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm" type="text">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm" type="text">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- Caso Cliente Natural -->
+                        <!-- Caso Cliente Juridica -->
+                        <div id="Juridica" style="display: none;">
+                            <div class="col-md-12">
+                                <h3 class="col-md-12">Persona Juridica</h3>
+                                <form>
+                                    <h4 class="col-md-2">Nombres :</h4>
+                                    <div class="col-md-4">
+                                        <input class="form-control input-sm" type="text" placeholder="Nombre Completo">
+                                    </div>
+                                    <h4 class="col-md-3">N° Documento:</h4>
+                                    <div class="col-md-3">
+                                        <input class="form-control input-sm" type="text" placeholder="Numero de Documento">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-12">
+                                <form>
+                                    <h4 class="col-md-6">Dirección Web o Correo Electrónico :</h4>
+                                    <h4 class="col-md-6">Dirección de Domicilio :</h4>
+                                </form>
+                            </div>
+
+                            <div class="col-md-12">
+                                <form>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm" type="text">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="form-control input-sm" type="text">
+                                    </div>
+                                </form>
+                            </div>
+
+                        </div>
+                        <!-- Caso Cliente Juridica -->
+                        <!-- Registrar Venta - Caso Cliente Natural -->
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info">Grabar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
