@@ -11,8 +11,10 @@
         <th>Operacion</th>
     </tr>
 </thead>
-@foreach (var item in Model)
+@if (Model != null)
 {
+    foreach (var item in Model)
+    {
     <tbody>
         <tr>
             <td>@Html.DisplayFor(modelItem => item.c_codProducto)</td>
@@ -31,4 +33,4 @@
                 <button type="button" class="btn btn-info">Seleccionar</button>
             </td>
         </tr>
-    </tbody>}
+    </tbody>}}
