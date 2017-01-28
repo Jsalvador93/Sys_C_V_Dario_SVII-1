@@ -8,12 +8,12 @@
     oListSelectItemPtoVenta.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
 }
 
-<section>
-    <p4>Ver Movimientos</p4>
-</section>
+
+    <h1><b>VER MOVIMIENTOS</b></h1>
+
 
 <div class="box box-primary">
-    <h4>Filtro</h4>
+    <h4>FILTRO</h4>
     <div class="box-body">
         <form class="form">
             <div class="form-group">
@@ -24,10 +24,10 @@
                     <div class="col-sm-4 col-md-4 col-lg-5">
                         @Html.DropDownList("cboSucursal", oListSelectItemSucursal, new { @class = "form-control" })
                     </div>
-                    <div class="col-sm-2 col-md-2 col-lg-1 ">
-                        <label class="control-label"> PTO VENTA: </label>
+                    <div class="col-sm-2 col-md-2 col-lg-2 ">
+                        <label class="control-label"> PUNTO DE VENTA: </label>
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-5">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
                     </div>
                 </div>
@@ -44,7 +44,7 @@
 </div>  
 
 <div class="box box-primary">
-    <h4>Ventas</h4>
+    <h4>VENTAS</h4>
     <div class="box-body">
         <form class="form">
             <div class="row">
@@ -72,7 +72,7 @@
 </div>           
 
 <div class="box box-primary">
-    <h4>Compras</h4>
+    <h4>COMPRAS</h4>
     <div class="box-body">
         <form class="form">
             <div class="row">
@@ -100,7 +100,7 @@
 </div>            
 
 <div class="box box-primary">
-    <h4>Ingresos</h4>
+    <h4>INGRESOS</h4>
     <div class="box-body">
         <form class="form">
             <div class="row">
@@ -128,7 +128,7 @@
 </div>           
 
 <div class="box box-primary">
-    <h4>Egresos</h4>
+    <h4>EGRESOS</h4>
     <div class="box-body">
         <form class="form">
             <div class="row">

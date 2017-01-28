@@ -75,8 +75,8 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Caja
                     objCaja.d_fchIngreso = (DateTime)objSqlDateReader["d_fchIngreso"];
                     objCaja.st_dscpCaja = (string)objSqlDateReader["vc_dscpCaja"];
                     objCaja.objPtoVenta.in_idPtoVenta = (int)objSqlDateReader["i_idPtoVenta"];
-                    objCaja.objPtoVenta.st_dscpPtoVenta = (string)objSqlDateReader["vc_nombre"];
-                    objCaja.objPtoVenta.objSucursal.in_idSucursal = (int)objSqlDateReader["i_idSucursal"];
+                    objCaja.objPtoVenta.st_dscpPtoVenta = (string)objSqlDateReader["vc_dscpPtoVenta"];
+                    objCaja.objPtoVenta.objSucursal.in_idSucursal = (int)objSqlDateReader["ti_idSucursal"];
                     objCaja.objPtoVenta.objSucursal.st_dscpSucursal = (string)objSqlDateReader["vc_dscpSucursal"];
                     return objCaja;
                 }
@@ -131,9 +131,9 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Caja
                     objCaja.st_dscpCaja = (string)objSqlDataReader["vc_dscpCaja"];
                     objCaja.bl_ver = (bool)objSqlDataReader["b_ver"];
                     objCaja.objPtoVenta.in_idPtoVenta = (int)objSqlDataReader["i_idPtoVenta"];
-                    objCaja.objPtoVenta.st_dscpPtoVenta = (string)objSqlDataReader["vc_nombre"];
+                    objCaja.objPtoVenta.st_dscpPtoVenta = (string)objSqlDataReader["vc_dscpPtoVenta"];
                     objCaja.d_fchIngreso = (DateTime)objSqlDataReader["d_fchIngreso"];
-                    objCaja.objPtoVenta.objSucursal.in_idSucursal = (int)objSqlDataReader["i_idSucursal"];
+                    objCaja.objPtoVenta.objSucursal.in_idSucursal = (int)objSqlDataReader["ti_idSucursal"];
                     objCaja.objPtoVenta.objSucursal.st_dscpSucursal = (string)objSqlDataReader["vc_dscpSucursal"];
                     objListCaja.Add(objCaja);
                 }

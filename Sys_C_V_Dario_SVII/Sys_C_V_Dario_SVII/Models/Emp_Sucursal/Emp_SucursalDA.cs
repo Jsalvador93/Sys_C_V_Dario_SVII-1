@@ -27,7 +27,7 @@ namespace Sys_C_V_Dario_SVII.Models.Emp_Sucursal
                 {
 
                     objSucursal = new Emp_SucursalBE();
-                    objSucursal.in_idSucursal = (int)objSqlDataReader["i_idSucursal"];
+                    objSucursal.in_idSucursal = (int)objSqlDataReader["ti_idSucursal"];
                     objSucursal.st_dscpSucursal = (string)objSqlDataReader["vc_dscpSucursal"];
                     objListSucursal.Add(objSucursal);
                 }
@@ -57,7 +57,7 @@ namespace Sys_C_V_Dario_SVII.Models.Emp_Sucursal
                 {
 
                     objSucursal = new Emp_SucursalBE();
-                    objSucursal.in_idSucursal = (int)objSqlDataReader["i_idSucursal"];
+                    objSucursal.in_idSucursal = (int)objSqlDataReader["ti_idSucursal"];
                     objSucursal.st_dscpSucursal = (string)objSqlDataReader["vc_dscpSucursal"];
                     objListSucursal.Add(objSucursal);
                 }

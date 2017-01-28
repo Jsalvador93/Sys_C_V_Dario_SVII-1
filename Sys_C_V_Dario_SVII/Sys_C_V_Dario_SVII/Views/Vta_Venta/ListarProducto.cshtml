@@ -11,8 +11,10 @@
         <th>Operacion</th>
     </tr>
 </thead>
-@foreach (var item in Model)
+@if (Model != null)
 {
+    foreach (var item in Model)
+    {
     <tbody>
         <tr>
             <td>@Html.DisplayFor(modelItem => item.c_codProducto)</td>
@@ -32,3 +34,4 @@
             </td>
         </tr>
     </tbody>}
+}
