@@ -55,7 +55,9 @@
                                                 <th>Precio de Utilidad</th>
                                             </tr>
                                         </thead>
-                                        @foreach (var item in Model.oListPrecio)
+@if (Model != null)
+{
+                                        foreach (var item in Model.oListPrecio)
                                         {
                                         <tbody>
                                             <tr>
@@ -64,7 +66,7 @@
                                                 <td>@Html.DisplayFor(modelItem => item.f_prcVenta)</td>
                                                 <td>@Html.DisplayFor(modelItem => item.f_utilidad)</td>
                                             </tr>
-                                        </tbody>}
+                                        </tbody>}}
                                     </table>
                                 </div>
                             </div>

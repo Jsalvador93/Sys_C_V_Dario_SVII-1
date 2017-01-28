@@ -119,8 +119,9 @@
                                                         <th>Estado</th>
                                                     </tr>
                                                 </thead>
-
-                                                @foreach (var item in Model)
+@if (Model != null)
+{
+                                                foreach (var item in Model)
                                                 {
                                                     <tbody>
                                                         <tr>
@@ -140,7 +141,7 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                    </tbody>}
+                                                    </tbody>}}
                                             </table>
                                         </div>
                                     </div>
