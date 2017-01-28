@@ -14,9 +14,8 @@
     </tr>
 </thead>
 
-@if (Model != null)
-{
-    foreach (var item in Model)
+
+    @foreach (var item in Model)
     {
         <tbody>
             <tr>
@@ -43,4 +42,4 @@
                     <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="fn_GenerarVenta('@item.i_idVenta')">Generar</button>
                 </td>
             </tr>
-        </tbody>}}
+        </tbody>}

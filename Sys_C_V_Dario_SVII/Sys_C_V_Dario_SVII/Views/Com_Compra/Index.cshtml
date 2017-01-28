@@ -121,10 +121,8 @@
                                                         <th>Operaciones</th>
                                                     </tr>
                                                 </thead>
-                                                @if (Model != null)
+                                                @foreach (var item in Model)
                                                 {
-                                                    foreach (var item in Model)
-                                                    {
                                                 <tbody>
                                                     <tr>
                                                         <td>@Html.DisplayFor(modelItem => item.i_idCompra)</td>
@@ -141,7 +139,7 @@
                                                             <button type="button" class="btn  btn-info">Anular</button>
                                                         </td>
                                                     </tr>
-                                                </tbody>}}
+                                                </tbody>}
                                             </table>
                                         </div>
                                     </div>
