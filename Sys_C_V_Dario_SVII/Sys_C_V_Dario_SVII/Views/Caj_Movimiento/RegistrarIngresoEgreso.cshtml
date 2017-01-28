@@ -281,9 +281,8 @@
                     <div class="col-sm-2 col-md-2 col-lg-1">
                         <label for="_item" >ITEM:</label>
                     </div>
-                    
                     <div class="col-sm-10 col-md-10 col-lg-11 ">
-                        @Html.TextBox("txtItem" , null , new { type="text" , @class="form-control"})
+                        @Html.TextBox("txtItem" , null , new { type="text" , @class="form-control"  })
                     </div>
                 </div>
             </div>
@@ -350,3 +349,46 @@
 <div id="MyContainer"></div>
 
 <div id="MyMessage"></div>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejemplo aprenderaprogramar.com</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        var eventoControlado = false;
+        window.onload = function () {
+            document.onkeypress = mostrarInformacionCaracter;
+            document.onkeyup = mostrarInformacionTecla;
+        }
+        function mostrarInformacionCaracter(evObject) {
+            var msg = '';
+            var elCaracter = String.fromCharCode(evObject.which);
+            if (evObject.which != 0 && evObject.which != 13) {
+                msg = 'Tecla pulsada: ' + elCaracter;
+                control.innerHTML += msg + '-----------------------------<br/>';
+            }
+            else {
+                msg = 'Pulsada tecla especial';
+                control.innerHTML += msg + '-----------------------------<br/>';
+            }
+            eventoControlado = true;
+        }
+        function mostrarInformacionTecla(evObject) {
+            var msg = ''; var teclaPulsada = evObject.keyCode;
+            if (teclaPulsada == 20) { msg = 'Pulsado caps lock (act/des mayúsculas)'; }
+            else if (teclaPulsada == 16) { msg = 'Pulsado shift'; }
+            else if (eventoControlado == false) { msg = 'Pulsada tecla especial'; }
+            if (msg) { control.innerHTML += msg + '-----------------------------<br/>'; }
+            eventoControlado = false;
+        }
+    </script>
+</head>
+<body>
+    <div id="cabecera"><h2>Cursos aprenderaprogramar.com</h2><h3>Ejemplo JavaScript: pulse una tecla</h3></div>
+    <div id="control"> </div>
+</body>
+</html>
+

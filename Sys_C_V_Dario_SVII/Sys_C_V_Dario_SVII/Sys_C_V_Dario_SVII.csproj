@@ -215,6 +215,7 @@
     <Content Include="Content\CssInteraccion\CssPages.css" />
     <Content Include="Content\JsInteraccion\jsDatos.js" />
     <Content Include="Content\JsInteraccion\jsTables.js" />
+    <Content Include="Content\JsInteraccion\JsValidacion.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
