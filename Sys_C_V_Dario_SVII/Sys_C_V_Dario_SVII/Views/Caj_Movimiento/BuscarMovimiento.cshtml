@@ -22,12 +22,12 @@
     oListSelectItemTurno.Add(new SelectListItem { Text = "Todos", Value = "-1", Selected = true });
 }
 
-<section class="content-header">
-    <h1> Buscar Movimientos</h1>
-</section>
+
+    <h1> <b>BUSCAR MOVIMIENTOS</b></h1>
+
 
 <div class="box box-primary">
-    <h4>Filtro</h4>
+    <h4>FILTRO</h4>
     <div class="box-body">
         <for'm class="form">
             <div class="form-group">
@@ -38,10 +38,10 @@
                     <div class="col-sm-4 col-md-4 col-lg-5">
                         @Html.DropDownList("cboSucursal", oListSelectItemSucursal, new { @class = "form-control" })
                     </div>
-                    <div class="col-sm-2 col-md-2 col-lg-1 ">
-                        <label class="control-label"> PTO VENTA: </label>
+                    <div class="col-sm-2 col-md-2 col-lg-2 ">
+                        <label class="control-label"> PUNTO DE VENTA: </label>
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-5">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("cboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
                     </div>
                 </div>
@@ -64,26 +64,26 @@
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-2 col-md-2 col-lg-1">
-                        <label for="_denominacion">DENOM:</label>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <label for="_denominacion">DENOMINACION:</label>
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-5">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("cboDenominacion", oListSelectItemDenominacion, new { @class = "form-control" })
                     </div>
-                    <div class="col-sm-2 col-md-2 col-lg-1">
+                    <div class="col-sm-2 col-md-2 col-lg-2">
                         <label for="_hasta" name="_hasta">CONCEPTO:</label>
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-5">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("cboConcepto", oListSelectItemConcepto, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="row">
-                    <div class="col-sm-2 col-md-2 col-lg-1">
-                        <label for="_denominacion">TP DOC:</label>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <label for="_denominacion">TIPO DOCUMENTO:</label>
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-5">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("cboTipDocumento", oListSelectItemTipDocumento, new { @class = "form-control" })
                     </div>
                 </div>
@@ -176,8 +176,8 @@
                     <div class="table-responsive">
                         <table class="table table-striped">
                             <tr class="tr-deafult">
-                                <th>Rzn Social</th>
-                                <th>Tp Doc</th>
+                                <th>Razon Social</th>
+                                <th>Tipo Documento</th>
                                 <th>Fecha Reg.</th>
                                 <th>Monto</th>
                                 <th>Movimiento</th>
@@ -190,7 +190,7 @@
                                 <th>1000</th>
                                 <th>Ingreso</th>
                                 <th>
-                                    <button type="button" name="btndtl" class="btn btn-default btn-xs">Detalles</button>
+                                    <button type="button" name="btndtl" class="btn  btn-xs" style="background:#E17F29; color:#ffffff">Detalles</button>
                                 </th>
                             </tr>
                             <tr>
@@ -200,7 +200,7 @@
                                 <th>1234</th>
                                 <th>Egreso</th>
                                 <th>
-                                    <button type="button" name="btndtl" class="btn btn-default btn-xs">Detalles</button>
+                                    <button type="button" name="btndtl" class="btn  btn-xs" style="background:#E17F29; color:#ffffff">Detalles</button>
                                 </th>
                             </tr>
                         </table>
