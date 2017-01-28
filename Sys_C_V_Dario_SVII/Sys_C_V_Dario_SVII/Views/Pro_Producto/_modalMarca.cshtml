@@ -48,9 +48,7 @@
                                             <th>Operacion</th>
                                         </tr>
                                     </thead>
-@if (Model != null)
-{
-                                   foreach (var item in Model)
+                                    @foreach (var item in Model)
                                     {
                                     <tbody>
                                         <tr>
@@ -58,7 +56,7 @@
                                             <td>@Html.DisplayFor(modelItem => item.vc_dscpMarca)</td>
                                             <td><button type="button" class="btn btn-info">Seleccionar</button></td>
                                         </tr>
-                                    </tbody>}}
+                                    </tbody>}
                                 </table>
                             </div>
                         </div>
