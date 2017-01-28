@@ -1,9 +1,160 @@
-﻿
-
-@{
-ViewBag.Title = "Index";
-
+﻿@{
+    ViewBag.Title = "Index";
 }
+
+<script type="text/javascript">
+    $(function () {
+        fn_ListarCajGeneral(0, '');
+        $("#btnFiltrar").click(function () {
+            var _data = { dt_fchDesde: $("#txtDesde").val(), dt_fchHasta: $("#txtHasta").val() };
+            fn_ListarCajGeneralFecha(_data);
+        });
+        $("#btnNuevaCajGeneral").click(function () {
+            $.ajax({
+                type: "POST",
+                datatype: "html",
+                url: "@Url.Action("CPVNuevaCajGeneral", "Caj_CajGeneral")",
+                success: function (page) {
+                    $("#MyContainer").html(page);
+                    $("#MNuevaCajGeneral").modal('show');
+                    $("#btnGuardar").click(function () {
+                        if ($("#NtxtDscpTurno").val() != "") {
+                            $.ajax({
+                                url: '@Url.Action("NuevaCajGeneral")',
+                                data: JSON.stringify(fn_CargarDatos(1)),
+                                type: 'POST',
+                                contentType: 'application/json;',
+                                success: function (result) {
+                                    $("#MNuevaCajGeneral").modal("hide");
+                                    if (result.Success == 1) {
+                                        if (result.result) {
+                                            fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                            fn_ListarCajGeneral(0, '');
+                                        } else {
+                                            fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                        }
+                                    } else {
+                                        $("#MNuevaCajGeneral").modal("show");
+                                        fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                                        setTimeout(function () { $("#MNuevaCajGeneral").modal("show"); }, 1501);
+                                    }
+                                }
+                            })
+                        }
+                    });
+                }
+            });
+
+        });
+    });
+
+    function fn_ListarCajGeneral( _case , filtro ) {
+        fn_ListarTabla(_case, filtro , "/ListarCajGeneral" , "/Caj_CajGeneral", "tbl_CajGeneral");
+    }
+
+    function fn_ListarCajGeneralFecha(_data) {
+        $.ajax({
+            type: 'POST',
+            data: _data,
+            datatype: 'html',
+            url: "/Caj_CajGeneral/ListarCajGeneralFiltro", /*'/' + controller + '/' + action,*/
+            success: function (page) {
+                $("#tbl_CajGeneral").html(page);
+            }
+        });
+    }
+
+    function fn_CargarDatos(_case) {
+        var objCajGeneral;
+        if (_case == 1) {
+            objCajGeneral = {dt_fchInicio : $( "#NtxtFchInicio").val() , dt_fchFin : $("#NtxtFchFin").val() , fl_mntCajChica : $("#NtxtmntCajChica").val(), fl_mntSdoCaja : $("#NtxtmntSdoCaja ").val(), dt_fchRegistro : '@System.DateTime.Now' };
+        } else {
+            objCajGeneral = { in_idCajGeneral: 0, dt_fchInicio: $("#MtxtFchInicio").val(), dt_fchFin: $("#MtxtFchFin").val(), fl_mntCajChica: $("#MtxtmntCajChica").val(), fl_mntSdoCaja: $("#MtxtmntSdoCaja").val() };
+        }
+        return objCajGeneral;
+    }
+
+    function fn_DetalleCajGeneral(in_idCajGeneral) {
+        fn_Detalles("/Caj_CajGeneral", "/DetallesCajGeneral", { in_idCajGeneral : in_idCajGeneral} , "MyContainer" ,  "MDetalleCajGeneral");
+    }
+    function fn_ModificarCajGeneral(in_idCajGeneral) {
+        $.ajax({
+            type: "POST",
+            data: { in_idCajGeneral: in_idCajGeneral },
+            datatype: "html",
+            url: '@Url.Action("CPVModificarCajGeneral")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MModificarCajGeneral").modal("show");
+                $("#btnCancelar").click(function () {
+                    $("#MModificarCajGeneral").modal("hide");
+                });
+                $("#btnGuardar").click(function () {
+                    var objCajGeneral = fn_CargarDatos(0);
+                    objCajGeneral.in_idCajGeneral = in_idCajGeneral;
+                    $.ajax({
+                        url: '@Url.Action("ModificarCajGeneral")',
+                        data: JSON.stringify(objCajGeneral),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            $("#MModificarCajGeneral").modal("hide");
+                            if (result.Success == 1) {
+                                if (result.resultado) {
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                    fn_ListarCajGeneral(0, '');
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                                setTimeout(function () { $("#MModificarConcepto").modal("show"); }, 1501);
+                            }
+                        }
+                    });
+                });
+            }
+        });
+    }
+    function fn_QuitarCajGeneral(in_idCajGeneral) {
+        $.ajax({
+            type: 'POST',
+            datatype: 'html',
+            url: '@Url.Action("CPVQuitarCajGeneral")',
+            success: function (page) {
+                $("#MyContainer").html(page);
+                $("#MQuitarCajGeneral").modal('show');
+                $("#btnSi").click(function () {
+                    $.ajax({
+                        url: '@Url.Action("QuitarCajGeneral")',
+                        data: JSON.stringify({ in_idCajGeneral: in_idCajGeneral, bl_ver: 'false' }),
+                        type: 'POST',
+                        contentType: 'application/json;',
+                        success: function (result) {
+                            if (result.Success == 1) {
+                                if (result.result) {
+                                    $("#MQuitarCajGeneral").modal("hide");
+                                    fn_ListarCajGeneral(0, '');
+                                    fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
+                                } else {
+                                    fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
+                                }
+                            } else {
+                                $("#MQuitarCajGeneral").modal("hide");
+                                fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
+                            }
+                        }
+                    });
+                });
+
+                $("#btnNo").click(function () {
+                    $("#MQuitarCajGeneral").modal("hide");
+                });
+            }
+        });
+    }
+
+</script>
 
 <!-- Content Header (Page header) -->
 <h1><b> CAJA GENERAL</b></h1>
@@ -33,7 +184,7 @@ ViewBag.Title = "Index";
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-2 col-sm-offset-10 col-md-2 col-md-offset-10 col-lg-2  col-lg-offset-10 ">
-                    <button type="button" class="btn btn-default" style="width:100%" name="btnFiltrar"><span class="glyphicon glyphicon-search"></span></button>
+                    <button type="button" class="btn btn-default" style="width:100%" id="btnFiltrar"><span class="glyphicon glyphicon-search"></span></button>
                 </div>
 
             </div>
@@ -47,7 +198,7 @@ ViewBag.Title = "Index";
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-1">
-                        @Html.Partial("_Nuevo")
+                        <button type="button" class="btn btn-info " id="btnNuevaCajGeneral"> NUEVO</button>
                     </div>
                 </div>
             </div>
@@ -55,34 +206,9 @@ ViewBag.Title = "Index";
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="table-responsive">
-                            <div style="height:840px;overflow-x:scroll;overflow-y:scroll">
-                                <table class="table table-striped" name="tbl_cg">
-                                    <tr class="table-bordered">
+                            <table class="table table-striped" id="tbl_CajGeneral">
 
-                                        <th class="text-center">ID</th>
-                                        <th class="text-center">FECHA INICIAL</th>
-                                        <th class="text-center">FECHA FINAL</th>
-                                        <th class="text-center">ESTADO</th>
-                                        <th class="text-center">OPERACIONES INTERNAS</th>
-                                        <th>OPERACIONES DE MANTENIMIENTO</th>
-
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <a class="btn btn-primary btn-xs" href="@Url.Action("Index","Caj_DistCajGeneral")" role="button">DISTRIBUIR</a>
-                                        </td>
-                                        <td>
-                                            @Html.Partial("_Quitar")
-                                            @Html.Partial("_Detalle")
-                                            @Html.Partial("_Modificar")
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -90,3 +216,8 @@ ViewBag.Title = "Index";
         </form>
     </div>
 </div>
+
+
+<div id="MyContainer"></div>
+
+<div id="MyMessage"> </div>

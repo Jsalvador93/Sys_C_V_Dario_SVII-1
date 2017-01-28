@@ -85,7 +85,7 @@
                                 success: function (result) {
                                     $("#MNuevaCaja").modal("hide");
                                     if (result.Success == 1) {
-                                        if (result.result) {
+                                        if (result.resultado) {
                                             fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
                                             ListarCaja(0, '');
                                         } else {
@@ -198,12 +198,11 @@
 
 </script>
 
-<section>
-    <h1>Caja</h1>
-</section>
+
+    <h1><b>CAJA</b></h1>
 
 <div class="box">
-    <p1> Filtro </p1>
+    <h4> FILTRO </h4>
     <div class="box-body">
         <form class="form">
             <div class="form-group">
@@ -214,10 +213,10 @@
                     <div class="col-sm-4 col-md-4 col-lg-5">
                         @Html.DropDownList("FcboSucursal", oListSelectItemSucursal , new { @class = "form-control" })
                     </div>
-                    <div class="col-sm-2 col-md-2 col-lg-1 ">
-                        <label class="control-label"> PTO VENTA: </label>
+                    <div class="col-sm-2 col-md-2 col-lg-2 ">
+                        <label class="control-label"> PUNTO DE VENTA: </label>
                     </div>
-                    <div class="col-sm-4 col-md-4 col-lg-5">
+                    <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("FcboPtoVenta", oListSelectItemPtoVenta, new { @class = "form-control" })
                     </div>
                 </div>

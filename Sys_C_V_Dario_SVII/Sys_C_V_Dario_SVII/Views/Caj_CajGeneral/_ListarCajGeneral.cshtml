@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Caj_CajGeneral.Caj_CajGeneralBE>
+
+<tr>
+    <th>ID</th>
+    <th>FECHA INICIAL</th>
+    <th>FECHA FINAL</th>
+    <th>OP. INTERNAS</th>
+    <th>OP. DE MANTENIMIENTO</th>
+</tr>
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        if (item.bl_ver)
+        {
+    <tr>
+        <td>@item.in_idCajGeneral</td>
+        <td>@item.dt_fchInicio</td>
+        <td>@item.dt_fchFin</td>
+        <td>
+            <a class="btn btn-primary btn-xs" href="@Url.Action("Index", "Caj_DistCajGeneral")" role="button">DISTRIBUIR</a>
+        </td>
+        <td>
+            <button type="button" class="btn quitar btn-xs" id="btnQuitarCajGeneral" onclick="fn_QuitarCajGeneral(@item.in_idCajGeneral)"> QUITAR</button>
+            <button type="button" class="btn detalle btn-xs" id="btnDetalleCajGeneral" onclick="fn_DetalleCajGeneral(@item.in_idCajGeneral)">DETALLE</button>
+            <button type="button" class="btn modificar btn-xs " id="btnModificarCajGeneral" onclick="fn_ModificarCajGeneral(@item.in_idCajGeneral)">MODIFICAR</button>
+        </td>
+    </tr>
+        }
+    }
+}

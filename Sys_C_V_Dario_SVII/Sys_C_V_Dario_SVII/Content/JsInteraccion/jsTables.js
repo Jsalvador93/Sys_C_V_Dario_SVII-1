@@ -9,3 +9,14 @@
         }
     });
 }
+function fn_ListarTablaFiltrar(_data, _url, content) {
+    $.ajax({
+        type: 'POST',
+        data: _data,
+        datatype: 'html',
+        url: _url, /*'/' + controller + '/' + action,*/
+        success: function (page) {
+            $("#" + content).html(page);
+        }
+    });
+}

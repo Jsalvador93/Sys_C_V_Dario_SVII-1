@@ -9,6 +9,10 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $("#NtxtDscpTurno").keypress(function (evt) {
+            alert('');
+            return fn_Validate_Num(evt, $("#NtxtDscpTurno").val());
+        });
         $("#cboFiltro").change(function () {
             $("#txtFiltro").val("");
             var eval = $("#cboFiltro").val();
@@ -165,7 +169,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-1 col-md-1 col-lg-1">
-                        <label>Filtro:</label>
+                        <label>FILTRO:</label>
                     </div>
                     <div class="col-sm-4 col-md-4 col-lg-4">
                         @Html.DropDownList("cboFiltro", oListSelectItemFiltro, new { @class = "form-control" })

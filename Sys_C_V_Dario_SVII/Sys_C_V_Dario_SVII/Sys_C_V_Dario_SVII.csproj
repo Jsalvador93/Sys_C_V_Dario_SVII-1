@@ -194,8 +194,14 @@
     <Compile Include="Models\Caj_Caja\Caj_CajaDA.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoBE.cs" />
     <Compile Include="Models\Caj_Concepto\Caj_ConceptoDA.cs" />
+    <Compile Include="Models\Caj_LibroCaja\Caj_LibroCajaBE.cs" />
+    <Compile Include="Models\Caj_LibroCaja\Caj_LibroCajaDA.cs" />
+    <Compile Include="Models\Caj_LibroCaja\Caj_DetalleAsientoContableBE.cs" />
+    <Compile Include="Models\Caj_LibroCaja\Caj_LibroCajaDetalleBE.cs" />
     <Compile Include="Models\Caj_Turno\Caj_TurnoBE.cs" />
     <Compile Include="Models\Caj_Turno\Caj_TurnoDA.cs" />
+    <Compile Include="Models\Cprb_TipComprobante\Cprb_TipComprobanteBE.cs" />
+    <Compile Include="Models\Cprb_TipComprobante\Cprb_TipComprobanteDA.cs" />
     <Compile Include="Models\Emp_PtoVenta\Emp_PtoVentaDA.cs" />
     <Compile Include="Models\Emp_Sucursal\Emp_SucursalBE.cs" />
     <Compile Include="Models\Caj_Denominacion\Caj_DenominacionBE.cs" />
@@ -288,6 +294,7 @@
     <Content Include="Content\CssInteraccion\CssPages.css" />
     <Content Include="Content\JsInteraccion\jsDatos.js" />
     <Content Include="Content\JsInteraccion\jsTables.js" />
+    <Content Include="Content\JsInteraccion\JsValidacion.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -407,6 +414,8 @@
     <Content Include="Views\Pro_Producto\_modalPrecio.cshtml" />
     <Content Include="Views\Pro_Producto\_modalSeccion.cshtml" />
     <Content Include="Views\Pro_Producto\_modalTipoProducto.cshtml" />
+    <Content Include="Views\Caj_LibroCaja\_Nuevo.cshtml" />
+    <Content Include="Views\Caj_LibroCaja\_ListarLibroCaja.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

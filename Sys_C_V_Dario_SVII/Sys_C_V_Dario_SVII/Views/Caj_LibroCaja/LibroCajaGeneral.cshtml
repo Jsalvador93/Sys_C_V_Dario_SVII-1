@@ -3,11 +3,22 @@
     ViewBag.Title = "LibroCajaGeneral";
 }
 
+<script type="text/javascript">
+    $(function () {
+
+    });
+    function fn_ListarLibroCaja(_case, filtro) {
+        fn_ListarTabla( _case , filtro , "/ListarLibroCaja" , "/Caj_LibroCaja" , "tbl_LibroCaja")
+    }
+</script>
+
 <section>
-    <h1>Libro de Caja General</h1>
+    <h1><b>LIBRO DE CAJA GENERAL</b></h1>
 </section>
 <div class="box">
-    <p1> Filtro </p1>
+    <div>
+        <h4>FILTRO</h4>
+    </div>
     <div class="box-body">
         <form class="form">
             <div class="form-group">
@@ -31,9 +42,7 @@
                     <div class="col-sm-2 col-md-2 col-lg-1">
                         <button type="button" class="btn btn-default" name="btnFiltrar" id="btnFiltrar">Filtrar</button>
                     </div>
-                    <div class="col-sm-2 col-md-2 col-lg-1">
-                        <button type="button" class="btn btn-default" name="btnNuevo" id="btnNuevo"> Nuevo</button>
-                    </div>
+                    
                 </div>
             </div>
         </form>
@@ -44,29 +53,17 @@
         <form class="form">
             <div class="form-group">
                 <div class="row">
+                    <div class="col-sm-2 col-md-2 col-lg-1">
+                        <button type="button" class="btn btn-info" name="btnNuevoLibro" id="btnNuevoLibro">Nuevo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <div class="table-responsive">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>Desde</th>
-                                    <th>Hasta</th>
-                                    <th>Caja Inicial</th>
-                                    <th>Total Ingreso</th>
-                                    <th>Total Egreso</th>
-                                    <th>Estado</th>
-                                    <th>Operacion</th>
-                                </tr>
-                                <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th>
-                                        @Html.Partial("_DetalleLibroCaja")
-                                    </th>
-                                </tr>
+                            <table class="table table-striped" id="tbl_LibroCaja">
+                                
                             </table>
                         </div>
                     </div>
@@ -75,3 +72,7 @@
         </form>
     </div>
 </div>
+
+<div id="MyContainer"></div>
+
+<div id="MyMessage"></div>
