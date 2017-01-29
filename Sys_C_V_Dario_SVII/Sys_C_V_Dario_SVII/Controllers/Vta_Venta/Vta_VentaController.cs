@@ -25,7 +25,7 @@ namespace Sys_C_V_Dario_SVII.Controllers.Vta_Venta
             string pDato = Convert.ToString(i_idVenta);
             Vta_VentaDA objVentaDA = new Vta_VentaDA();
             Vta_VentaBE objVentaBE = new Vta_VentaBE();
-            foreach (Vta_VentaBE objVenta in objVentaDA.ListaRegistroVenta(0, pDato))
+            foreach (Vta_VentaBE objVenta in objVentaDA.ListaRegistroVenta(1, pDato))
             {
                 objVentaBE = objVenta;
             }
@@ -38,7 +38,7 @@ namespace Sys_C_V_Dario_SVII.Controllers.Vta_Venta
             string pDato = Convert.ToString(i_idVenta);
             Vta_VentaDA objVentaDA = new Vta_VentaDA();
             Vta_VentaBE objVentaBE = new Vta_VentaBE();
-            foreach (Vta_VentaBE objVenta in objVentaDA.ListaRegistroVenta(0, pDato))
+            foreach (Vta_VentaBE objVenta in objVentaDA.ListaRegistroVenta(1, pDato))
             {
                 objVentaBE = objVenta;
             }
