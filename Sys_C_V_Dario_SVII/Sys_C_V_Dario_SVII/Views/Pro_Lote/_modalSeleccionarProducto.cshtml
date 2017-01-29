@@ -1,0 +1,141 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Mod_Compra.Pro_Producto.Pro_ProductoBE>
+
+<div class="modal fade" id="MDetalles" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" id="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title" id="exampleModalLabel">Sección</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-3">Codigo Producto :</h4>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                                        <span class="input-group-btn">
+                                            <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4 class="col-md-3">Seccion :</h4>
+                                <h4 class="col-md-2">Tipo Producto:</h4>
+                                <h4 class="col-md-2">Marca :</h4>
+                                <h4 class="col-md-2">Categoria:</h4>
+                                <h4 class="col-md-3">Sub Categoria:</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="col-md-3">
+                                <select class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-2">
+                                <select class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2">
+                                <select class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <select class="form-control">
+                                    <option>Seleccionar</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Tabla Modal -->
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <!-- Contenido -->
+                                <div class="col-lg-12">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Producto</th>
+                                                    <th>Seccion</th>
+                                                    <th>Tipo Producto</th>
+                                                    <th>Marca</th>
+                                                    <th>Descripción</th>
+                                                    <th>Estado</th>
+                                                    <th>Operacion</th>
+                                                </tr>
+                                            </thead>
+                                            @foreach (var item in Model)
+                                            {
+                                            <tbody>
+                                                <tr>
+                                                    <td>@Html.DisplayFor(modelItem => item.c_codProducto)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.oSeccionBE.vc_dscpSeccion)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.oTipoProductoBE.vc_dscpTipProducto)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.oMarcaBE.vc_dscpMarca)</td>
+                                                    <td>@Html.DisplayFor(modelItem => item.vc_dscpProducto)</td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option>Estado</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-info">Seleccionar</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>}
+                                        </table>
+                                    </div>
+                                </div>
+                                <!-- Contenido -->
+                            </div>
+                        </div>
+                        <!-- Tabla Modal -->
+                    </form>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+            </div>
+            </div>
+        </div>
+    </div>

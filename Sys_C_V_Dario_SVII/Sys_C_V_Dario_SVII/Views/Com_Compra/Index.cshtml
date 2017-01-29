@@ -1,0 +1,175 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Mod_Compra.Com_Compra.Com_CompraBE>
+
+
+@{
+    ViewBag.Title = "Index";
+    //Layout = "~/Views/Shared/Plantilla.cshtml";
+}
+
+<script type="text/javascript">
+
+    function fn_DetallesCompra(pi_idCompra) {
+                    //controller   action           parametros        contenedor del modal   id del modal
+        fn_Detalles("/Com_Compra", "/_modalDetalle", { i_idCompra: pi_idCompra }, "MyContainer", "MDetalles");
+    }
+
+    function ListarCompra(_case, filtro) {
+        fn_ListarTabla(_case, filtro, "/ListarCompra", "/Com_Compra", "tblCompra");
+    }
+
+</script>
+
+<div class="content">
+    <!-- Encabezado Body -->
+    <section class="content-header">
+        <h1>
+            Compras
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-laptop"></i>Gestionar Compras</a></li>
+            <li class="active">Compras</li>
+        </ol>
+    </section>
+    <!-- Encabezado Body -->
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Primera Tabla -->
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <div class="col-md-2">
+                                        <a href="@Url.Action("RegistrarCompra" , "RegistrarCompra", new { area = "Mod_Compra" } )"><button type="button" class="btn btn-block btn-primary">Registrar Compra</button></a>
+                                    </div>
+                                    <div class="FechaForm1">
+                                        <h4 class="col-md-8">Fecha:</h4>
+                                        <h4 class="col-md-2">12/11/2016</h4>
+                                    </div>
+                                    <style>
+                                        .FechaForm1 {
+                                            text-align: right;
+                                        }
+                                    </style>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Primera Tabla -->
+                <!-- Segunda Tabla -->
+                <div class="box box-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <h4 class="col-md-3 text-left">Fecha Inicio - Fin :</h4>
+                                    <!-- Boton de DateRange -->
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" id="reservation">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Boton de DateRange -->
+
+                                    <h4 class="col-md-3 text-left">Codigo de Compra:</h4>
+                                    <!-- Boton de Busqueda -->
+                                    <div class="col-md-3">
+                                        <div class="input-group">
+                                            <input type="text" name="q" class="form-control" placeholder="Search...">
+                                            <span class="input-group-btn">
+                                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                                    <i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- Boton de Busqueda -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Segunda Tabla -->
+                <!-- Tercera Tabla - Compras -->
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <div class="col-lg-12">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-hover table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Compra</th>
+                                                        <th>Fecha de Compra</th>
+                                                        <th>Registro</th>
+                                                        <th>Usuario Comprador</th>
+                                                        <th>Comprador</th>
+                                                        <th>Usuario Registrador</th>
+                                                        <th>Registrador</th>
+                                                        <th>Proveedor</th>
+                                                        <th>Comprobante</th>
+                                                        <th>Operaciones</th>
+                                                    </tr>
+                                                </thead>
+@if (Model != null)
+{
+                                                foreach (var item in Model)
+                                                {
+                                                <tbody>
+                                                    <tr>
+                                                        <td>@Html.DisplayFor(modelItem => item.i_idCompra)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.dt_fchCompra)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.dt_fchRegistro)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oTipoUsuarioComprador.vc_dscpTipUsuario)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oUsuarioComprador.oPersona.nombreCompleto)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oTipoUsuarioRegistrador.vc_dscpTipUsuario)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oUsuarioRegistrador.oPersona.nombreCompleto)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oPersona.nombreCompleto)</td>
+                                                        <td>@Html.DisplayFor(modelItem => item.oComprobante.vc_numComprobante)</td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="fn_DetallesCompra('@item.i_idCompra')">Detalles</button>
+                                                            <button type="button" class="btn  btn-info">Anular</button>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>}}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <nav class="pull-right">
+                                        <ul class="pagination">
+                                            <li><a href="#" aria-label="Anterior"><span aria-hidden="true">«</span></a></li>
+                                            <li class="active"><a href="#">1 <span class="sr-only">(página actual)</span></a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#" aria-label="Siguiente"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Tercera Tabla - Compras -->
+            </div>
+        </div>
+    </section>
+    <!-- Main content -->
+</div>
+
+<!-- Modal -->
+<div id="MyContainer"></div>
+<!-- Modal -->

@@ -7,23 +7,29 @@
 
                 <center><h4 class="modal-title" style="color:#ffffff">ACTUALIZAR DENOMINACION</h4></center>
             </div>
-            <br />
             <div class="modal-body">
 
                 <form class="form">
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">ID:</label>
-                        <div class="col-lg-6">
-                            @Html.TextBox("MtxtidDenominacion", Model.in_idDenominacion, new { type = "text", disabled = "false", @class = "form-control" })
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <label class="control-label">ID:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("MtxtidDenominacion", Model.in_idDenominacion, new { type = "text", disabled = "false", @class = "form-control" })
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-4 control-label">DESCRIPCION:</label>
-                        <div class="col-lg-6">
-                            @Html.TextBox("MtxtDscpDenominacion", Model.st_dscpDenominacion, new { type = "text", @class = "form-control" })
+                        <div class="row">
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                <label class="control-label">DESCRIPCION:</label>
+                            </div>
+                            <div class="col-sm-8 col-md-8 col-lg-7">
+                                @Html.TextBox("MtxtDscpDenominacion", Model.st_dscpDenominacion, new { type = "text", @class = "form-control" })
+                            </div>
                         </div>
                     </div>
-
                 </form>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal" name="btnGuardar" id="btnGuardar">GUARDAR</button>

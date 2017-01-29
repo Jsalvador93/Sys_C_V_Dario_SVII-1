@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="~/Content/JsInteraccion/jsTables.js"></script>
+    <script src="~/Content/JsInteraccion/jsDatos.js"> </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
     <div class="wrapper">
@@ -258,8 +260,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Lista Pedidos</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Pedidos</a></li>
+                                    <li><a href="@Url.Action("Index","Com_Pedido")"><i class="fa fa-circle-o"></i>Lista Pedidos</a></li>
+                                    <li><a href="@Url.Action("RegistrarPedidos","Com_Pedido")"><i class="fa fa-circle-o"></i> Registrar Pedidos</a></li>
                                 </ul>
                             </li>
 
@@ -273,8 +275,8 @@
                                 </a>
                                 <ul class="treeview-menu">
                                     <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Proveedor</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Lista Compra</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Compra</a></li>
+                                    <li><a href="@Url.Action("Index","Com_Compra")"><i class="fa fa-circle-o"></i> Lista Compra</a></li>
+                                    <li><a href="@Url.Action("RegistrarCompra","Com_Compra")"><i class="fa fa-circle-o"></i> Registrar Compra</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -285,10 +287,10 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Lista Lote  </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Lote </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Lista Producto</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registrar Producto</a></li>
+                                    <li><a href="@Url.Action("Index","Pro_Lote")"><i class="fa fa-circle-o"></i> Lista Lote  </a></li>
+                                    <li><a href="@Url.Action("RegistrarLote","Pro_Lote")"><i class="fa fa-circle-o"></i> Registrar Lote </a></li>
+                                    <li><a href="@Url.Action("Index","Pro_Producto")"><i class="fa fa-circle-o"></i> Lista Producto</a></li>
+                                    <li><a href="@Url.Action("RegistrarProducto","Pro_Producto")"><i class="fa fa-circle-o"></i> Registrar Producto</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -298,7 +300,7 @@
                     <li class="active treeview">
                     <li class="treeview">
                         <a href="#">
-                            <i class="fa fa-pie-chart"></i>
+                            <i class="fa fa-line-chart"></i>
                             <span>Módulo Ventas</span>
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
@@ -315,9 +317,19 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Registrar Cliente</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Lista Ventas</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i>Registrar Ventas</a></li>
+                                    <li><a href="@Url.Action("RegistrarVenta","Vta_Venta")"><i class="fa fa-circle-o"></i>Registrar Venta</a></li>
+                                    <li><a href="@Url.Action("Index","Vta_Venta")"><i class="fa fa-circle-o"></i>Listar Ventas</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-pie-chart"></i>
+                                    <span>Gestionar Devoluciones</span>
+                                    <span class="pull-right-container">
+                                        <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
                                     <li><a href="#"><i class="fa fa-circle-o"></i>Registrar Devolucion</a></li>
                                 </ul>
                             </li>
@@ -547,8 +559,6 @@
     <script src="../../Content/plugins/datepicker/bootstrap-datepicker.js"></script>
     <!-- Principal -->
     <script src="../../Content/dist/js/app.js"></script>
-    <script src="~/Content/JsInteraccion/jsTables.js"></script>
-    <script src="~/Content/JsInteraccion/jsDatos.js"></script>
     <script>
     $('#datepicker').datepicker({
       autoclose: true

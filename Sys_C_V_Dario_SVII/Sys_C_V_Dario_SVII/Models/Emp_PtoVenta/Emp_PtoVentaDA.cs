@@ -28,8 +28,8 @@ namespace Sys_C_V_Dario_SVII.Models.Emp_PtoVenta
 
                     objPtoVenta = new Emp_PtoVentaBE();
                     objPtoVenta.in_idPtoVenta = (int)objSqlDataReader["i_idPtoVenta"];
-                    objPtoVenta.st_dscpPtoVenta = (string)objSqlDataReader["vc_nombre"];
-                    objPtoVenta.objSucursal.in_idSucursal = (int)objSqlDataReader["i_idSucursal"];
+                    objPtoVenta.st_dscpPtoVenta = (string)objSqlDataReader["vc_dscpPtoVenta"];
+                    objPtoVenta.objSucursal.in_idSucursal = (int)objSqlDataReader["ti_idSucursal"];
                     objPtoVenta.objSucursal.st_dscpSucursal = (string)objSqlDataReader["vc_dscpSucursal"];
                     objPtoVenta.dt_fchRegistro = (DateTime)objSqlDataReader["dt_fchRegistro"];
                     objListPtoVenta.Add(objPtoVenta);

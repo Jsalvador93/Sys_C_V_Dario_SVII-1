@@ -30,7 +30,7 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Compra.Pro_Producto
                                 oPro_ProductoBE.oTipoProductoBE.vc_dscpTipProducto = (string)(oSqlDataReader["vc_dscpTipProducto"]);
                                 oPro_ProductoBE.oMarcaBE.vc_dscpMarca = (string)(oSqlDataReader["vc_dscpMarca"]);
                                 oPro_ProductoBE.vc_dscpProducto = (string)(oSqlDataReader["vc_dscpProducto"]);
-                                oPro_ProductoBE.oRegistroProducto.dt_fchRegistro = (DateTime)(oSqlDataReader["dt_fchRegistro"]);
+                                //oPro_ProductoBE.oRegistroProducto.dt_fchRegistro = (DateTime)(oSqlDataReader["dt_fchRegistro"]);
                                 oPro_ProductoBE.oListPrecio = ListaRegistroPrecio(oPro_ProductoBE.c_codProducto);
                                 oListPro_ProductoBE.Add(oPro_ProductoBE);
                             }

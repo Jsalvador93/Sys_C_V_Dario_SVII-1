@@ -30,3 +30,15 @@ function fillcbo(idcbo, val, dscp) {
     $("#" + idcbo).append("<option value = '" + val + "'> " + dscp + "</option>");
 }
 
+function fn_ControlElement(Element) {
+    //var val = $(Element).val();
+    alert($("#"+Element).val());
+}
+
+// validate nombres o apellidos
+function fn_Validate_ID_05(Etiqueta) {
+    $("#" + Etiqueta).keypress(function ( evt ) {
+
+    });
+}
+

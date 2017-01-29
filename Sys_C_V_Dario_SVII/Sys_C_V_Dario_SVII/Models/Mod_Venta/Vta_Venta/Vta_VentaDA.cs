@@ -9,6 +9,50 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
 {
     public class Vta_VentaDA
     {
+
+        public Boolean RegistrarVenta(Vta_VentaBE oVenta)
+        {
+            using (SqlConnection conexion = Sys_Conexion.Conexion.GetConexion())
+            {
+                conexion.Open();
+                SqlTransaction oTransaction = conexion.BeginTransaction();
+                try
+                {
+                    using (SqlCommand oSqlCommand = new SqlCommand("SP_VTA_ABM_VENTA", conexion))
+                    {
+                        oSqlCommand.CommandType = CommandType.StoredProcedure;
+                        oSqlCommand.Transaction = oTransaction;
+                        oSqlCommand.Parameters.Add("@tipoABM", SqlDbType.Int).Value = 1;
+                        oSqlCommand.Parameters.Add("@i_idVenta", SqlDbType.Int).Value = oVenta.i_idVenta;
+                        oSqlCommand.Parameters.Add("@vc_codUsuario", SqlDbType.VarChar).Value = oVenta.oUsuario.vc_codUsuario;
+                        oSqlCommand.Parameters.Add("@i_idPersona", SqlDbType.Int).Value = oVenta.oPersona.i_idPersona;
+                        oSqlCommand.ExecuteNonQuery();
+                        foreach (Vta_Venta_DetalleBE oVentaDetalle in oVenta.oListVentaDetalle)
+                        {
+                            oSqlCommand.CommandText = "SP_VTA_ABM_VENTA_DETALLE";
+                            oSqlCommand.Parameters.Clear();
+                            oSqlCommand.Parameters.Add("@tipoABM", SqlDbType.Int).Value = 1;
+                            oSqlCommand.Parameters.Add("@i_idVntDetalle", SqlDbType.Int).Value = oVentaDetalle.i_idVntDetalle;
+                            oSqlCommand.Parameters.Add("@i_idVenta", SqlDbType.Int).Value = oVenta.i_idVenta;
+                            oSqlCommand.Parameters.Add("@f_totalVntDetalle", SqlDbType.Float).Value = oVentaDetalle.f_totalVntDetalle;
+                            oSqlCommand.Parameters.Add("@f_cntPrdVntDetalle", SqlDbType.Float).Value = oVentaDetalle.f_cntPrdVntDetalle;
+                            oSqlCommand.Parameters.Add("@c_codProducto", SqlDbType.Char).Value = oVentaDetalle.oProductoBE.c_codProducto;
+                            oSqlCommand.ExecuteNonQuery();
+                        }
+                    }
+                    oTransaction.Commit();
+                    conexion.Close();
+                    return true;
+                }
+                catch (System.Exception e)
+                {
+                    oTransaction.Rollback();
+                    conexion.Close();
+                    return false;
+                }
+            }
+        }
+
         public List<Vta_Venta_DetalleBE> ListaRegistroVentaDetalle(int dato)
         {
             List<Vta_Venta_DetalleBE> oListVentaDetalle = new List<Vta_Venta_DetalleBE>();
@@ -17,17 +61,9 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
                 try
                 {
                     conexion.Open();
-                    string strCondicion = string.Empty;
                     using (SqlCommand oSqlCommand = new SqlCommand("SP_VTA_LC_VENTA_DETALLE", conexion))
                     {
-                        if (dato == 0)
-                        {
-                            strCondicion = "";
-                        }
-                        else
-                        {
-                            oSqlCommand.Parameters.Add("@pDato", SqlDbType.VarChar).Value = dato;
-                        }
+                        oSqlCommand.Parameters.Add("@pDato", SqlDbType.Int).Value = dato;
                         oSqlCommand.CommandType = CommandType.StoredProcedure;
                         using (SqlDataReader oSqlDataReader = oSqlCommand.ExecuteReader())
                         {
@@ -75,7 +111,7 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
                                 Vta_VentaBE oVta_VentaBE = new Vta_VentaBE();
                                 oVta_VentaBE.i_idVenta = (int)(oSqlDataReader["i_idVenta"]);
                                 oVta_VentaBE.dt_fchRegistro = (DateTime)(oSqlDataReader["dt_fchRegistro"]);
-                                oVta_VentaBE.oUsuario.oPersonaBE.nombreCompleto = (string)(oSqlDataReader["nombreUsuario"]);
+                                oVta_VentaBE.oUsuario.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreUsuario"]);
                                 oVta_VentaBE.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreCliente"]);
                                 //oVta_VentaBE.oComprobante.oTipo_ComprobanteBE.vc_dscpTipComprobante = (string)(oSqlDataReader["vc_dscpTipComprobante"]);
                                 //oVta_VentaBE.oComprobante.i_idComprobante = (int)(oSqlDataReader["i_idComprobante"]);
