@@ -121,7 +121,9 @@
                                                         <th>Operaciones</th>
                                                     </tr>
                                                 </thead>
-                                                @foreach (var item in Model)
+@if (Model != null)
+{
+                                                foreach (var item in Model)
                                                 {
                                                 <tbody>
                                                     <tr>
@@ -139,7 +141,7 @@
                                                             <button type="button" class="btn  btn-info">Anular</button>
                                                         </td>
                                                     </tr>
-                                                </tbody>}
+                                                </tbody>}}
                                             </table>
                                         </div>
                                     </div>

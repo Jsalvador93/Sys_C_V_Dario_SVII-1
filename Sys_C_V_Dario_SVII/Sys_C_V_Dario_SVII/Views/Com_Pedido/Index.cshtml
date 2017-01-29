@@ -119,7 +119,9 @@
                                                         <th>Orden de Compra</th>
                                                     </tr>
                                                 </thead>
-                                                @foreach (var item in Model)
+@if (Model != null)
+{
+                                                foreach (var item in Model)
                                                 {
                                                 <tbody>
                                                     <tr>
@@ -143,7 +145,7 @@
                                                             <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="fn_DetallesLote('@item.i_idPedido')">op</button>
                                                         </td>
                                                     </tr>
-                                                </tbody>}
+                                                </tbody>}}
                                             </table>
                                         </div>
                                     </div>
