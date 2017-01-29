@@ -119,12 +119,12 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
                                 Vta_VentaBE oVta_VentaBE = new Vta_VentaBE();
                                 oVta_VentaBE.i_idVenta = (int)(oSqlDataReader["i_idVenta"]);
                                 oVta_VentaBE.dt_fchRegistro = (DateTime)(oSqlDataReader["dt_fchRegistro"]);
-                                oVta_VentaBE.oTipoUsuario.vc_dscpTipUsuario = (string)(oSqlDataReader["vc_dscpTipUsuario"]);
                                 oVta_VentaBE.oUsuario.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreUsuario"]);
                                 oVta_VentaBE.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreCliente"]);
-                                oVta_VentaBE.oComprobante.oTipo_ComprobanteBE.vc_dscpTipComprobante = (string)(oSqlDataReader["vc_dscpTipComprobante"]);
-                                oVta_VentaBE.oComprobante.i_idComprobante = (int)(oSqlDataReader["i_idComprobante"]);
-                                oVta_VentaBE.oComprobante.vc_numComprobante = (string)(oSqlDataReader["vc_numComprobante"]);
+                                //oVta_VentaBE.oComprobante.oTipo_ComprobanteBE.vc_dscpTipComprobante = (string)(oSqlDataReader["vc_dscpTipComprobante"]);
+                                //oVta_VentaBE.oComprobante.i_idComprobante = (int)(oSqlDataReader["i_idComprobante"]);
+                                //oVta_VentaBE.oComprobante.vc_numComprobante = (string)(oSqlDataReader["vc_numComprobante"]);
+                                oVta_VentaBE.oTipoEstado.vc_dscpTipEstado = (string)(oSqlDataReader["vc_dscpTipEstado"]);
                                 oVta_VentaBE.subTotal = (double)(oSqlDataReader["subtotal"]);
                                 oVta_VentaBE.oListVentaDetalle = ListaRegistroVentaDetalle(oVta_VentaBE.i_idVenta);
                                 oListVenta.Add(oVta_VentaBE);

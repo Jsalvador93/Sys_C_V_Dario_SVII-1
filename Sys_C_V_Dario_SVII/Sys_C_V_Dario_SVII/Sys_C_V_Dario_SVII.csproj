@@ -255,6 +255,7 @@
     <Compile Include="Models\Mod_Compra\Pro_Unidad_Producto\Pro_Unidad_ProductoBE.cs" />
     <Compile Include="Models\Mod_Compra\Pro_Unidad_Producto\Pro_Unidad_ProductoDA.cs" />
     <Compile Include="Models\Mod_Sistema\Emp_Empresa\Emp_EmpresaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Est_Tipo_Estado\Est_Tipo_Estado.cs" />
     <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_JuridicaBE.cs" />
     <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_NaturalBE.cs" />
     <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_PersonaBE.cs" />
@@ -425,7 +426,6 @@
     <Folder Include="Content\dist\" />
     <Folder Include="Content\images\" />
     <Folder Include="Content\plugins\" />
-    <Folder Include="Models\Mod_Sistema\Est_Estado\" />
     <Folder Include="Models\Mod_Sistema\Sys_Direccion\" />
   </ItemGroup>
   <ItemGroup>
