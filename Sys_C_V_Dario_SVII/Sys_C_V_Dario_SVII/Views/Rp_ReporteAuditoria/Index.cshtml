@@ -1,0 +1,77 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<Sys_C_V_Dario_SVII.Models.Rp_ReporteAuditoria.ReporteAuditoriaBE>
+
+<center>
+    <h2><b>REPORTE AUDITORIA</b></h2>
+</center>
+
+
+
+<div class="box box-primary">
+    <h4>Filtro</h4>
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2">
+                        Filtro
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option value="0" selected>todos</option>
+                            <option value="1">Username</option>
+                            <option value="2">FechaRegistro</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <input type="text" name="txtFiltro" id="txtFiltro" placeholder="Ingrese el Filtro" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+
+                        <button type="button" class="form-control btn btn-info">Aplicar</button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<div class="box box-primary">
+    <p>Tabla Auditoria</p>
+    <div class="box-body">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <th>Fecha Registro</th>
+                                <th>Sesion</th>
+                                <th>Username</th>
+                            </tr>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.dt_fchIngreso</td>
+                                        <td>@item.vc_sesion</td>
+                                        <td>@item.vc_username</td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

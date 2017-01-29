@@ -78,7 +78,7 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
                                 oVta_VentaBE.oTipoUsuario.vc_dscpTipUsuario = (string)(oSqlDataReader["vc_dscpTipUsuario"]);
                                 oVta_VentaBE.oUsuario.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreUsuario"]);
                                 oVta_VentaBE.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreCliente"]);
-                                oVta_VentaBE.oTipoComprobante.vc_dscpTipComprobante = (string)(oSqlDataReader["vc_dscpTipComprobante"]);
+                                oVta_VentaBE.oComprobante.vc_numComprobante = (string)(oSqlDataReader["vc_numComprobante"]);
                                 oVta_VentaBE.oListVentaDetalle = ListaRegistroVentaDetalle(oVta_VentaBE.i_idVenta);
                                 oListVenta.Add(oVta_VentaBE);
                             }
