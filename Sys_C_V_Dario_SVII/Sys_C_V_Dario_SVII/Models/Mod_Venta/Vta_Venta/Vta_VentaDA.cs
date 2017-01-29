@@ -61,17 +61,9 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
                 try
                 {
                     conexion.Open();
-                    string strCondicion = string.Empty;
                     using (SqlCommand oSqlCommand = new SqlCommand("SP_VTA_LC_VENTA_DETALLE", conexion))
                     {
-                        if (dato == 0)
-                        {
-                            strCondicion = "";
-                        }
-                        else
-                        {
-                            oSqlCommand.Parameters.Add("@pDato", SqlDbType.VarChar).Value = dato;
-                        }
+                        oSqlCommand.Parameters.Add("@pDato", SqlDbType.Int).Value = dato;
                         oSqlCommand.CommandType = CommandType.StoredProcedure;
                         using (SqlDataReader oSqlDataReader = oSqlCommand.ExecuteReader())
                         {
@@ -124,8 +116,10 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
                                 //oVta_VentaBE.oComprobante.oTipo_ComprobanteBE.vc_dscpTipComprobante = (string)(oSqlDataReader["vc_dscpTipComprobante"]);
                                 //oVta_VentaBE.oComprobante.i_idComprobante = (int)(oSqlDataReader["i_idComprobante"]);
                                 //oVta_VentaBE.oComprobante.vc_numComprobante = (string)(oSqlDataReader["vc_numComprobante"]);
-                                oVta_VentaBE.oTipoEstado.vc_dscpTipEstado = (string)(oSqlDataReader["vc_dscpTipEstado"]);
-                                oVta_VentaBE.subTotal = (double)(oSqlDataReader["subtotal"]);
+                                //oVta_VentaBE.oTipoEstado.vc_dscpTipEstado = (string)(oSqlDataReader["vc_dscpTipEstado"]);
+                                oVta_VentaBE.subTotal = (decimal)(oSqlDataReader["subtotal"]);
+                                oVta_VentaBE.igv = (decimal)(oSqlDataReader["igv"]);
+                                oVta_VentaBE.total = (decimal)(oSqlDataReader["total"]);
                                 oVta_VentaBE.oListVentaDetalle = ListaRegistroVentaDetalle(oVta_VentaBE.i_idVenta);
                                 oListVenta.Add(oVta_VentaBE);
                             }
