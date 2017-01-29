@@ -11,7 +11,7 @@ namespace Sys_C_V_Dario_SVII.Models.Sys_Conexion
     {
         public static SqlConnection GetConexion()
         {
-            string lStrCadConex = ConfigurationManager.ConnectionStrings["cnnDb_C_V_DarioF"].ConnectionString;
+            string lStrCadConex = ConfigurationManager.ConnectionStrings["cnnC_V_Dario"].ConnectionString;
             SqlConnection connexion = new SqlConnection(lStrCadConex);
             return connexion;
         }

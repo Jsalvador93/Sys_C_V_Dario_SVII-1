@@ -250,6 +250,7 @@
     <Compile Include="Models\Mod_Compra\Pro_Unidad_Producto\Pro_Unidad_ProductoDA.cs" />
     <Compile Include="Models\Mod_Sistema\Emp_Empresa\EmpresaBE.cs" />
     <Compile Include="Models\Mod_Sistema\Emp_Logo\LogoBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_PersonaBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Interfaz\InterfazBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Modulo\ModuloBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Rol\RolBE.cs" />

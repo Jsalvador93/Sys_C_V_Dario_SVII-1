@@ -18,7 +18,7 @@ namespace Sys_C_V_Dario_SVII.Models.Rp_ReporteProducto
                 objSqlConnection.Open();
                 List<ReporteProductoBE> objListReporteProducto = new List<ReporteProductoBE>();
                 ReporteProductoBE objReporteProducto;          //sp_list_Caj_Denominacion_listar
-                SqlCommand objSqlCommand = new SqlCommand("sp_list_Rp_Producto_listar_1", objSqlConnection);
+                SqlCommand objSqlCommand = new SqlCommand("sp_list_Rp_Producto_listar", objSqlConnection);
                 objSqlCommand.CommandType = CommandType.StoredProcedure;
                 objSqlCommand.Parameters.Add(new SqlParameter("@case", _case));
                 objSqlCommand.Parameters.Add(new SqlParameter("@filtro", filtro));
@@ -31,8 +31,8 @@ namespace Sys_C_V_Dario_SVII.Models.Rp_ReporteProducto
                     objReporteProducto.objProProductoBE.oSeccionBE.vc_dscpSeccion = (string)objSqlDataReader["vc_dscpSeccion"];
                     objReporteProducto.objProProductoBE.oTipoProductoBE.vc_dscpTipProducto = (string)objSqlDataReader["vc_dscpTipProducto"];
                     objReporteProducto.objProProductoBE.oMarcaBE.vc_dscpMarca = (string)objSqlDataReader["vc_dscpMarca"];
-                    objReporteProducto.objProPrecioBE.f_prcCompra = (float)objSqlDataReader["f_prcCompra"];
-                    objReporteProducto.objProPrecioBE.f_prcVenta= (float)objSqlDataReader["f_prcVenta"];
+                    objReporteProducto.objProPrecioBE.f_prcCompra = (float)(double)objSqlDataReader["f_prcCompra"];
+                    objReporteProducto.objProPrecioBE.f_prcVenta= (float)(double)objSqlDataReader["f_prcVenta"];
                     objListReporteProducto.Add(objReporteProducto);
                 }
                 objSqlDataReader.Close();

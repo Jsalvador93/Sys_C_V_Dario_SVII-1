@@ -77,10 +77,10 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Compra.Com_Compra
                                 oCom_CompraBE.i_idCompra = (int)(oSqlDataReader["i_idCompra"]);
                                 oCom_CompraBE.dt_fchCompra = (DateTime)(oSqlDataReader["dt_fchCompra"]);
                                 oCom_CompraBE.dt_fchRegistro = (DateTime)(oSqlDataReader["dt_fchRegistro"]);
-                                oCom_CompraBE.oTipoUsuarioComprador.vc_dscpTipUsuario = (string)(oSqlDataReader["vc_dscpTipUsuario"]);
-                                oCom_CompraBE.oUsuarioComprador.oPersona.nombreCompleto = (string)(oSqlDataReader["Comprador"]);
-                                oCom_CompraBE.oTipoUsuarioRegistrador.vc_dscpTipUsuario = (string)(oSqlDataReader["vc_dscpTipUsuario"]);
-                                oCom_CompraBE.oUsuarioRegistrador.oPersona.nombreCompleto = (string)(oSqlDataReader["Registrador"]);
+                                //oCom_CompraBE.oTipoUsuarioComprador.vc_dscpTipUsuario = (string)(oSqlDataReader["vc_dscpTipUsuario"]);
+                                oCom_CompraBE.oUsuarioComprador.oPersonaBE.nombreCompleto = (string)(oSqlDataReader["Comprador"]);
+                                //oCom_CompraBE.oTipoUsuarioRegistrador.vc_dscpTipUsuario = (string)(oSqlDataReader["vc_dscpTipUsuario"]);
+                                oCom_CompraBE.oUsuarioRegistrador.oPersonaBE.nombreCompleto = (string)(oSqlDataReader["Registrador"]);
                                 oCom_CompraBE.oPersona.nombreCompleto = (string)(oSqlDataReader["Proveedor"]);
                                 oCom_CompraBE.oComprobante.vc_numComprobante = (string)(oSqlDataReader["vc_numComprobante"]);
                                 oCom_CompraBE.oListCompraDetalle = ListaRegistroCompraDetalle(oCom_CompraBE.i_idCompra);

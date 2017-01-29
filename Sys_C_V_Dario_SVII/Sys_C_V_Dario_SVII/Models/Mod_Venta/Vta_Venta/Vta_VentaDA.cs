@@ -75,7 +75,7 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
                                 Vta_VentaBE oVta_VentaBE = new Vta_VentaBE();
                                 oVta_VentaBE.i_idVenta = (int)(oSqlDataReader["i_idVenta"]);
                                 oVta_VentaBE.dt_fchRegistro = (DateTime)(oSqlDataReader["dt_fchRegistro"]);
-                                oVta_VentaBE.oUsuario.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreUsuario"]);
+                                oVta_VentaBE.oUsuario.oPersonaBE.nombreCompleto = (string)(oSqlDataReader["nombreUsuario"]);
                                 oVta_VentaBE.oPersona.nombreCompleto = (string)(oSqlDataReader["nombreCliente"]);
                                 //oVta_VentaBE.oComprobante.oTipo_ComprobanteBE.vc_dscpTipComprobante = (string)(oSqlDataReader["vc_dscpTipComprobante"]);
                                 //oVta_VentaBE.oComprobante.i_idComprobante = (int)(oSqlDataReader["i_idComprobante"]);
