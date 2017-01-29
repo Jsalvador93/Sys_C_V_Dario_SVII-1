@@ -10,20 +10,23 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Venta.Vta_Venta
     {
         public int i_idVenta { get; set; }
         public DateTime dt_fchRegistro { get; set; }
-        public Mod_Sistema.Rol_Tipo_Usuario.Rol_Tipo_UsuarioBE oTipoUsuario { get; set; }
         public Mod_Sistema.Rol_Usuario.Rol_UsuarioBE oUsuario { get; set; }
         public Mod_Sistema.Pers_Persona.Pers_PersonaBE oPersona { get; set; }
-        public Mod_Venta.Cprb_Comprobante.Cprb_ComprobanteBE oComprobante { get; set; }
+        //public Cprb_Comprobante.Cprb_ComprobanteBE oComprobante { get; set; }
+        public decimal subTotal { get; set; }
+        public decimal igv { get; set; }
+        public decimal total { get; set; }
         public List<Vta_Venta_DetalleBE> oListVentaDetalle { get; set; }
         public List<Vta_VentaBE> oVenta { get; set; }
+        //public Mod_Sistema.Est_Tipo_Estado.Est_Tipo_Estado oTipoEstado { get; set; }
         public Vta_VentaBE()
         {
-            oTipoUsuario = new Mod_Sistema.Rol_Tipo_Usuario.Rol_Tipo_UsuarioBE();
             oPersona = new Mod_Sistema.Pers_Persona.Pers_PersonaBE();
-            oComprobante = new Cprb_Comprobante.Cprb_ComprobanteBE();
+            //oComprobante = new Cprb_Comprobante.Cprb_ComprobanteBE();
             oListVentaDetalle = new List<Vta_Venta_DetalleBE>();
             oUsuario = new Mod_Sistema.Rol_Usuario.Rol_UsuarioBE();
             oVenta = new List<Vta_VentaBE>();
+            //oTipoEstado = new Mod_Sistema.Est_Tipo_Estado.Est_Tipo_Estado();
         }
 
 
