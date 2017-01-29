@@ -30,8 +30,8 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_LibroCaja
                     objLibroCaja.dt_fchDesde = (DateTime)objSqlDataReader["dt_fchDesde"];
                     objLibroCaja.dt_fchHasta = (DateTime)objSqlDataReader["dt_fchHasta"];
                     objLibroCaja.dt_fchRegistro = (DateTime)objSqlDataReader["dt_fchRegistro"];
-                    objLibroCaja.fl_mntoSdoCaja = (float)(double)objSqlDataReader["f_mntSdoCaja"];
-                    objLibroCaja.fl_mtoCajChica = (float)(double)objSqlDataReader["f_mntCajChica"];
+                    objLibroCaja.fl_mntSdoCaja = (float)(double)objSqlDataReader["f_mntSdoCaja"];
+                    objLibroCaja.fl_mntCajChica = (float)(double)objSqlDataReader["f_mntCajChica"];
                     objLibroCaja.fl_totIngreso = (float)(double)objSqlDataReader["f_totIngreso"];
                     objLibroCaja.fl_totEgreso = (float)(double)objSqlDataReader["f_totEgreso"];
                     objListLibroCaja.Add(objLibroCaja);
