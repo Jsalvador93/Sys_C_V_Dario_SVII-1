@@ -8,6 +8,7 @@
 
     $(document).ready(function () {
         ListarVenta(0, '');
+        $("#txtIdVenta").keyup(fn_Filtrar);
     });
 
     function ListarVenta(_case, filtro) {
