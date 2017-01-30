@@ -77,7 +77,7 @@ namespace Sys_C_V_Dario_SVII.Models.Mod_Compra.Com_Pedido
                                 oCom_PedidoBE.i_idPedido = (int)(oSqlDataReader["i_idPedido"]);
                                 oCom_PedidoBE.dt_fchRgtPedido = (DateTime)(oSqlDataReader["dt_fchRgtPedido"]);
                                 //oCom_PedidoBE.oTipoUsuario.vc_dscpTipUsuario = (string)(oSqlDataReader["vc_dscpTipUsuario"]);
-                                oCom_PedidoBE.oUsuario.oPersonaBE.nombreCompleto = (string)(oSqlDataReader["Nombre persona"]);
+                                oCom_PedidoBE.oUsuario.oPersonaBE.st_nombreCompleto = (string)(oSqlDataReader["Nombre persona"]);
                                 oCom_PedidoBE.subTotal = (double)(oSqlDataReader["subtotal"]);
                                 oCom_PedidoBE.oListPedidoDetalle = ListaRegistroPedidoDetalle(oCom_PedidoBE.i_idPedido);
                                 oListPedido.Add(oCom_PedidoBE);
