@@ -1,0 +1,231 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<section class="content">
+    <div class="row">
+        <div class="box box-primary">
+            <div class="box box-body">
+                <div class="row">
+                    <div class="col-xs-6 col-md-4">
+                        <label>Codigo : </label>
+                        <input type="Text" id="c_codPais">
+                    </div>
+                    <div class="col-xs-6 col-md-4">
+                        <button type="submit" class="btn btn-default">Agregar</button>
+                    </div>
+                </div>
+                <br />
+                <div class="col-xs-6 col-md-4">
+                    <label>País : </label>
+                    <input type="text" id="vc_dscpPais">
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-xs-3 col-sm-2">
+                        <div class="col-log-6">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Dpto/Estado</button>
+                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledy="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form class="form-horizontal">
+                                            <div class="modal-header" style="background-color:#0D69A6">
+                                                <center><h4 style="color:#ffffff">Departamento/Estado</h4></center>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-4">
+                                                        <label>Codigo :</label>
+                                                        <input type="text" id="c_codPais">
+                                                    </div>
+                                                    <div class="col-xs-6 col-md-4">
+                                                        <button type="submit" class="btn btn-default">Agregar</button>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-4">
+                                                        <label>País : </label>
+                                                        <input type="text" id="vc_dscpPais">
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-md-4">
+                                                        <label for="Dpto">Dpto/Estado :</label>
+                                                        <input type="text" id="vc_dscpDepartamento">
+                                                    </div>
+                                                </div>
+                                                <br />
+
+                                                <table class="table table-condensed">
+                                                    <tr>
+                                                        <td>CODIGO</td>
+                                                        <td>PAIS</td>
+                                                        <td>DPTO/ESTADO</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <br />
+
+                                        </form>
+
+                                    </div>
+                                    <button type="button" class="btn btn-default">GUARDAR</button>
+                                    <button type="button" class="btn btn-default">CANCELAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-2">
+                        <div class="col-log-6">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModala">Provincia</button>
+                            <div class="modal fade" id="myModala" tabindex="-1" role="dialog" aria-labelledy="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#0D69A6">
+                                            <center><h4 style="color:#ffffff">Provincia</h4></center>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-4">
+                                                <label>Pais : </label>
+                                                <select>
+                                                    <option> </option>
+                                                    <option>Brasil</option>
+                                                    <option>Peru</option>
+                                                    <option>sdfsdgfdgas</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-6 col-sm-4">
+                                                <button type="submit" class="btn btn-default">Agregar</button>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-8">
+                                                <label>Dpto/Estado : </label>
+                                                <select>
+                                                    <option> </option>
+                                                    <option>Lima</option>
+                                                    <option>sljkdhflkjsfdglkf</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-6">
+                                                <label>Provincia :</label>
+                                                <input type="text" id="vc_dscrpProvincia">
+                                            </div>
+                                        </div>
+
+                                        <table class="table table-condensed">
+                                            <tr>
+                                                <td>PAIS</td>
+                                                <td>DPTO/ESTADO</td>
+                                                <td>PROVINCIA</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                        </table>
+                                        <br />
+
+                                    </div>
+                                    <button type="button" class="btn btn-default">GUARDAR</button>
+                                    <button type="button" class="btn btn-default">CANCELAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 col-sm-2">
+                        <div class="col-log-6">
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalre">Distrito</button>
+                            <div class="modal fade" id="myModalre" tabindex="-1" role="dialog" aria-labelledy="myModalLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header" style="background-color:#0D69A6">
+                                            <center><h4 style="color:#ffffff">Distrito</h4></center>
+                                        </div>
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-xs-6 col-md-4">
+                                                <label for="Pais">Pais : </label>
+                                                <select>
+                                                    <option>Seleccionar Pais</option>
+                                                    <option>Peru</option>
+                                                    <option>Brasil</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-xs-6 col-md-4">
+                                                <button type="submit" class="btn btn-default">Agregar</button>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-8">
+                                                <label for="Dpto">Dpto/Estado : </label>
+                                                <select>
+                                                    <option>Seleccionar Dpto/Estado</option>
+                                                    <option>Lima</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-8">
+                                                <label for="Provincia">Provincia : </label>
+                                                <select>
+                                                    <option>Seleccionar Provincia</option>
+                                                    <option>Huaura</option>
+                                                </select>
+                                            </div>
+
+                                            <div class="col-xs-12 col-md-8">
+                                                <label for="Distrito">Distrito :</label>
+                                                <input type="text" id="vc_dscpDistrito">
+                                            </div>
+
+                                            <br />
+                                        </div>
+                                        <table class="table table-condensed">
+                                            <tr>
+                                                <td>PAIS</td>
+                                                <td>DPTO/ESTADO</td>
+                                                <td>PROVINCIA</td>
+                                                <td>DISTRITO</td>
+                                            </tr>
+                                            <tr>
+                                                <td>*</td>
+                                                <td>*</td>
+                                                <td>*</td>
+                                                <td>*</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <button type="button" class="btn btn-default">GUARDAR</button>
+                                    <button type="button" class="btn btn-default">CANCELAR</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-default">Guardar</button>
+                <button type="submit" class="btn btn-default">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</section>
+        </div>

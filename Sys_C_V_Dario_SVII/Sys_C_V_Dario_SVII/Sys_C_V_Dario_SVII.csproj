@@ -181,6 +181,10 @@
     <Compile Include="Controllers\Caj_Turno\Caj_TurnoController.cs" />
     <Compile Include="Controllers\Com_Compra\Com_CompraController.cs" />
     <Compile Include="Controllers\Com_Pedido\Com_PedidoController.cs" />
+    <Compile Include="Controllers\Emp_Empresa\Emp_EmpresaController.cs" />
+    <Compile Include="Controllers\Emp_PtoVenta\Emp_PtoVentaController.cs" />
+    <Compile Include="Controllers\Emp_Representante\Emp_RepresentanteController.cs" />
+    <Compile Include="Controllers\Emp_Sucursal\Emp_SucursalController.cs" />
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Pro_Lote\Pro_LoteController.cs" />
     <Compile Include="Controllers\Pro_Producto\Pro_ProductoController.cs" />
@@ -210,6 +214,9 @@
     <Compile Include="Models\Caj_Turno\Caj_TurnoDA.cs" />
     <Compile Include="Models\Cprb_TipComprobante\Cprb_TipComprobanteBE.cs" />
     <Compile Include="Models\Cprb_TipComprobante\Cprb_TipComprobanteDA.cs" />
+    <Compile Include="Models\Emp_Empresa\Emp_EmpresaBE.cs" />
+    <Compile Include="Models\Emp_Empresa\Emp_EmpresaDA.cs" />
+    <Compile Include="Models\Emp_LogoBE\Emp_LogoBE.cs" />
     <Compile Include="Models\Emp_PtoVenta\Emp_PtoVentaDA.cs" />
     <Compile Include="Models\Emp_Sucursal\Emp_SucursalBE.cs" />
     <Compile Include="Models\Caj_Denominacion\Caj_DenominacionBE.cs" />
@@ -264,12 +271,18 @@
     <Compile Include="Models\Mod_Sistema\Emp_Logo\LogoBE.cs" />
     <Compile Include="Models\Mod_Sistema\Est_Tipo_Estado\Est_Tipo_Estado.cs" />
     <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_PersonaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Pers_Tipo_Persona\TipPersonaBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Interfaz\InterfazBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Modulo\ModuloBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Rol\RolBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Rol_Interfaz\RolInterfazBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Rol_Usuario\RolUsuarioBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Usuario\Rol_UsuarioBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Sys_Departamento\DepartamentoBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Sys_Direccion\DireccionBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Sys_Distrito\DistritoBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Sys_Pais\PaisBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Sys_Provincia\ProvinciaBE.cs" />
     <Compile Include="Models\Mod_Venta\Cprb_Boleta\Cprb_BoletaBE.cs" />
     <Compile Include="Models\Mod_Venta\Cprb_Boleta\Cprb_BoletaDA.cs" />
     <Compile Include="Models\Mod_Venta\Cprb_Comprobante\Cprb_ComprobanteBE.cs" />
@@ -293,6 +306,35 @@
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaBE.cs" />
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaDA.cs" />
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_Venta_DetalleBE.cs" />
+    <Compile Include="Models\Pers_Natural\Pers_NaturalBE.cs" />
+    <Compile Include="Models\Pers_Natural\Pers_NaturalDA.cs" />
+    <Compile Include="Models\Pers_Persona\Pers_PersonaBE.cs" />
+    <Compile Include="Models\Pers_Persona\Pers_PersonaDA.cs" />
+    <Compile Include="Models\Pers_Telefono\Pers_TelefonoBE.cs" />
+    <Compile Include="Models\Pers_Telefono\Pers_TelefonoDA.cs" />
+    <Compile Include="Models\Pers_Tipo_Persona\Pers_Tipo_PersonaBE.cs" />
+    <Compile Include="Models\Pers_Tipo_Persona\Pers_Tipo_PersonaDA.cs" />
+    <Compile Include="Models\Producto\ProductoBE.cs" />
+    <Compile Include="Models\Pro_Marca\Pro_MarcaBE.cs" />
+    <Compile Include="Models\Pro_Marca\Pro_MarcaDA.cs" />
+    <Compile Include="Models\Pro_Producto\Pro_ProductoBE.cs" />
+    <Compile Include="Models\Pro_Producto\Pro_ProductoDA.cs" />
+    <Compile Include="Models\Pro_Seccion\i_idSeccionBE.cs" />
+    <Compile Include="Models\Pro_Seccion\i_idSeccionDA.cs" />
+    <Compile Include="Models\Pro_Tipo_Producto\Pro_Tipo_ProductoBE.cs" />
+    <Compile Include="Models\Pro_Tipo_Producto\Pro_Tipo_ProductoDA.cs" />
+    <Compile Include="Models\Rol_Funcion\Rol_FuncionBE.cs" />
+    <Compile Include="Models\Rol_Funcion\Rol_FuncionDA.cs" />
+    <Compile Include="Models\Rol_Modulo\Rol_ModuloBE.cs" />
+    <Compile Include="Models\Rol_Modulo\Rol_ModuloDA.cs" />
+    <Compile Include="Models\Rol_Sub_Modulo\Rol_Sub_ModuloBE.cs" />
+    <Compile Include="Models\Rol_Sub_Modulo\Rol_Sub_ModuloDA.cs" />
+    <Compile Include="Models\Rol_Tipo_Usuario\Rol_Tipo_UsuarioBE.cs" />
+    <Compile Include="Models\Rol_Tipo_Usuario\Rol_Tipo_UsuarioDA.cs" />
+    <Compile Include="Models\Rol_Usuario\Rol_UsuarioBE.cs" />
+    <Compile Include="Models\Rol_Usuario\Rol_UsuarioDA.cs" />
+    <Compile Include="Models\Rol_Usuario_Funcion\Rol_Usuario_FuncionBE.cs" />
+    <Compile Include="Models\Rol_Usuario_Funcion\Rol_Usuario_FuncionDA.cs" />
     <Compile Include="Models\Rp_ReporteAlmacen\ReporteAlmacenBE.cs" />
     <Compile Include="Models\Rp_ReporteAlmacen\ReporteAlmacenDA.cs" />
     <Compile Include="Models\Rp_ReporteAuditoria\ReporteAuditoriaBE.cs" />
@@ -308,7 +350,29 @@
     <Compile Include="Models\Rp_ReporteVenta\ReporteVentaBE.cs" />
     <Compile Include="Models\Rp_ReporteVenta\ReporteVentaDA.cs" />
     <Compile Include="Models\Sys_Conexion\Conexion.cs" />
+    <Compile Include="Models\Sys_Cupon\Sys_CuponBE.cs" />
+    <Compile Include="Models\Sys_Cupon\Sys_CuponDA.cs" />
+    <Compile Include="Models\Sys_Departamento\Sys_DepartamentoBE.cs" />
+    <Compile Include="Models\Sys_Direccion\Sys_DireccionBE.cs" />
+    <Compile Include="Models\Sys_Direccion\Sys_DireccionDA.cs" />
+    <Compile Include="Models\Sys_Distrito\Sys_DistritoBE.cs" />
+    <Compile Include="Models\Sys_Impuestos\Sys_ImpuestoBE.cs" />
+    <Compile Include="Models\Sys_Impuestos\Sys_ImpuestoDA.cs" />
+    <Compile Include="Models\Sys_Impuesto_Update\Sys_impuesto_updateBE.cs" />
+    <Compile Include="Models\Sys_Impuesto_Update\Sys_impuesto_updateDA.cs" />
     <Compile Include="Models\Sys_Message\Sys_MessageBE.cs" />
+    <Compile Include="Models\Sys_Oferta\Sys_OfertaBE.cs" />
+    <Compile Include="Models\Sys_Oferta\Sys_OfertaDA.cs" />
+    <Compile Include="Models\Sys_Oferta_Descuento\Sys_Oferta_DescuentoBE.cs" />
+    <Compile Include="Models\Sys_Oferta_Descuento\Sys_Oferta_DescuentoDA.cs" />
+    <Compile Include="Models\Sys_Oferta_Oferta\Sys_Oferta_OfertaBE.cs" />
+    <Compile Include="Models\Sys_Oferta_Oferta\Sys_Oferta_OfertaDA.cs" />
+    <Compile Include="Models\Sys_Pais\Sys_PaisBE.cs" />
+    <Compile Include="Models\Sys_Provincia\Sys_ProvinciaBE.cs" />
+    <Compile Include="Models\Sys_Temporada\Sys_TemporadaBE.cs" />
+    <Compile Include="Models\Sys_Temporada\Sys_TemporadaDA.cs" />
+    <Compile Include="Models\Sys_Tipo_Oferta\Sys_Tipo_OfertaBE.cs" />
+    <Compile Include="Models\Sys_Tipo_Oferta\Sys_Tipo_OfertaDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -326,6 +390,7 @@
     <Content Include="Pruebas.sql" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Controllers\Sys_Pais\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -409,9 +474,7 @@
     <Content Include="Views\Vta_Venta\_modalSeleccionarProducto.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -449,6 +512,26 @@
     <Content Include="Views\Rp_ReporteProducto\Index.cshtml" />
     <Content Include="Views\Rp_ReporteUsuario\Index.cshtml" />
     <Content Include="Views\Rp_ReporteVenta\Index.cshtml" />
+    <Content Include="Views\Cam_Moneda\Index.cshtml" />
+    <Content Include="Views\Cam_Tipo_Cambio\Index.cshtml" />
+    <Content Include="Views\Emp_Empresa\Index.cshtml" />
+    <Content Include="Views\Emp_Empresa\_Quitar.cshtml" />
+    <Content Include="Views\Emp_PtoVenta\Index.cshtml" />
+    <Content Include="Views\Emp_Representante\Index.cshtml" />
+    <Content Include="Views\Emp_Sucursal\Index.cshtml" />
+    <Content Include="Views\InicioSesion\Index.cshtml" />
+    <Content Include="Views\Pers_Persona\Index.cshtml" />
+    <Content Include="Views\Producto\Index.cshtml" />
+    <Content Include="Views\Rol_AsignarRol\Index.cshtml" />
+    <Content Include="Views\Rol_Funcion\Index.cshtml" />
+    <Content Include="Views\Rol_Rol\Index.cshtml" />
+    <Content Include="Views\Rol_Usuario\Index.cshtml" />
+    <Content Include="Views\Rol_Usuario\Registro_Usuario.cshtml" />
+    <Content Include="Views\Sys_Impuestos\Index.cshtml" />
+    <Content Include="Views\Sys_Impuesto_Update\Index.cshtml" />
+    <Content Include="Views\Sys_Oferta\index.cshtml" />
+    <Content Include="Views\Sys_Oferta\RegistroOferta.cshtml" />
+    <Content Include="Views\Sys_Pais\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -456,8 +539,15 @@
     <Folder Include="Content\dist\" />
     <Folder Include="Content\images\" />
     <Folder Include="Content\plugins\" />
-    <Folder Include="Models\Mod_Sistema\Sys_Direccion\" />
-    <Folder Include="Views\Rp_ReporteCompra\Rp_ReporteAlmacen\" />
+    <Folder Include="Controllers\Pers_Persona\" />
+    <Folder Include="Controllers\Rol_AsignarRol\" />
+    <Folder Include="Controllers\Rol_Funcion\" />
+    <Folder Include="Controllers\Rol_Rol\" />
+    <Folder Include="Controllers\Rol_Usuario\" />
+    <Folder Include="Controllers\Sys_Impuesto_Update\" />
+    <Folder Include="Controllers\Sys_Oferta\" />
+    <Folder Include="Models\Mod_Sistema\Rol_Tipo_Usuario\" />
+    <Folder Include="Models\Pers_Juridica\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
