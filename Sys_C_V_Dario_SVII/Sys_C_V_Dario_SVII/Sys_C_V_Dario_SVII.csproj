@@ -329,7 +329,6 @@
     <Content Include="Views\Caj_Caja\_Detalles.cshtml" />
     <Content Include="Views\Caj_Caja\_ListarCaja.cshtml" />
     <Content Include="Views\Caj_Caja\_Modificar.cshtml" />
-    <Content Include="Views\Caj_Caja\_Nuevo.cshtml" />
     <Content Include="Views\Caj_CajGeneral\Index.cshtml" />
     <Content Include="Views\Caj_CajGeneral\_Detalle.cshtml" />
     <Content Include="Views\Caj_CajGeneral\_Modificar.cshtml" />
@@ -387,7 +386,9 @@
     <Content Include="Views\Vta_Venta\_modalSeleccionarProducto.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -418,6 +419,7 @@
     <Content Include="Views\Pro_Producto\_modalTipoProducto.cshtml" />
     <Content Include="Views\Caj_LibroCaja\_Nuevo.cshtml" />
     <Content Include="Views\Caj_LibroCaja\_ListarLibroCaja.cshtml" />
+    <Content Include="Views\Caj_Caja\_Nuevo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

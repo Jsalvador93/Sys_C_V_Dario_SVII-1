@@ -23,6 +23,7 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Concepto
                 objSqlCommand.Parameters.Add(new SqlParameter("@dt_fchRegistro", objConcepto.dt_fchRegistro));
                 objSqlCommand.Parameters.Add(new SqlParameter("@vc_dscpConcepto", objConcepto.st_dscpConcepto));
                 objSqlCommand.Parameters.Add(new SqlParameter("@i_idDenominacion", objConcepto.objDenominacionBE.in_idDenominacion));
+                objSqlCommand.Parameters.Add(new SqlParameter("@b_ver", "true"));
                 objSqlCommand.ExecuteNonQuery();
                 //objSqlTransaction.Commit();
                 objSqlConnection.Close();
