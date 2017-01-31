@@ -184,6 +184,12 @@
     <Compile Include="Controllers\Home\HomeController.cs" />
     <Compile Include="Controllers\Pro_Lote\Pro_LoteController.cs" />
     <Compile Include="Controllers\Pro_Producto\Pro_ProductoController.cs" />
+    <Compile Include="Controllers\Rp_ReporteAuditoria\Rp_ReporteAuditoriaController.cs" />
+    <Compile Include="Controllers\Rp_ReporteCompra\Rp_ReporteCompraController.cs" />
+    <Compile Include="Controllers\Rp_ReportePedido\Rp_ReportePedidoController.cs" />
+    <Compile Include="Controllers\Rp_ReporteProducto\Rp_ReporteProductoController.cs" />
+    <Compile Include="Controllers\Rp_ReporteUsuario\Rp_ReporteUsuarioController.cs" />
+    <Compile Include="Controllers\Rp_ReporteVenta\Rp_ReporteVentaController.cs" />
     <Compile Include="Controllers\Sys_Message\Sys_MessageController.cs" />
     <Compile Include="Controllers\Vta_Venta\Vta_VentaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -254,14 +260,15 @@
     <Compile Include="Models\Mod_Compra\Pro_Unidad\Pro_UnidadDA.cs" />
     <Compile Include="Models\Mod_Compra\Pro_Unidad_Producto\Pro_Unidad_ProductoBE.cs" />
     <Compile Include="Models\Mod_Compra\Pro_Unidad_Producto\Pro_Unidad_ProductoDA.cs" />
-    <Compile Include="Models\Mod_Sistema\Emp_Empresa\Emp_EmpresaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Emp_Empresa\EmpresaBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Emp_Logo\LogoBE.cs" />
     <Compile Include="Models\Mod_Sistema\Est_Tipo_Estado\Est_Tipo_Estado.cs" />
-    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_JuridicaBE.cs" />
-    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_NaturalBE.cs" />
     <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_PersonaBE.cs" />
-    <Compile Include="Models\Mod_Sistema\Pers_Persona\Pers_TelefonoBE.cs" />
-    <Compile Include="Models\Mod_Sistema\Pers_Tipo_Persona\Pers_Tipo_PersonaBE.cs" />
-    <Compile Include="Models\Mod_Sistema\Rol_Tipo_Usuario\Rol_Tipo_UsuarioBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Rol_Interfaz\InterfazBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Rol_Modulo\ModuloBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Rol_Rol\RolBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Rol_Rol_Interfaz\RolInterfazBE.cs" />
+    <Compile Include="Models\Mod_Sistema\Rol_Rol_Usuario\RolUsuarioBE.cs" />
     <Compile Include="Models\Mod_Sistema\Rol_Usuario\Rol_UsuarioBE.cs" />
     <Compile Include="Models\Mod_Venta\Cprb_Boleta\Cprb_BoletaBE.cs" />
     <Compile Include="Models\Mod_Venta\Cprb_Boleta\Cprb_BoletaDA.cs" />
@@ -286,6 +293,20 @@
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaBE.cs" />
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_VentaDA.cs" />
     <Compile Include="Models\Mod_Venta\Vta_Venta\Vta_Venta_DetalleBE.cs" />
+    <Compile Include="Models\Rp_ReporteAlmacen\ReporteAlmacenBE.cs" />
+    <Compile Include="Models\Rp_ReporteAlmacen\ReporteAlmacenDA.cs" />
+    <Compile Include="Models\Rp_ReporteAuditoria\ReporteAuditoriaBE.cs" />
+    <Compile Include="Models\Rp_ReporteAuditoria\ReporteAuditoriaDA.cs" />
+    <Compile Include="Models\Rp_ReporteCompra\ReporteCompra.cs" />
+    <Compile Include="Models\Rp_ReporteCompra\ReporteCompraDA.cs" />
+    <Compile Include="Models\Rp_ReportePedido\ReportePedidoBE.cs" />
+    <Compile Include="Models\Rp_ReportePedido\ReportePedidoDA.cs" />
+    <Compile Include="Models\Rp_ReporteProducto\ReporteProductoBE.cs" />
+    <Compile Include="Models\Rp_ReporteProducto\ReporteProductoDA.cs" />
+    <Compile Include="Models\Rp_ReporteUsuario\ReporteUsuarioBE.cs" />
+    <Compile Include="Models\Rp_ReporteUsuario\ReporteUsuarioDA.cs" />
+    <Compile Include="Models\Rp_ReporteVenta\ReporteVentaBE.cs" />
+    <Compile Include="Models\Rp_ReporteVenta\ReporteVentaDA.cs" />
     <Compile Include="Models\Sys_Conexion\Conexion.cs" />
     <Compile Include="Models\Sys_Message\Sys_MessageBE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -388,7 +409,9 @@
     <Content Include="Views\Vta_Venta\_modalSeleccionarProducto.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -419,6 +442,13 @@
     <Content Include="Views\Pro_Producto\_modalTipoProducto.cshtml" />
     <Content Include="Views\Caj_LibroCaja\_Nuevo.cshtml" />
     <Content Include="Views\Caj_LibroCaja\_ListarLibroCaja.cshtml" />
+    <Content Include="Views\Rp_ReporteAlmacen\Index.cshtml" />
+    <Content Include="Views\Rp_ReporteAuditoria\Index.cshtml" />
+    <Content Include="Views\Rp_ReporteCompra\Index.cshtml" />
+    <Content Include="Views\Rp_ReportePedido\Index.cshtml" />
+    <Content Include="Views\Rp_ReporteProducto\Index.cshtml" />
+    <Content Include="Views\Rp_ReporteUsuario\Index.cshtml" />
+    <Content Include="Views\Rp_ReporteVenta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -427,6 +457,7 @@
     <Folder Include="Content\images\" />
     <Folder Include="Content\plugins\" />
     <Folder Include="Models\Mod_Sistema\Sys_Direccion\" />
+    <Folder Include="Views\Rp_ReporteCompra\Rp_ReporteAlmacen\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
