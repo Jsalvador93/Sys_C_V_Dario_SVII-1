@@ -4,11 +4,9 @@
     <tr>
         <th>Venta</th>
         <th>Fecha de Registro</th>
-        <th>Tipo usuario</th>
         <th>Registrador</th>
         <th>Cliente</th>
-        <th>Tipo Comprobante</th>
-        <th>Estado</th>
+        @*<th>Tipo Comprobante</th>*@
         <th>Operaciones</th>
         <th>Comprobante</th>
     </tr>
@@ -22,25 +20,16 @@
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.i_idVenta)</td>
                 <td>@Html.DisplayFor(modelItem => item.dt_fchRegistro)</td>
-                <td>@Html.DisplayFor(modelItem => item.oTipoUsuario.vc_dscpTipUsuario)</td>
                 <td>@Html.DisplayFor(modelItem => item.oUsuario.oPersona.nombreCompleto)</td>
                 <td>@Html.DisplayFor(modelItem => item.oPersona.nombreCompleto)</td>
-                <td>@Html.DisplayFor(modelItem => item.oComprobante.oTipo_ComprobanteBE.vc_dscpTipComprobante)</td>
-                <td>
-                    <div class="box-tools" data-toggle="tooltip">
-                        <select class="form-control">
-                            <option>Seleccionar</option>
-                            <option>Opción 2</option>
-                            <option>Opción 3</option>
-                        </select>
-                    </div>
-                </td>
+                @*<td>@Html.DisplayFor(modelItem => item.oTipoEstado.vc_dscpTipEstado)</td>*@
+                @*<td>@Html.DisplayFor(modelItem => item.oComprobante.oTipo_ComprobanteBE.vc_dscpTipComprobante)</td>*@
                 <td>
                     <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="fn_DetallesVenta('@item.i_idVenta')">Detalles</button>
                     <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles">Anular</button>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="fn_GenerarVenta('@item.i_idVenta')">Generar</button>
+                    <button type="button" class="btn btn-info btn-xs" name="btnDetalles" id="btnDetalles" onclick="fn_GenerarVenta()">Generar</button>
                 </td>
             </tr>
         </tbody>}}

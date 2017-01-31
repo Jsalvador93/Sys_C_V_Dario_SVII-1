@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Sys_C_V_Dario_SVII.Models.Mod_Sistema.Emp_Empresa
+namespace Sys_C_V_Dario_SVII.Models.Rp_ReporteCompra
 {
-    public class Emp_EmpresaBE
+    public class ReporteCompra
     {
     }
 }
