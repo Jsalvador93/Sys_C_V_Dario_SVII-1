@@ -1,0 +1,348 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<section>
+    <h2>Representante</h2>
+</section>
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div>
+                        <h4 class="col-md-3">Codigo Representante : </h4>
+                        <h4 class="col-md-4">00001</h4>
+                        <h4 class="col-md-3">Fecha de Registro:</h4>
+                        <h4 class="col-md-2">21/11/2016</h4>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box ">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="Represetantes"> Representante : </label>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option>Seleccionar Representantes</option>
+                            <option>Tipo de Documento </option>
+                            <option>Nombre</option>
+                            <option>Apellido</option>
+                            <option>Dueño</option>
+                            <option>Fundador</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="i_idFundador">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-default" style="width:100%" name="btnFiltrar"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+-----------------------------------
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalEmp_Re"> NUEVO </button>
+                    </div>
+                    <div class="modal fade" id="myModalEmp_Re" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header " style="background-color:#0D69A6">
+                                    <center><h4 style="color:#ffffff"> NUEVO REPRESENTANTES</h4></center>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-lg-2 control-label">Documento:</label>
+                                            <div class="col-md-4">
+                                                <select class="form-control">
+                                                    <option>Tipo de Documento </option>
+                                                    <option> DNI </option>
+                                                    <option> Ruc </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="">Nombre: </label>
+                                            </div>
+                                            <div class="col-lg-10">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="Ape_Pat">Ape Pat : </label>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="Ape_Pat">Ape Mat : </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="direccion">Dirección : </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="vc_dscpDireccion">
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-2">
+                                                    <label for="Ape_Pat">Rpreste: </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select class="form-control">
+                                                        <option>Selecionar Representante</option>
+                                                        <option>Dueño</option>
+                                                        <option>Fundador</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <label for="Ape_Pat">Estado : </label>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <select class="form-control">
+                                                        <option>Selecionar Estado</option>
+                                                        <option>Activo</option>
+                                                        <option>Fundador</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>                                                                     
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Fecha de Creaccion:</label>
+                                            <div class="col-sm-3 col-md-4 col-lg-5">
+                                                <input class="form-control" id="txFechaActualizacion" name="txtHasta" type="date" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="btn btn-danger" href="/Emp_PtoVenta" role="button">PUNTO DE VENTA </a>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box box-primary">
+    <!-- <div class="box-body">
+         <form class="form">
+             <div class="form-group">
+                 <div class="row">
+
+
+                 </div>
+             </div>
+
+
+         </form>
+     </div> -->
+    <div class="box-body">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <tr>
+                                <th>Sucursal</th>
+                                <th>Rzon Social</th>
+                                <th>RUC</th>
+                                <th>Direccion</th>
+                                <th>Fecha Creacion</th>
+                                <th>Operacion</th>
+                            </tr>
+                            <tbody>
+                                <tr>
+                                    <td>001</td>
+                                    <td>DARIO VAES</td>
+                                    <td>20101951972</td>
+                                    <td>HUACHO-315</td>
+                                    <td>21/12/16</td>
+                                    <th>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalEmp_SMODIFICAR"> MODIFICAR </button>
+                                                </div>
+
+                                                <div class="modal fade" id="myModalEmp_SMODIFICAR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header " style="background-color:#0D69A6">
+                                                                <center><h4 style="color:#ffffff"> MODIFICAR SUCURSAL </h4></center>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <label class="col-lg-2 control-label">RUC:</label>
+                                                                        <div class="col-lg-4">
+                                                                            <input type="text" class="form-control" />
+                                                                        </div>
+                                                                        <label class="col-lg-2 control-label">Rzn Social:</label>
+                                                                        <div class="col-lg-4">
+                                                                            <input type="text" class="form-control" />
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-2">
+                                                                            <label for="">Pais: </label>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <select class="form-control">
+                                                                                <option></option>
+                                                                                <option>Peru</option>
+                                                                                <option>Brasil</option>
+                                                                                <option>Argentina</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-sm-2">
+                                                                            <label for="Ape_Pat">Dpto : </label>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <select class="form-control">
+                                                                                <option></option>
+                                                                                <option>Ancash</option>
+                                                                                <option>Lima</option>
+                                                                                <option>Tacna</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-2">
+                                                                            <label for="Ape_Pat">Prov : </label>
+                                                                        </div>
+                                                                        <div class="col-sm-4">
+                                                                            <select class="form-control">
+                                                                                <option></option>
+                                                                                <option>Barranca</option>
+                                                                                <option>Huaral</option>
+                                                                                <option>Cañete</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="col-md-2">
+                                                                            <label for="Ape_Pat">Distrito : </label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <select class="form-control">
+                                                                                <option></option>
+                                                                                <option>Huacho</option>
+                                                                                <option>Hualmay</option>
+                                                                                <option>Santa Maria</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-2">
+                                                                            <label for="direccion">Drcción : </label>
+                                                                        </div>
+                                                                        <div class="col-sm-10">
+                                                                            <input type="text" class="form-control" id="vc_dscpDireccion">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <label class="col-md-2 control-label">Fecha de Creaccion:</label>
+                                                                        <div class="col-sm-3 col-md-4 col-lg-5">
+                                                                            <input class="form-control" id="txFechaActualizacion" name="txtHasta" type="date" value="">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <div class="row">
+                                                                        <div class="col-sm-12">
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
+                                                                                <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <button type="button" class="btn btn-danger" name="btnQuitar" data-toggle="modal" data-target="#Quitar"> QUITAR</button>
+                                                </div>
+                                                <div class="modal fade" id="Quitar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+
+                                                            <div class="modal-body">
+                                                                <center><h4>¿Esta Seguro que desea quitar este item?</h4></center>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" name="btnSi" id="btnSi" class="btn btn-primary" data-dismiss="modal">SI</button>
+                                                                    <button type="button" name="btnNo" id="btnNo" class="btn btn-default" data-dismiss="modal">NO</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

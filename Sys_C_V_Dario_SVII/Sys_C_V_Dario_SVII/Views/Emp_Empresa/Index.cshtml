@@ -1,0 +1,454 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Mod_Sistema.Emp_Empresa.Emp_EmpresaBE>
+
+@{
+    ViewBag.Title = "Index";
+}
+<section>
+    <h1>Empresa</h1>
+</section>
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div>
+                        <h4 class="col-md-3">Codigo de la Empresa : </h4>
+                        <h4 class="col-md-4">00001</h4>
+                        <h4 class="col-md-3">Fecha de Registro:</h4>
+                        <h4 class="col-md-2">21/11/2016</h4>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box ">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="Sucursal"> Empresa : </label>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-control">
+                            <option>Busqueda por </option>
+                            <option>Ruc</option>
+                            <option>Razon Social</option>
+                            <option>Nombre Comercial</option>
+                            <option>Direccion Web</option>
+                            <option>Telefono</option>
+                            <option>Fecha de Asignacion </option>
+
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" class="form-control" id="ti_idSucursal">
+                    </div>
+                    <div class="col-md-2">
+                        <button type="button" class="btn btn-default" style="width:100%" name="btnFiltrar"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="box box-primary">
+    <div class="box-body">
+        <form class="form">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalnuevo"> NUEVO </button>
+                    </div>
+
+                    <div class="modal fade" id="myModalnuevo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header " style="background-color:#0D69A6">
+                                    <center><h4 style="color:#ffffff"> NUEVA EMPRESA </h4></center>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">Fecha Registro:</label>
+                                            <div class="col-sm-3 col-md-3 col-lg-4">
+                                                <input class="form-control" id="txFechaActualizacion" name="txtHasta" type="date" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <label class="col-md-2 control-label">RUC:</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="c_ruc">
+                                            </div>
+                                            <label class="col-md-2 control-label">Razon Social:</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control" id="vc_dscpRzSocial">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="direccion">Nombre Cmrcial : </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="vc_nmbComercial">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="vc_dscpPais">Pais: </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                    <option>Peru</option>
+                                                    <option>Brasil</option>
+                                                    <option>Argentina</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="vc_dscpDepartamento">Dpto : </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                    <option>Ancash</option>
+                                                    <option>Lima</option>
+                                                    <option>Tacna</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="vc_dscpProvincia">Prov : </label>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                    <option>Barranca</option>
+                                                    <option>Huaral</option>
+                                                    <option>Cañete</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <label for="vc_dscpDistrito">Distrito : </label>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-control">
+                                                    <option></option>
+                                                    <option>Huacho</option>
+                                                    <option>Hualmay</option>
+                                                    <option>Santa Maria</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="direccion">Drcción : </label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <input type="text" class="form-control" id="vc_dscpDireccion">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-2">
+                                                <label for="direccion">Drc Web: </label>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <input type="text" class="form-control" id="vc_drcWeb">
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <label for="direccion">TELFONO: </label>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <input type="text" class="form-control" id="c_numTelefono">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalVisualizarN"> VISUALIZAR  </button>
+                                    </div>
+                                    <div class="modal fade" id="myModalVisualizarN" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header " style="background-color:#0D69A6">
+                                                    <center><h4 style="color:#ffffff"> VISUALIZAR IMAGEN </h4></center>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                            <div class="col-sm-12">
+                                                                <center>
+                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Subir Imagen</button>
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Elegir Imagen</button>
+                                                                </center>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">SALIR</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="btn btn-danger" href="/Emp_Sucursal" role="button">SUCURSAL</a>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+<div class="box box">
+    <div class="box-body">
+        <form class="form">
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover table-striped">
+                                <tr>
+                                    <th>RUC</th>
+                                    <th>Rzn Social</th>
+                                    <th>Nombre Comercial</th>
+                                    <th>Dieccion Web</th>
+                                    <th>Telefono</th>
+                                    <th>Fecha Asgnacion</th>
+                                    <th>op</th>
+                                </tr>
+                                <tbody>
+                                    <tr>
+                                        <td>2345678TSD</td>
+                                        <td>DARIO VAES</td>
+                                        <td>DARIO VAES S.A.</td>
+                                        <td>dario_gmail.com</td>
+                                        <td>237-4435</td>
+                                        <td>21/12/16</td>
+                                        <td>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-lg-6">
+                                                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalEstadoR"> ACTUALIZAR </button>
+                                                    </div>
+                                                    <div class="modal fade" id="myModalEstadoR" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header " style="background-color:#0D69A6">
+                                                                    <center><h4 style="color:#ffffff"> ACTUALIZAR EMPRESA </h4></center>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <label class="col-md-2 control-label">Fecha Registro:</label>
+                                                                            <div class="col-sm-3 col-md-3 col-lg-4">
+                                                                                <input class="form-control" id="txFechaActualizacion" name="txtHasta" type="date" value="">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <label class="col-md-2 control-label">RUC:</label>
+                                                                            <div class="col-md-4">
+                                                                                <input type="text" class="form-control" id="c_ruc">
+                                                                            </div>
+                                                                            <label class="col-md-2 control-label">Razon Social:</label>
+                                                                            <div class="col-md-4">
+                                                                                <input type="text" class="form-control" id="vc_dscpRzSocial">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-2">
+                                                                                <label for="direccion">Nombre Cmrcial : </label>
+                                                                            </div>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control" id="vc_nmbComercial">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-2">
+                                                                                <label for="vc_dscpPais">Pais: </label>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <select class="form-control">
+                                                                                    <option></option>
+                                                                                    <option>Peru</option>
+                                                                                    <option>Brasil</option>
+                                                                                    <option>Argentina</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <label for="vc_dscpDepartamento">Dpto : </label>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <select class="form-control">
+                                                                                    <option></option>
+                                                                                    <option>Ancash</option>
+                                                                                    <option>Lima</option>
+                                                                                    <option>Tacna</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-2">
+                                                                                <label for="vc_dscpProvincia">Prov : </label>
+                                                                            </div>
+                                                                            <div class="col-sm-4">
+                                                                                <select class="form-control">
+                                                                                    <option></option>
+                                                                                    <option>Barranca</option>
+                                                                                    <option>Huaral</option>
+                                                                                    <option>Cañete</option>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <label for="vc_dscpDistrito">Distrito : </label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <select class="form-control">
+                                                                                    <option></option>
+                                                                                    <option>Huacho</option>
+                                                                                    <option>Hualmay</option>
+                                                                                    <option>Santa Maria</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-2">
+                                                                                <label for="direccion">Drcción : </label>
+                                                                            </div>
+                                                                            <div class="col-sm-10">
+                                                                                <input type="text" class="form-control" id="vc_dscpDireccion">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-2">
+                                                                                <label for="direccion">Drc Web: </label>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <input type="text" class="form-control" id="vc_drcWeb">
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <label for="direccion">TELFONO: </label>
+                                                                            </div>
+                                                                            <div class="col-sm-2">
+                                                                                <input type="text" class="form-control" id="c_numTelefono">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-sm-12">
+                                                                        <button type="button" class="btn btn-primary " data-toggle="modal" data-target="#myModalVisualizar"> VISUALIZAR  </button>
+                                                                    </div>
+                                                                    <div class="modal fade" id="myModalVisualizar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                                                        <div class="modal-dialog" role="document">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header " style="background-color:#0D69A6">
+                                                                                    <center><h4 style="color:#ffffff"> VISUALIZAR IMAGEN </h4></center>
+                                                                                </div>
+                                                                                <div class="modal-body">
+                                                                                    <div class="form-group">
+                                                                                        <div class="row">
+                                                                                            <div class="col-sm-12">
+                                                                                                <center>
+                                                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Subir Imagen</button>
+                                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Elegir Imagen</button>
+                                                                                                </center>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="modal-footer">
+                                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">SALIR</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-12">
+                                                                                <div class="modal-footer">
+                                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">GUARDAR</button>
+                                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">CANCELAR</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <button type="button" class="btn btn-danger" name="btnQuitar" data-toggle="modal" data-target="#Quitar"> QUITAR</button>
+                                            </div>
+                                            <div class="modal fade" id="Quitar" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none;">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+
+                                                        <div class="modal-body">
+                                                            <center><h4>¿Esta Seguro que desea quitar este item?</h4></center>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" name="btnSi" id="btnSi" class="btn btn-primary" data-dismiss="modal">SI</button>
+                                                                <button type="button" name="btnNo" id="btnNo" class="btn btn-default" data-dismiss="modal">NO</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
