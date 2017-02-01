@@ -47,8 +47,7 @@
                                 if (result.Success == "1") {
                                     if (result.result) {
                                         fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
-                                        fn_ListarConcepto(0, '');
-                                    } else {
+                                        } else {
                                         fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
                                     }
                                 } else {
@@ -56,6 +55,8 @@
                                     fn_Alerta("/Sys_Message", "/_MessageError", { st_cabecera: "Error!", st_detalle: result.ex }, "MyMessage", "ErrorModal", 1500);
                                     setTimeout(function () { $("#MNuevaConcepto").modal("show"); }, 1501);
                                 }
+                                fn_ListarConcepto(0, '');
+
                             }
                         });
                     });

@@ -416,7 +416,6 @@
     <Content Include="Views\Caj_Caja\_Detalles.cshtml" />
     <Content Include="Views\Caj_Caja\_ListarCaja.cshtml" />
     <Content Include="Views\Caj_Caja\_Modificar.cshtml" />
-    <Content Include="Views\Caj_Caja\_Nuevo.cshtml" />
     <Content Include="Views\Caj_CajGeneral\Index.cshtml" />
     <Content Include="Views\Caj_CajGeneral\_Detalle.cshtml" />
     <Content Include="Views\Caj_CajGeneral\_Modificar.cshtml" />
@@ -532,6 +531,7 @@
     <Content Include="Views\Sys_Oferta\index.cshtml" />
     <Content Include="Views\Sys_Oferta\RegistroOferta.cshtml" />
     <Content Include="Views\Sys_Pais\Index.cshtml" />
+    <Content Include="Views\Caj_Caja\_Nuevo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
