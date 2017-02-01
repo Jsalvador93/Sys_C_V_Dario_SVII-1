@@ -87,7 +87,7 @@
                                     if (result.Success == 1) {
                                         if (result.resultado) {
                                             fn_Alerta("/Sys_Message", "/_MessageExito", { st_cabecera: "Exito!", st_detalle: result.ex }, "MyMessage", "ExitoModal", 1500);
-                                            
+                                            ListarCaja(0, '');
                                         } else {
                                             fn_Alerta("/Sys_Message", "/_MessageInformacion", { st_cabecera: "Informacion!", st_detalle: result.ex }, "MyMessage", "InformacionModal", 1500);
                                         }
@@ -96,7 +96,6 @@
                                         fn_Alerta( "/Sys_Message", "/_MessageError", { st_cabecera: "Error", st_detalle: result.ex }, "MyMessage", "ErrorModal" , 1500 );
                                         setTimeout(function () { $("#MNuevaCaja").modal("show"); }, 1501);
                                     }
-                                    ListarCaja(0, '');
                                 }
                             })
 

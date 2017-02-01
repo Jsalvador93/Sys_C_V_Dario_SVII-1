@@ -26,7 +26,6 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Turno
                 objSqlCommand.Parameters.Add(new SqlParameter("@vc_dscpTurno", objTurno.st_dscpTurno));
                 objSqlCommand.Parameters.Add(new SqlParameter("@tm_hrInicio", objTurno.st_hrInicio));
                 objSqlCommand.Parameters.Add(new SqlParameter("@tm_hrFin", objTurno.st_hrFin));
-                objSqlCommand.Parameters.Add(new SqlParameter("@b_ver", "true"));
                 objSqlCommand.ExecuteNonQuery();
                 //objSqlTransaction.Commit();
                 objSqlConnection.Close();

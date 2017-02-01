@@ -42,12 +42,3 @@ function fn_Validate_ID_05(Etiqueta) {
     });
 }
 
-function fn_today() {
-    var f = new Date();
-    var month = (f.getMonth() + 1);
-    var day = f.getDate();
-    month = (month < 10 ? '0' : '') + month;
-    day = (day < 10 ? '0' : '') + day;
-    return f.getFullYear() + "-" + month + "-" + day;
-}
-
