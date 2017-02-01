@@ -25,6 +25,7 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Caja
                 objSqlCommand.Parameters.Add(new SqlParameter("@d_fchIngreso", objCaja.d_fchIngreso/*.ToString("MM/dd/yyyy HH:mm:ss")*/));
                 objSqlCommand.Parameters.Add(new SqlParameter("@vc_dscpCaja", objCaja.st_dscpCaja));
                 objSqlCommand.Parameters.Add(new SqlParameter("@i_idPtoVenta", objCaja.objPtoVenta.in_idPtoVenta));
+                objSqlCommand.Parameters.Add(new SqlParameter("@b_ver", "true"));
                 objSqlCommand.ExecuteNonQuery();
                 //objSqlTransaction.Commit();
                 objSqlConnection.Close();

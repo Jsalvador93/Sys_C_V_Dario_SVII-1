@@ -24,7 +24,7 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Denominacion
                 objSqlCommand.CommandType = CommandType.StoredProcedure;
                 //  objSqlCommand.Transaction = objSqlTransaction;
                 objSqlCommand.Parameters.Add(new SqlParameter("@dt_fchRegistro", objDenominacion.dt_fchRegistro));
-                objSqlCommand.Parameters.Add(new SqlParameter("@vc_dscpDenominacion", objDenominacion.st_dscpDenominacion));
+                objSqlCommand.Parameters.Add(new SqlParameter("@vc_dscpDenominacion", objDenominacion.st_dscpDenominacion)); objSqlCommand.Parameters.Add(new SqlParameter("@b_ver", "true"));
                 objSqlCommand.ExecuteNonQuery();
                 //objSqlTransaction.Commit();
                 objSqlConnection.Close();
