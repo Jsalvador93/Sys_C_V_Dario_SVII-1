@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Sys_C_V_Dario_SVII.Models.Producto.ProductoBE>
+@{
+    ViewBag.Title = "Index";
+}
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>Actulizacion de productos</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"></a>Mantenimiento</li>
+            <li class="active">Actualizar Productos</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="box box-primary">
+                    <form role="form">
+                        <div class="form-group">
+                            <div class="box-body">
+                                <div>
+                                    <h4 class="col-md-1">Producto: </h4>
+                                    <div class="col-md-2">
+                                        <select class="form-control">
+                                            <option>Codigo</option>
+                                            <option>Nombre del producto</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <div class="col-md-2">
+                                            <input type="text" class="form-control" id="c_codProducto">
+                                        </div>
+                                        <div class="CantidadBotones">
+                                            <button type="button" class="btn"><span class="glyphicon glyphicon-search"></span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="box box-body">
+            <form role="form">
+                <div class="form-group">
+                    <div class="box-body">
+                        <div>
+                            <div class="col-md-2">
+
+                                <button type="button" class="btn btn-block btn-primary">Actualizar</button>
+
+                            </div>
+                            <div class="col-md-2">
+
+                                <button type="button" class="btn btn-block btn-primary">Quitar</button>
+
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="table-responsive">
+                                    <br />
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Código</th>
+                                                <th>Nombre</th>
+                                                <th>Marca</th>
+                                                <th>Categoría</th>
+                                                <th>Sub-Categoría</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>0123</td>
+                                                <td>Polo</td>
+                                                <td>Lisa</td>
+                                                <td>Mujer</td>
+                                                <td>Niña</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="CantidadBotones">
+                                    <button type="button" class="btn btn-primary">Guardar</button>
+                                    <button type="button" class="btn btn-default">Cancelar</button>
+
+                                </div>
+                                <style>
+                                    .CantidadBotones {
+                                        text-align: right;
+                                    }
+                                </style>
+
+                            </div>
+                            <script type="text/javascript">
+                                        $('.clockpicker').clockpicker();
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>

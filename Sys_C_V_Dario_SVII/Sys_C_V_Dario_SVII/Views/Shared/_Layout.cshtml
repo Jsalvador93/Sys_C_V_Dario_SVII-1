@@ -154,7 +154,7 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Nueva Persona</a></li>
+                                    <li><a href="@Url.Action("Index","Pers_Persona")"><i class="fa fa-circle-o"></i> Nueva Persona</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -166,8 +166,8 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Nuevo Usuario</a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registro de Usuario</a></li>
+                                    <li><a href="@Url.Action("Index","Rol_Usuario")"><i class="fa fa-circle-o"></i> Nuevo Usuario</a></li>
+                                    <li><a href="@Url.Action("Registro_Usuario","Rol_Usuario")"><i class="fa fa-circle-o"></i> Registro de Usuario</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -179,9 +179,10 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Nuevo Rol </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Asignar Rol </a></li>
-                                </ul>
+                                    <li><a href="@Url.Action("Index","Rol_Rol")"><i class="fa fa-circle-o"></i> Nuevo Rol </a></li>
+                                    <li><a href="@Url.Action("Index","Rol_AsignarRol")"><i class="fa fa-circle-o"></i> Asignar Rol </a></li>
+                                    <li><a href="@Url.Action("Index","Rol_Funcion")"><i class="fa fa-circle-o"></i> Asignar Funcion </a></li>
+                                 </ul>
                             </li>
                             <li class="treeview">
                                 <a href="#">
@@ -192,9 +193,12 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Datos de la Empresa </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Ajuste de Impuestos </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registro de Impuestos </a></li>
+                                    <li><a href="@Url.Action("Index","Emp_Empresa")"><i class="fa fa-circle-o"></i> Datos de la Empresa </a></li>
+                                    <li><a href="@Url.Action("Index","Emp_PtoVenta")"><i class="fa fa-circle-o"></i> Datos del Punto de Venta </a></li>
+                                    <li><a href="@Url.Action("Index","Emp_Representante")"><i class="fa fa-circle-o"></i> Datos del Representante</a></li>
+                                    <li><a href="@Url.Action("Index","Emp_Sucursal")"><i class="fa fa-circle-o"></i> Datos de las Sucursales </a></li>
+                                     <li><a href="@Url.Action("Index","Sys_Impuestos")"><i class="fa fa-circle-o"></i> Ajuste de Impuestos </a></li>
+                                    <li><a href="@Url.Action("Index","Sys_Impuesto_Update")"><i class="fa fa-circle-o"></i> Registro de Impuestos </a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -206,9 +210,10 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Actualizacion de Producto </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Nueva Oferta </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registro de Ofertas </a></li>
+                                    <li><a href="@Url.Action("Index","Producto")><i class="fa fa-circle-o"></i> Actualizacion de Producto </a></li>
+                                    <li><a href="@Url.Action("Index","Sys_Oferta")"><i class="fa fa-circle-o"></i> Nueva Oferta </a></li>
+                                    <li><a href="@Url.Action("RegistroOferta","Sys_Oferta")"><i class="fa fa-circle-o"></i> Registro de Ofertas </a></li>
+                                    <li><a href="@Url.Action("Index","Pais")"><i class="fa fa-circle-o"></i> Nuevo Pais </a></li>
                                 </ul>
                             </li>
                             <li class="treeview">
@@ -220,23 +225,11 @@
                                     </span>
                                 </a>
                                 <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Nueva Moneda </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Consultar Moneda </a></li>
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Tipo de Cambio </a></li>
+                                    <li><a href="@Url.Action("Index","Cam_Moneda")"><i class="fa fa-circle-o"></i> Nueva Moneda </a></li>
+                                    <li><a href="@Url.Action("Index","Cam_Tipo_Cambio")"><i class="fa fa-circle-o"></i> Tipo de Cambio </a></li>
                                 </ul>
                             </li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-check-square"></i>
-                                    <span> Auditoria </span>
-                                    <span class="pull-right-container">
-                                        <i class="fa fa-angle-left pull-right"></i>
-                                    </span>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li><a href="#"><i class="fa fa-circle-o"></i> Registro de Sesiones </a></li>
-                                </ul>
-                            </li>
+                           
                         </ul>
                     </li>
                     <!-- Modulo Compras -->
