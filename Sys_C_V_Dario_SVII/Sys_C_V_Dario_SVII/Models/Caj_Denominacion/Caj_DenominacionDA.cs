@@ -23,10 +23,8 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Denominacion
                 SqlCommand objSqlCommand = new SqlCommand("sp_ins_Caj_Denominacion_registrar", objSqlConnection);
                 objSqlCommand.CommandType = CommandType.StoredProcedure;
                 //  objSqlCommand.Transaction = objSqlTransaction;
-                objSqlCommand.Parameters.Add(new SqlParameter("@dt_fchRegistro", objDenominacion.dt_fchRegistro/*.ToString("MM/dd/yyyy HH:mm:ss")*/));
+                objSqlCommand.Parameters.Add(new SqlParameter("@dt_fchRegistro", objDenominacion.dt_fchRegistro));
                 objSqlCommand.Parameters.Add(new SqlParameter("@vc_dscpDenominacion", objDenominacion.st_dscpDenominacion));
-
-                objSqlCommand.Parameters.Add(new SqlParameter("@b_ver", "true"));
                 objSqlCommand.ExecuteNonQuery();
                 //objSqlTransaction.Commit();
                 objSqlConnection.Close();
@@ -76,7 +74,7 @@ namespace Sys_C_V_Dario_SVII.Models.Caj_Denominacion
                     objDenominacion = new Caj_DenominacionBE();
                     objDenominacion.in_idDenominacion = (int)objSqlDateReader["i_idDenominacion"];
                     objDenominacion.bl_ver = (bool)objSqlDateReader["b_ver"];
-                    objDenominacion.dt_fchRegistro = (DateTime)( Convert.ToDateTime( objSqlDateReader["dt_fchRegistro"]));
+                    objDenominacion.dt_fchRegistro = (DateTime)(objSqlDateReader["dt_fchRegistro"]);
                     objDenominacion.st_dscpDenominacion = (string)objSqlDateReader["vc_dscpDenominacion"];
                     return objDenominacion;
                 }

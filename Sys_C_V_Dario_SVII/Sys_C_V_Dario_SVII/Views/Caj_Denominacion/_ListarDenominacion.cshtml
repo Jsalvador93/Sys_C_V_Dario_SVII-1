@@ -7,14 +7,12 @@
         <th>OPERACIONES</th>
     </tr>
 </thead>
-
 @if (Model != null)
 {
-    <tbody>
-        @foreach (var item in Model)
+    foreach (var item in Model)
+    {
+        if (item.bl_ver)
         {
-            if (item.bl_ver)
-            {
             <tr>
                 <td>@item.in_idDenominacion</td>
                 <td>@item.st_dscpDenominacion</td>
@@ -24,7 +22,6 @@
                     <button type="button" class="btn btn-xs modificar" name="btnModificar" id="btnModificar" onclick="fn_ModificarDenominacion('@item.in_idDenominacion')">Modificar</button>
                 </th>
             </tr>
-            }
         }
-    </tbody>
+    }
 }

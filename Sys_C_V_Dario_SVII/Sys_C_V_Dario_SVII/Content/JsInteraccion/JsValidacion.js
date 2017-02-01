@@ -49,13 +49,4 @@ function fn_Contains(a, b) {
     return false;
 }
 
-function fn_EvalFecha(dt_fchDesde, dt_fchHasta) {
-
-}
-
-function fn_today() {
-    var f = new Date();
-    return f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear() ;
-}
-
 
