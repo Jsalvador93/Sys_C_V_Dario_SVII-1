@@ -379,10 +379,21 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap\bootstrap.css" />
+    <Content Include="Content\bootstrap\bootstrap.js" />
     <Content Include="Content\CssInteraccion\CssPages.css" />
+    <Content Include="Content\dist\app.js" />
+    <Content Include="Content\dist\avatar-7.png" />
+    <Content Include="Content\dist\Style.css" />
+    <Content Include="Content\dist\user2-160x160.jpg" />
+    <Content Include="Content\dist\_all-skins.css" />
     <Content Include="Content\JsInteraccion\jsDatos.js" />
     <Content Include="Content\JsInteraccion\jsTables.js" />
     <Content Include="Content\JsInteraccion\JsValidacion.js" />
+    <Content Include="Content\plugins\bootstrap-datepicker.js" />
+    <Content Include="Content\plugins\dataTables.bootstrap.css" />
+    <Content Include="Content\plugins\datepicker3.css" />
+    <Content Include="Content\plugins\jquery-2.2.3.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -535,10 +546,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\bootstrap\" />
-    <Folder Include="Content\dist\" />
     <Folder Include="Content\images\" />
-    <Folder Include="Content\plugins\" />
     <Folder Include="Controllers\Pers_Persona\" />
     <Folder Include="Controllers\Rol_AsignarRol\" />
     <Folder Include="Controllers\Rol_Funcion\" />
